@@ -1,0 +1,31 @@
+﻿'*********************************************************************************************
+' DG-Sim: A SyncroSim Module for simulating demographic population models.
+'
+' Copyright © 2007-2017 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.
+'
+'*********************************************************************************************
+
+Class Stratum
+
+    Private m_Id As Integer
+    Private m_AgeSexCohorts As New AgeSexCohortCollection
+
+    Public Sub New(ByVal id As Integer)
+        Me.m_Id = id
+    End Sub
+
+    Public ReadOnly Property Id As Integer
+        Get
+            Return Me.m_Id
+        End Get
+    End Property
+
+    Public ReadOnly Property AgeSexCohorts As AgeSexCohortCollection
+        Get
+            Return Me.m_AgeSexCohorts
+        End Get
+    End Property
+
+End Class
+
+
