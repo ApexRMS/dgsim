@@ -5,9 +5,9 @@
 '
 '*********************************************************************************************
 
-Imports SyncroSim.Core.Forms
-Imports System.Globalization
 Imports System.Reflection
+Imports System.Globalization
+Imports SyncroSim.Core.Forms
 
 <ObfuscationAttribute(Exclude:=True, ApplyToMembers:=False)>
 Class PosteriorDistributionReport
@@ -38,7 +38,7 @@ Class PosteriorDistributionReport
         c.Add(New ExportColumn("Timestep", "Timestep"))
         c.Add(New ExportColumn("HasCensusData", "Has Census Data"))
         c.Add(New ExportColumn("JulianDay", "Julian Day"))
-        c.Add(New ExportColumn("Gender", "Sex"))
+        c.Add(New ExportColumn("Sex", "Sex"))
         c.Add(New ExportColumn("AgeClassName", "Age Class"))
         c.Add(New ExportColumn("VariableName", "Variable"))
         c.Add(New ExportColumn("IsFilteredName", "Filtered"))
@@ -60,7 +60,7 @@ Class PosteriorDistributionReport
             "Timestep, " &
             "CASE WHEN HasCensusData=0 THEN 'No' ELSE 'Yes' END AS HasCensusData, " &
             "JulianDay, " &
-            "CASE WHEN Sex=0 THEN 'Male' WHEN Sex=1 THEN 'Female' ELSE NULL END AS Gender, " &
+            "CASE WHEN Sex=0 THEN 'Male' WHEN Sex=1 THEN 'Female' ELSE NULL END AS Sex, " &
             "DGSim_AgeClass.Name as AgeClassName, " &
             "CASE WHEN Variable=0 THEN 'Harvest' WHEN Variable=1 THEN 'Mortality' ELSE 'Offspring' END AS VariableName, " &
             "CASE WHEN IsFiltered=0 THEN 'No' ELSE 'Yes' END AS IsFilteredName, " &

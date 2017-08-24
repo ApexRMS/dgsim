@@ -10,7 +10,7 @@ Imports System.Globalization
 Imports SyncroSim.Core.Forms
 
 <ObfuscationAttribute(Exclude:=True, ApplyToMembers:=False)>
-Class PopulationSizeReport
+Class HarvestReport
     Inherits ExportTransformer
 
     Protected Overrides Sub Export(location As String, exportType As ExportType)
@@ -19,7 +19,7 @@ Class PopulationSizeReport
         Dim columns As ExportColumnCollection = CreateColumnCollection()
 
         If (exportType = ExportType.ExcelFile) Then
-            Me.ExcelExport(location, columns, query, "Population Size")
+            Me.ExcelExport(location, columns, query, "Harvest")
         Else
             Me.CSVExport(location, columns, query)
             InformationMessageBox("Data saved to '{0}'.", location)
@@ -38,10 +38,9 @@ Class PopulationSizeReport
         c.Add(New ExportColumn("StratumName", "Stratum"))
         c.Add(New ExportColumn("Sex", "Sex"))
         c.Add(New ExportColumn("AgeClassName", "Age Class"))
-        c.Add(New ExportColumn("Population", "Population"))
+        c.Add(New ExportColumn("Harvest", "Harvest"))
 
-        c("Population").DecimalPlaces = 4
-        c("Population").Alignment = Core.ColumnAlignment.Right
+        c("Harvest").Alignment = Core.ColumnAlignment.Right
 
         Return c
 
@@ -51,21 +50,21 @@ Class PopulationSizeReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "DGSim_OutputPopulationSize.ScenarioID, " &
+            "DGSim_OutputHarvest.ScenarioID, " &
             "SSim_Scenario.Name AS ScenarioName, " &
-            "DGSim_OutputPopulationSize.Iteration, " &
-            "DGSim_OutputPopulationSize.Timestep, " &
+            "DGSim_OutputHarvest.Iteration, " &
+            "DGSim_OutputHarvest.Timestep, " &
             "DGSim_Stratum.Name AS StratumName, " &
-            "CASE WHEN DGSim_OutputPopulationSize.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
+            "CASE WHEN DGSim_OutputHarvest.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
             "DGSim_AgeClass.Name AS AgeClassName, " &
-            "DGSim_OutputPopulationSize.Population " &
-            "FROM DGSim_OutputPopulationSize " &
-            "INNER JOIN SSim_Scenario ON SSim_Scenario.ScenarioID = DGSim_OutputPopulationSize.ScenarioID " &
-            "INNER JOIN DGSim_Stratum ON DGSim_OutputPopulationSize.StratumID = DGSim_Stratum.StratumID " &
-            "INNER JOIN DGSim_AgeClass ON DGSim_OutputPopulationSize.AgeClassID = DGSim_AgeClass.AgeClassID " &
-            "WHERE DGSim_OutputPopulationSize.ScenarioID IN ({0}) " &
+            "DGSim_OutputHarvest.Harvest " &
+            "FROM DGSim_OutputHarvest " &
+            "INNER JOIN SSim_Scenario ON SSim_Scenario.ScenarioID = DGSim_OutputHarvest.ScenarioID " &
+            "INNER JOIN DGSim_Stratum ON DGSim_OutputHarvest.StratumID = DGSim_Stratum.StratumID " &
+            "INNER JOIN DGSim_AgeClass ON DGSim_OutputHarvest.AgeClassID = DGSim_AgeClass.AgeClassID " &
+            "WHERE DGSim_OutputHarvest.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "DGSim_OutputPopulationSize.ScenarioID, " &
+            "DGSim_OutputHarvest.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &

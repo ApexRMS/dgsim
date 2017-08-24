@@ -161,6 +161,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Reports\BirthsReport.vb" />
+    <Compile Include="Reports\MortalityReport.vb" />
+    <Compile Include="Reports\HarvestReport.vb" />
     <Compile Include="Reports\PopulationSizeReport.vb" />
     <Compile Include="Reports\PosteriorDistributionReport.vb" />
     <Compile Include="Runtime\AgeClass.vb" />
