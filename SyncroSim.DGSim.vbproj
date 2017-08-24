@@ -201,7 +201,13 @@
     <Compile Include="Runtime\RunControl.vb" />
     <Compile Include="Runtime\Stratum.vb" />
     <Compile Include="Runtime\StratumCollection.vb" />
+    <Compile Include="Runtime\SummaryOutputBirths.vb" />
+    <Compile Include="Runtime\SummaryOutputBirthsCollection.vb" />
+    <Compile Include="Runtime\SummaryOutputMortalityCollection.vb" />
+    <Compile Include="Runtime\SummaryOutputMortality.vb" />
+    <Compile Include="Runtime\SummaryOutputHarvest.vb" />
     <Compile Include="Runtime\SummaryOutputPopulationSize.vb" />
+    <Compile Include="Runtime\SummaryOutputHarvestCollection.vb" />
     <Compile Include="Runtime\SummaryOutputPopulationSizeCollection.vb" />
     <Compile Include="Shared\Enums.vb" />
     <Compile Include="Shared\Strings.vb" />

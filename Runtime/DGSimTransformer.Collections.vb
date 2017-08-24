@@ -20,7 +20,10 @@ Partial Class DGSimTransformer
     Private m_AnnualHarvestValues As New AnnualHarvestValueCollection
     Private m_DemographicRateShifts As New DemographicRateShiftCollection
     Private m_CensusData As New CensusDataCollection
-    Private m_SummaryOutput As New SummaryOutputPopulationSizeCollection()
+    Private m_SummaryPopSizeOutput As New SummaryOutputPopulationSizeCollection()
+    Private m_SummaryHarvestOutput As New SummaryOutputHarvestCollection()
+    Private m_SummaryBirthsOutput As New SummaryOutputBirthsCollection()
+    Private m_SummaryMortalityOutput As New SummaryOutputMortalityCollection()
 
     Private Sub InitializeCollections()
 

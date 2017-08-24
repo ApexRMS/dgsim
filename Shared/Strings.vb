@@ -90,7 +90,21 @@ Module Strings
 
     'Output population size data sheet
     Public Const OUTPUT_POPULATION_SIZE_DATASHEET_NAME As String = "DGSim_OutputPopulationSize"
-    Public Const OUTPUT_POPULATION_SIZE_DATASHEET_POPULATION_COLUMN_NAME As String = "Population"
+    Public Const OUTPUT_POPULATION_SIZE_POPULATION_COLUMN_NAME As String = "Population"
+
+    'Output harvest data sheet
+    Public Const OUTPUT_HARVEST_DATASHEET_NAME As String = "DGSim_OutputHarvest"
+    Public Const OUTPUT_HARVEST_HARVEST_COLUMN_NAME As String = "Harvest"
+
+    'Output births data sheet
+    Public Const OUTPUT_BIRTHS_DATASHEET_NAME As String = "DGSim_OutputBirths"
+    Public Const DATASHEET_MOTHER_AGECLASS_ID_COLUMN_NAME As String = "MotherAgeClassID"
+    Public Const DATASHEET_OFFSPRING_SEX_COLUMN_NAME As String = "OffspringSex"
+    Public Const OUTPUT_BIRTHS_BIRTHS_COLUMN_NAME As String = "Births"
+
+    'Output mortality data sheet
+    Public Const OUTPUT_MORTALITY_DATASHEET_NAME As String = "DGSim_OutputMortality"
+    Public Const OUTPUT_MORTALITY_MORTALITY_COLUMN_NAME As String = "Mortality"
 
     'Output Posterior Distribution Values Data Sheet
     Public Const OUTPUT_POSTERIOR_DIST_VALUE_DATASHEET_NAME As String = "DGSim_OutputPosteriorDistributionValue"

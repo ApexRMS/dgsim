@@ -15,6 +15,9 @@ Class DGSimTransformer
     Inherits StochasticTimeTransformer
 
     Private m_OutputPopSizeDataTable As DataTable
+    Private m_OutputHarvestDataTable As DataTable
+    Private m_OutputBirthsDataTable As DataTable
+    Private m_OutputMortalityDataTable As DataTable
     Private m_OutputPosteriorDistDataTable As DataTable
     Private m_RandomGenerator As New RandomGenerator()
 
@@ -73,7 +76,11 @@ Class DGSimTransformer
         MyBase.OnTimestep(iteration, timestep)
 
         Me.SimulateTimestep(iteration, timestep)
-        Me.ProcessSummaryOutputData(iteration, timestep)
+
+        Me.ProcessSummaryPopSizeOutputData(iteration, timestep)
+        Me.ProcessSummaryHarvestOutputData(iteration, timestep)
+        Me.ProcessSummaryBirthsOutputData(iteration, timestep)
+        Me.ProcessSummaryMortalityOutputData(iteration, timestep)
 
     End Sub
 
@@ -106,6 +113,8 @@ Class DGSimTransformer
         Dim HasCensusData As Boolean = (cdata IsNot Nothing)
         Dim HasAgeSexCohorts As Boolean = (stratum.AgeSexCohorts.Count > 0)
         Dim RelAge As Integer = (Me.m_RunControl.MinimumTimestep - timestep)
+        Dim MaleCalfMortality As Double = 0.0
+        Dim FemaleCalfMortality As Double = 0.0
 
         If (Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay) Then
 
@@ -124,7 +133,7 @@ Class DGSimTransformer
         Dim IsOutsideCensusRange As Boolean = Me.IsOutsideCensusDataRange(stratum, timestep)
 
         For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
-            Me.AddOutputToCollection(Cohort, stratum)
+            Me.AddPopSizeOutputToCollection(Cohort, stratum)
         Next
 
         If (HasAgeSexCohorts) Then
@@ -168,8 +177,8 @@ Class DGSimTransformer
 
                 If (Cohort.Sex = Gender.Female) Then
 
-                    NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Male, stratum, iteration, timestep)
-                    NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Female, stratum, iteration, timestep)
+                    NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Male, stratum, iteration, timestep, MaleCalfMortality)
+                    NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Female, stratum, iteration, timestep, FemaleCalfMortality)
 
                 End If
 
@@ -178,28 +187,51 @@ Class DGSimTransformer
             ' Calculate mortality from census to birthday first
             Dim AgeClassId As Integer = GetAgeClassIdFromAge(Cohort.Age)
             Dim TimePeriodMortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Cohort.Sex, AgeClassId, 0, (GetRelativeJulianDay(Me.m_OffspringPerFemaleBirthJDay, Me.m_RunControl.StartJulianDay) - 1))
+            Dim TotalMortality As Double = TimePeriodMortality * Cohort.NumIndividuals
             Dim NumIndividuals As Double = Cohort.NumIndividuals * (1 - TimePeriodMortality)
-            NumIndividuals -= Cohort.AnnualHarvest
 
-            ' Now calculate mortality from birthday to census
-            AgeClassId = GetAgeClassIdFromAge(Cohort.Age + 1)
-            TimePeriodMortality = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Cohort.Sex, AgeClassId, GetRelativeJulianDay(Me.m_OffspringPerFemaleBirthJDay, Me.m_RunControl.StartJulianDay), 364)
-            NumIndividuals = NumIndividuals * (1 - TimePeriodMortality)
+            'Update the annual harvest collection
+            If (Cohort.AnnualHarvest <= NumIndividuals) Then
+                Me.AddHarvestOutputToCollection(Cohort, stratum, Cohort.AnnualHarvest)
+            Else
+                Me.AddHarvestOutputToCollection(Cohort, stratum, CInt(NumIndividuals))
+            End If
+
+            'Change number of individuals
+            NumIndividuals -= Cohort.AnnualHarvest
 
             If NumIndividuals < 0.0 Then
                 NumIndividuals = 0.0
             End If
 
+            ' Now calculate mortality from birthday to census
+            AgeClassId = GetAgeClassIdFromAge(Cohort.Age + 1)
+            TimePeriodMortality = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Cohort.Sex, AgeClassId, GetRelativeJulianDay(Me.m_OffspringPerFemaleBirthJDay, Me.m_RunControl.StartJulianDay), 364)
+            TotalMortality += (TimePeriodMortality * NumIndividuals)
+
+            'Update the mortality collection
+            Me.AddMortalityOutputToCollection(Cohort, stratum, CInt(TotalMortality))
+
+            NumIndividuals = NumIndividuals * (1 - TimePeriodMortality)
+            Debug.Assert(NumIndividuals >= 0.0)
             Cohort.NumIndividuals = CInt(NumIndividuals)
 
         Next
 
         If (NumMaleOffspring > 0) Then
-            stratum.AgeSexCohorts.Add(New AgeSexCohort(0, RelAge - 1, Gender.Male, NumMaleOffspring))
+
+            Dim c As New AgeSexCohort(0, RelAge - 1, Gender.Male, NumMaleOffspring)
+            Me.AddMortalityOutputToCollection(c, stratum, CInt(MaleCalfMortality))
+            stratum.AgeSexCohorts.Add(c)
+
         End If
 
         If (NumFemaleOffspring > 0) Then
-            stratum.AgeSexCohorts.Add(New AgeSexCohort(0, RelAge - 1, Gender.Female, NumFemaleOffspring))
+
+            Dim c As New AgeSexCohort(0, RelAge - 1, Gender.Female, NumFemaleOffspring)
+            Me.AddMortalityOutputToCollection(c, stratum, CInt(FemaleCalfMortality))
+            stratum.AgeSexCohorts.Add(c)
+
         End If
 
     End Sub
@@ -301,10 +333,11 @@ Class DGSimTransformer
 
     Private Function CalculateNumOffspring(
         ByVal cohort As AgeSexCohort,
-        ByVal offspringGender As Gender,
+        ByVal offspringSex As Gender,
         ByVal stratum As Stratum,
         ByVal iteration As Integer,
-        ByVal timestep As Integer) As Integer
+        ByVal timestep As Integer,
+        ByRef calfMortality As Double) As Integer
 
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim RelativeCountDay As Integer = Me.CalculateOffspringRelativeCountDay(stratum.Id, iteration, timestep, AgeClassId)
@@ -326,8 +359,13 @@ Class DGSimTransformer
             End If
 
             Dim d2 As Double = CalculateOffspringPerFemale(opf, FecundityAdjustment) * 0.5
-            Dim d3 As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, offspringGender, OffspringAgeClassId, RelativeCountDay, 365)
+
+            Me.AddBirthsOutputToCollection(cohort, stratum, CInt(d1 * d2), offspringSex)
+
+            Dim d3 As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, offspringSex, OffspringAgeClassId, RelativeCountDay, 365)
             Dim d4 As Double = (d1 * d2 * (1 - d3))
+
+            calfMortality += (d3 * d1 * d2)
 
             Return CInt(d4)
 

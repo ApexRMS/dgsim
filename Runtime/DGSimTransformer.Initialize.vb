@@ -98,10 +98,22 @@ Partial Class DGSimTransformer
         Dim dspop As DataSheet = Me.ResultScenario.GetDataSheet(OUTPUT_POPULATION_SIZE_DATASHEET_NAME)
         Me.m_OutputPopSizeDataTable = dspop.GetData()
 
+        Dim dsharv As DataSheet = Me.ResultScenario.GetDataSheet(OUTPUT_HARVEST_DATASHEET_NAME)
+        Me.m_OutputHarvestDataTable = dsharv.GetData()
+
+        Dim dsbirths As DataSheet = Me.ResultScenario.GetDataSheet(OUTPUT_BIRTHS_DATASHEET_NAME)
+        Me.m_OutputBirthsDataTable = dsbirths.GetData()
+
+        Dim dsmort As DataSheet = Me.ResultScenario.GetDataSheet(OUTPUT_MORTALITY_DATASHEET_NAME)
+        Me.m_OutputMortalityDataTable = dsmort.GetData()
+
         Dim dsdist As DataSheet = Me.ResultScenario.GetDataSheet(OUTPUT_POSTERIOR_DIST_VALUE_DATASHEET_NAME)
         Me.m_OutputPosteriorDistDataTable = dsdist.GetData()
 
         Debug.Assert(Me.m_OutputPopSizeDataTable.Rows.Count = 0)
+        Debug.Assert(Me.m_OutputHarvestDataTable.Rows.Count = 0)
+        Debug.Assert(Me.m_OutputBirthsDataTable.Rows.Count = 0)
+        Debug.Assert(Me.m_OutputMortalityDataTable.Rows.Count = 0)
         Debug.Assert(Me.m_OutputPosteriorDistDataTable.Rows.Count = 0)
 
     End Sub
