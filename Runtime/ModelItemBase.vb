@@ -211,15 +211,15 @@ Class ModelItemBase
         End If
 
         If (Me.m_DistributionSD.HasValue) Then
-            sd = Me.m_DistributionSD.Value.ToString("N4", CultureInfo.CurrentCulture)
+            sd = Me.m_DistributionSD.Value.ToString("N4", CultureInfo.InvariantCulture)
         End If
 
         If (Me.m_DistributionMinimum.HasValue And (Not Me.m_MinWasNull)) Then
-            mn = Me.m_DistributionMinimum.Value.ToString("N4", CultureInfo.CurrentCulture)
+            mn = Me.m_DistributionMinimum.Value.ToString("N4", CultureInfo.InvariantCulture)
         End If
 
         If (Me.m_DistributionMaximum.HasValue) Then
-            mx = Me.m_DistributionMaximum.Value.ToString("N4", CultureInfo.CurrentCulture)
+            mx = Me.m_DistributionMaximum.Value.ToString("N4", CultureInfo.InvariantCulture)
         End If
 
         Dim m As String = message & vbCrLf & vbCrLf

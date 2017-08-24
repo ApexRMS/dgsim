@@ -85,7 +85,7 @@ Module Utilities
             Return DGSimGetRandomBeta(distributionMean, distributionSD, distributionMinimum, distributionMaximum, randomGen)
         Catch ex As ArgumentException
 
-            Dim m As String = String.Format(CultureInfo.CurrentCulture, "{0} -> {1}", caller, ex.Message)
+            Dim m As String = String.Format(CultureInfo.InvariantCulture, "{0} -> {1}", caller, ex.Message)
             Throw New ArgumentException(m)
 
         End Try
@@ -124,7 +124,7 @@ Module Utilities
             Dim min As String = "NULL"
 
             If (distributionMinimum.HasValue And (Not MinWasNull)) Then
-                min = distributionMinimum.Value.ToString("N4", CultureInfo.CurrentCulture)
+                min = distributionMinimum.Value.ToString("N4", CultureInfo.InvariantCulture)
             End If
 
             Dim m As String = String.Format(CultureInfo.InvariantCulture,
