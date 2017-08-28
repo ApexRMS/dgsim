@@ -79,7 +79,7 @@ Partial Class DGSimTransformer
             NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
             NewRow(DATASHEET_SEX_COLUMN_NAME) = CInt(o.Sex)
             NewRow(DATASHEET_AGE_CLASS_ID_COLUMN_NAME) = o.AgeClassId
-            NewRow(OUTPUT_HARVEST_HARVEST_COLUMN_NAME) = o.Harvest
+            NewRow(OUTPUT_HARVEST_HARVEST_COLUMN_NAME) = CInt(o.Harvest) 'Convert to integer
 
             Me.m_OutputHarvestDataTable.Rows.Add(NewRow)
 
@@ -89,43 +89,43 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    Private Sub AddBirthsOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal numBirths As Integer, offspringSex As Gender)
+    Private Sub AddRecruitsToOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal numRecruits As Double, offspringSex As Gender)
 
         Dim MotherAgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim key As New ThreeIntegerLookupKey(stratum.Id, MotherAgeClassId, offspringSex)
 
-        If (Me.m_SummaryBirthsOutput.Contains(key)) Then
+        If (Me.m_SummaryRecruitsOutput.Contains(key)) Then
 
-            Dim o As SummaryOutputBirths = Me.m_SummaryBirthsOutput(key)
-            o.Births += numBirths
+            Dim o As SummaryOutputRecruits = Me.m_SummaryRecruitsOutput(key)
+            o.Recruits += numRecruits
 
         Else
 
-            Dim o As New SummaryOutputBirths(stratum.Id, MotherAgeClassId, offspringSex, numBirths)
-            Me.m_SummaryBirthsOutput.Add(o)
+            Dim o As New SummaryOutputRecruits(stratum.Id, MotherAgeClassId, offspringSex, numRecruits)
+            Me.m_SummaryRecruitsOutput.Add(o)
 
         End If
 
     End Sub
 
-    Private Sub ProcessSummaryBirthsOutputData(iteration As Integer, timestep As Integer)
+    Private Sub ProcessSummaryRecruitsOutputData(iteration As Integer, timestep As Integer)
 
-        For Each o As SummaryOutputBirths In Me.m_SummaryBirthsOutput
+        For Each o As SummaryOutputRecruits In Me.m_SummaryRecruitsOutput
 
-            Dim NewRow As DataRow = Me.m_OutputBirthsDataTable.NewRow
+            Dim NewRow As DataRow = Me.m_OutputRecruitsDataTable.NewRow
 
             NewRow(DATASHEET_STRATUM_ID_COLUMN_NAME) = o.StratumId
             NewRow(DATASHEET_ITERATION_COLUMN_NAME) = iteration
             NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
             NewRow(DATASHEET_MOTHER_AGECLASS_ID_COLUMN_NAME) = o.MotherAgeClassId
             NewRow(DATASHEET_OFFSPRING_SEX_COLUMN_NAME) = CInt(o.OffspringSex)
-            NewRow(OUTPUT_BIRTHS_BIRTHS_COLUMN_NAME) = o.Births
+            NewRow(OUTPUT_RECRUITS_COLUMN_NAME) = CInt(o.Recruits) 'convert to integer
 
-            Me.m_OutputBirthsDataTable.Rows.Add(NewRow)
+            Me.m_OutputRecruitsDataTable.Rows.Add(NewRow)
 
         Next
 
-        Me.m_SummaryBirthsOutput.Clear()
+        Me.m_SummaryRecruitsOutput.Clear()
 
     End Sub
 
@@ -159,7 +159,7 @@ Partial Class DGSimTransformer
             NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
             NewRow(DATASHEET_SEX_COLUMN_NAME) = CInt(o.Sex)
             NewRow(DATASHEET_AGE_CLASS_ID_COLUMN_NAME) = o.AgeClassId
-            NewRow(OUTPUT_MORTALITY_MORTALITY_COLUMN_NAME) = o.Mortality
+            NewRow(OUTPUT_MORTALITY_MORTALITY_COLUMN_NAME) = CInt(o.Mortality) 'convert to integer
 
             Me.m_OutputMortalityDataTable.Rows.Add(NewRow)
 

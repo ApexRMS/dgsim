@@ -40,6 +40,7 @@ Class MortalityReport
         c.Add(New ExportColumn("AgeClassName", "Age Class"))
         c.Add(New ExportColumn("Mortality", "Mortality"))
 
+        c("Mortality").DecimalPlaces = 0
         c("Mortality").Alignment = Core.ColumnAlignment.Right
 
         Return c

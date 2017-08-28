@@ -19,6 +19,10 @@ Module Utilities
         Throw New ArgumentException(String.Format(CultureInfo.InvariantCulture, message, args))
     End Sub
 
+    Function ApplicationMessageBox(text As [String], buttons As MessageBoxButtons) As DialogResult
+        Return MessageBox.Show(text, Application.ProductName, buttons, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, DirectCast(0, MessageBoxOptions))
+    End Function
+
     Function ApplicationMessageBox(text As [String], buttons As MessageBoxButtons, ParamArray args As Object()) As DialogResult
         Return ApplicationMessageBox([String].Format(CultureInfo.InvariantCulture, text, args), buttons)
     End Function

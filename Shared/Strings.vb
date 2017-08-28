@@ -96,11 +96,11 @@ Module Strings
     Public Const OUTPUT_HARVEST_DATASHEET_NAME As String = "DGSim_OutputHarvest"
     Public Const OUTPUT_HARVEST_HARVEST_COLUMN_NAME As String = "Harvest"
 
-    'Output births data sheet
-    Public Const OUTPUT_BIRTHS_DATASHEET_NAME As String = "DGSim_OutputBirths"
+    'Output recruits data sheet
+    Public Const OUTPUT_RECRUITS_DATASHEET_NAME As String = "DGSim_OutputRecruits"
     Public Const DATASHEET_MOTHER_AGECLASS_ID_COLUMN_NAME As String = "MotherAgeClassID"
     Public Const DATASHEET_OFFSPRING_SEX_COLUMN_NAME As String = "OffspringSex"
-    Public Const OUTPUT_BIRTHS_BIRTHS_COLUMN_NAME As String = "Births"
+    Public Const OUTPUT_RECRUITS_COLUMN_NAME As String = "Recruits"
 
     'Output mortality data sheet
     Public Const OUTPUT_MORTALITY_DATASHEET_NAME As String = "DGSim_OutputMortality"

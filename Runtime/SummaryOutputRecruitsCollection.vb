@@ -8,14 +8,14 @@
 Imports SyncroSim.Common
 Imports System.Collections.ObjectModel
 
-Friend Class SummaryOutputBirthsCollection
-    Inherits KeyedCollection(Of ThreeIntegerLookupKey, SummaryOutputBirths)
+Friend Class SummaryOutputRecruitsCollection
+    Inherits KeyedCollection(Of ThreeIntegerLookupKey, SummaryOutputRecruits)
 
     Public Sub New()
         MyBase.New(New ThreeIntegerLookupKeyEqualityComparer)
     End Sub
 
-    Protected Overrides Function GetKeyForItem(ByVal item As SummaryOutputBirths) As ThreeIntegerLookupKey
+    Protected Overrides Function GetKeyForItem(ByVal item As SummaryOutputRecruits) As ThreeIntegerLookupKey
         Return New ThreeIntegerLookupKey(item.StratumId, item.MotherAgeClassId, CInt(item.OffspringSex))
     End Function
 

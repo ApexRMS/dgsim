@@ -16,7 +16,7 @@ Class DGSimTransformer
 
     Private m_OutputPopSizeDataTable As DataTable
     Private m_OutputHarvestDataTable As DataTable
-    Private m_OutputBirthsDataTable As DataTable
+    Private m_OutputRecruitsDataTable As DataTable
     Private m_OutputMortalityDataTable As DataTable
     Private m_OutputPosteriorDistDataTable As DataTable
     Private m_RandomGenerator As New RandomGenerator()
@@ -79,7 +79,7 @@ Class DGSimTransformer
 
         Me.ProcessSummaryPopSizeOutputData(iteration, timestep)
         Me.ProcessSummaryHarvestOutputData(iteration, timestep)
-        Me.ProcessSummaryBirthsOutputData(iteration, timestep)
+        Me.ProcessSummaryRecruitsOutputData(iteration, timestep)
         Me.ProcessSummaryMortalityOutputData(iteration, timestep)
 
     End Sub
@@ -360,7 +360,7 @@ Class DGSimTransformer
 
             Dim d2 As Double = CalculateOffspringPerFemale(opf, FecundityAdjustment) * 0.5
 
-            Me.AddBirthsOutputToCollection(cohort, stratum, CInt(d1 * d2), offspringSex)
+            Me.AddRecruitsToOutputToCollection(cohort, stratum, (d1 * d2), offspringSex)
 
             Dim d3 As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, offspringSex, OffspringAgeClassId, RelativeCountDay, 365)
             Dim d4 As Double = (d1 * d2 * (1 - d3))

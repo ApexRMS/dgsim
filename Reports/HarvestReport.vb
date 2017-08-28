@@ -40,6 +40,7 @@ Class HarvestReport
         c.Add(New ExportColumn("AgeClassName", "Age Class"))
         c.Add(New ExportColumn("Harvest", "Harvest"))
 
+        c("Harvest").DecimalPlaces = 0
         c("Harvest").Alignment = Core.ColumnAlignment.Right
 
         Return c

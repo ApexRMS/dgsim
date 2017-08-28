@@ -40,7 +40,7 @@ Class PopulationSizeReport
         c.Add(New ExportColumn("AgeClassName", "Age Class"))
         c.Add(New ExportColumn("Population", "Population"))
 
-        c("Population").DecimalPlaces = 4
+        c("Population").DecimalPlaces = 0
         c("Population").Alignment = Core.ColumnAlignment.Right
 
         Return c

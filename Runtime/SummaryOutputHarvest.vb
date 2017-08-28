@@ -10,13 +10,13 @@ Class SummaryOutputHarvest
     Private m_StratumId As Integer
     Private m_Sex As Gender
     Private m_AgeClassId As Integer
-    Private m_Harvest As Integer
+    Private m_Harvest As Double
 
     Public Sub New(
         ByVal stratumId As Integer,
         ByVal sex As Gender,
         ByVal ageClassId As Integer,
-        ByVal harvest As Integer)
+        ByVal harvest As Double)
 
         Me.m_StratumId = stratumId
         Me.m_Sex = sex
@@ -43,11 +43,11 @@ Class SummaryOutputHarvest
         End Get
     End Property
 
-    Public Property Harvest As Integer
+    Public Property Harvest As Double
         Get
             Return Me.m_Harvest
         End Get
-        Set(value As Integer)
+        Set(value As Double)
             Me.m_Harvest = value
         End Set
     End Property

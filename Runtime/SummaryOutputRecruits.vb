@@ -5,23 +5,23 @@
 '
 '*********************************************************************************************
 
-Class SummaryOutputBirths
+Class SummaryOutputRecruits
 
     Private m_StratumId As Integer
     Private m_MotherAgeClassId As Integer
     Private m_OffspringSex As Gender
-    Private m_Births As Integer
+    Private m_Recruits As Double
 
     Public Sub New(
         ByVal stratumId As Integer,
         ByVal motherAgeClassId As Integer,
         ByVal offspringSex As Gender,
-        ByVal births As Integer)
+        ByVal recruits As Double)
 
         Me.m_StratumId = stratumId
         Me.m_MotherAgeClassId = motherAgeClassId
         Me.m_OffspringSex = offspringSex
-        Me.m_Births = births
+        Me.m_Recruits = recruits
 
     End Sub
 
@@ -43,12 +43,12 @@ Class SummaryOutputBirths
         End Get
     End Property
 
-    Public Property Births As Integer
+    Public Property Recruits As Double
         Get
-            Return Me.m_Births
+            Return Me.m_Recruits
         End Get
-        Set(value As Integer)
-            Me.m_Births = value
+        Set(value As Double)
+            Me.m_Recruits = value
         End Set
     End Property
 
