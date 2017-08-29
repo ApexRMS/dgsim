@@ -10,14 +10,14 @@ Class AgeSexCohort
     Private m_Age As Integer
     Private m_InitialAge As Integer
     Private m_Sex As Gender
-    Private m_NumIndividuals As Integer
-    Private m_AnnualHarvest As Integer
+    Private m_NumIndividuals As Double
+    Private m_AnnualHarvest As Double
 
     Public Sub New(
         ByVal age As Integer,
         ByVal initialAge As Integer,
         ByVal sex As Gender,
-        ByVal numIndividuals As Integer)
+        ByVal numIndividuals As Double)
 
         Debug.Assert(age >= 0)
         Debug.Assert(numIndividuals > 0)
@@ -50,20 +50,20 @@ Class AgeSexCohort
         End Get
     End Property
 
-    Public Property NumIndividuals As Integer
+    Public Property NumIndividuals As Double
         Get
             Return Me.m_NumIndividuals
         End Get
-        Set(value As Integer)
+        Set(value As Double)
             Me.m_NumIndividuals = value
         End Set
     End Property
 
-    Public Property AnnualHarvest As Integer
+    Public Property AnnualHarvest As Double
         Get
             Return Me.m_AnnualHarvest
         End Get
-        Set(value As Integer)
+        Set(value As Double)
             Me.m_AnnualHarvest = value
         End Set
     End Property

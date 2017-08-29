@@ -107,8 +107,8 @@ Class DGSimTransformer
     ''' <remarks></remarks>
     Private Sub SimulateTimestep(ByVal stratum As Stratum, ByVal iteration As Integer, ByVal timestep As Integer)
 
-        Dim NumMaleOffspring As Integer = 0
-        Dim NumFemaleOffspring As Integer = 0
+        Dim NumMaleOffspring As Double = 0
+        Dim NumFemaleOffspring As Double = 0
         Dim cdata As CensusData = Me.m_CensusDataMap.GetItem(stratum.Id, timestep)
         Dim HasCensusData As Boolean = (cdata IsNot Nothing)
         Dim HasAgeSexCohorts As Boolean = (stratum.AgeSexCohorts.Count > 0)
@@ -126,6 +126,13 @@ Class DGSimTransformer
 
                 Me.AddStartDayAgeZeroCohorts(stratum, iteration, timestep)
 
+            Else
+                'Add initial calf population to recruits for first timestep.
+                For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
+                    If Cohort.Age = 0 Then
+                        Me.AddRecruitsToOutputToCollection(Cohort, stratum, Cohort.NumIndividuals, Cohort.Sex)
+                    End If
+                Next
             End If
 
         End If
@@ -163,17 +170,17 @@ Class DGSimTransformer
 
         DetermineAnnualHarvest(stratum, iteration, timestep)
 
-        For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
-
-            Dim AnyAgeZero As Boolean = AnyAgeZeroIndividuals(stratum.AgeSexCohorts)
+        Dim AnyAgeZero As Boolean = AnyAgeZeroIndividuals(stratum.AgeSexCohorts)
 
 #If DEBUG Then
-            If (AnyAgeZero) Then
-                Debug.Assert(timestep = Me.m_RunControl.MinimumTimestep)
-            End If
+        If (AnyAgeZero) Then
+            Debug.Assert(timestep = Me.m_RunControl.MinimumTimestep)
+        End If
 #End If
 
-            If (Not AnyAgeZero) Then
+        For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
+
+            If (Not (timestep = Me.m_RunControl.MinimumTimestep And Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay)) Then
 
                 If (Cohort.Sex = Gender.Female) Then
 
@@ -194,7 +201,7 @@ Class DGSimTransformer
             If (Cohort.AnnualHarvest <= NumIndividuals) Then
                 Me.AddHarvestOutputToCollection(Cohort, stratum, Cohort.AnnualHarvest)
             Else
-                Me.AddHarvestOutputToCollection(Cohort, stratum, CInt(NumIndividuals))
+                Me.AddHarvestOutputToCollection(Cohort, stratum, NumIndividuals)
             End If
 
             'Change number of individuals
@@ -210,18 +217,18 @@ Class DGSimTransformer
             TotalMortality += (TimePeriodMortality * NumIndividuals)
 
             'Update the mortality collection
-            Me.AddMortalityOutputToCollection(Cohort, stratum, CInt(TotalMortality))
+            Me.AddMortalityOutputToCollection(Cohort, stratum, TotalMortality)
 
             NumIndividuals = NumIndividuals * (1 - TimePeriodMortality)
             Debug.Assert(NumIndividuals >= 0.0)
-            Cohort.NumIndividuals = CInt(NumIndividuals)
+            Cohort.NumIndividuals = NumIndividuals
 
         Next
 
         If (NumMaleOffspring > 0) Then
 
             Dim c As New AgeSexCohort(0, RelAge - 1, Gender.Male, NumMaleOffspring)
-            Me.AddMortalityOutputToCollection(c, stratum, CInt(MaleCalfMortality))
+            Me.AddMortalityOutputToCollection(c, stratum, MaleCalfMortality)
             stratum.AgeSexCohorts.Add(c)
 
         End If
@@ -229,7 +236,7 @@ Class DGSimTransformer
         If (NumFemaleOffspring > 0) Then
 
             Dim c As New AgeSexCohort(0, RelAge - 1, Gender.Female, NumFemaleOffspring)
-            Me.AddMortalityOutputToCollection(c, stratum, CInt(FemaleCalfMortality))
+            Me.AddMortalityOutputToCollection(c, stratum, FemaleCalfMortality)
             stratum.AgeSexCohorts.Add(c)
 
         End If
@@ -273,13 +280,13 @@ Class DGSimTransformer
 
             If (c.Sex = Gender.Male) Then
 
-                Dim d As Double = CDbl(c.NumIndividuals) * MaleMultiplier
-                c.NumIndividuals = CInt(d)
+                Dim d As Double = c.NumIndividuals * MaleMultiplier
+                c.NumIndividuals = d
 
             Else
 
-                Dim d As Double = CDbl(c.NumIndividuals) * FemaleMultiplier
-                c.NumIndividuals = CInt(d)
+                Dim d As Double = c.NumIndividuals * FemaleMultiplier
+                c.NumIndividuals = d
 
             End If
 
@@ -337,7 +344,8 @@ Class DGSimTransformer
         ByVal stratum As Stratum,
         ByVal iteration As Integer,
         ByVal timestep As Integer,
-        ByRef calfMortality As Double) As Integer
+        ByRef calfMortality As Double) As Double
+
 
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim RelativeCountDay As Integer = Me.CalculateOffspringRelativeCountDay(stratum.Id, iteration, timestep, AgeClassId)
@@ -367,7 +375,7 @@ Class DGSimTransformer
 
             calfMortality += (d3 * d1 * d2)
 
-            Return CInt(d4)
+            Return d4
 
         Else
             Return 0
@@ -507,8 +515,8 @@ Class DGSimTransformer
         ByVal iteration As Integer,
         ByVal timestep As Integer)
 
-        Dim MaleOffspring As Integer = 0
-        Dim FemaleOffspring As Integer = 0
+        Dim MaleOffspring As Double = 0
+        Dim FemaleOffspring As Double = 0
         Dim TimestepToUse As Integer = timestep
 
         For Each Cohort In stratum.AgeSexCohorts
@@ -587,8 +595,8 @@ Class DGSimTransformer
 
                 End If
 
-                MaleOffspring += CInt(dm)
-                FemaleOffspring += CInt(df)
+                MaleOffspring += dm
+                FemaleOffspring += df
 
             End If
 

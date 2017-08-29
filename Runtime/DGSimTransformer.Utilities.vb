@@ -119,13 +119,13 @@ Partial Class DGSimTransformer
     Private Function GetPopulationSize(
         ByVal stratum As Stratum,
         ByVal ageClassId As Nullable(Of Integer),
-        ByVal sex As Nullable(Of Gender)) As Integer
+        ByVal sex As Nullable(Of Gender)) As Double
 
         If (Not ageClassId.HasValue And Not sex.HasValue) Then
             Return CalculateStratumPopulationSize(stratum)
         Else
 
-            Dim PopSize As Integer = 0
+            Dim PopSize As Double = 0
 
             For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 
@@ -151,9 +151,9 @@ Partial Class DGSimTransformer
         ByVal stratum As Stratum,
         ByVal ageMin As Integer,
         ByVal ageMax As Integer,
-        ByVal sex As Nullable(Of Gender)) As Integer
+        ByVal sex As Nullable(Of Gender)) As Double
 
-        Dim PopSize As Integer = 0
+        Dim PopSize As Double = 0
 
         For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 
@@ -217,7 +217,7 @@ Partial Class DGSimTransformer
                                 InputHarvestAmount = ah.CurrentValue
                             Else
 
-                                Dim popsize As Integer = GetPopulationSizeByAgeRangeAndSex(
+                                Dim popsize As Double = GetPopulationSizeByAgeRangeAndSex(
                                     stratum,
                                     Me.m_AnnualHarvestPopFilterMinAge,
                                     Me.m_AnnualHarvestPopFilterMaxAge,
@@ -235,7 +235,7 @@ Partial Class DGSimTransformer
                             d = (InputHarvestAmount * cohort.NumIndividuals / pSize)
                         End If
 
-                        cohort.AnnualHarvest = CInt(d)
+                        cohort.AnnualHarvest = d
 
                     End If
 
@@ -296,7 +296,7 @@ Partial Class DGSimTransformer
     Private Sub AddAgeCohort(
         ByVal age As Integer,
         ByVal sex As Gender,
-        ByVal numIndArg As Integer,
+        ByVal numIndArg As Double,
         ByVal stratumId As Nullable(Of Integer))
 
         Debug.Assert(numIndArg >= 0)
@@ -332,9 +332,10 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    Private Shared Function CalculateStratumPopulationSize(ByVal stratum As Stratum) As Integer
+    Private Shared Function CalculateStratumPopulationSize(ByVal stratum As Stratum) As Double
 
-        Dim Total As Integer = 0
+
+        Dim Total As Double = 0
 
         For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
             Total += Cohort.NumIndividuals
@@ -350,7 +351,7 @@ Partial Class DGSimTransformer
 
         If (cd IsNot Nothing) Then
 
-            Dim TotalPopSize As Integer = CalculateStratumPopulationSize(stratum)
+            Dim TotalPopSize As Double = CalculateStratumPopulationSize(stratum)
             Dim M2FRatio As Double = CalculateM2FRatio(stratum.AgeSexCohorts)
 
             If (TotalPopSize < cd.MinimumPopulation Or TotalPopSize > cd.MaximumPopulation) Then
@@ -380,7 +381,7 @@ Partial Class DGSimTransformer
 
     Private Shared Function CalculatePopulationBySex(ByVal cohorts As AgeSexCohortCollection, ByVal gender As Gender) As Integer
 
-        Dim t As Integer = 0
+        Dim t As Double = 0
 
         For Each c As AgeSexCohort In cohorts
 
@@ -394,14 +395,14 @@ Partial Class DGSimTransformer
 
         Next
 
-        Return t
+        Return CInt(t)
 
     End Function
 
     Private Shared Function CalculateM2FRatio(ByVal cohorts As AgeSexCohortCollection) As Double
 
-        Dim TotalMale As Integer = 0
-        Dim TotalFemale As Integer = 0
+        Dim TotalMale As Double = 0
+        Dim TotalFemale As Double = 0
 
         For Each c As AgeSexCohort In cohorts
 

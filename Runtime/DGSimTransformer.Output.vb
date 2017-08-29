@@ -49,7 +49,7 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    Private Sub AddHarvestOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal harvestAmount As Integer)
+    Private Sub AddHarvestOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal harvestAmount As Double)
 
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim key As New ThreeIntegerLookupKey(stratum.Id, cohort.Sex, AgeClassId)
@@ -129,7 +129,7 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    Private Sub AddMortalityOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal mortalityAmount As Integer)
+    Private Sub AddMortalityOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal mortalityAmount As Double)
 
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim key As New ThreeIntegerLookupKey(stratum.Id, cohort.Sex, AgeClassId)

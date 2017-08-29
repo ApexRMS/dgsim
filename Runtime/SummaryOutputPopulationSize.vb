@@ -16,7 +16,7 @@ Class SummaryOutputPopulationSize
         ByVal stratumId As Integer,
         ByVal sex As Gender,
         ByVal ageClassId As Integer,
-        ByVal population As Integer)
+        ByVal population As Double)
 
         Me.m_StratumId = stratumId
         Me.m_Sex = sex
@@ -43,11 +43,11 @@ Class SummaryOutputPopulationSize
         End Get
     End Property
 
-    Public Property Population As Integer
+    Public Property Population As Double
         Get
             Return Me.m_Population
         End Get
-        Set(value As Integer)
+        Set(value As Double)
             Me.m_Population = value
         End Set
     End Property
