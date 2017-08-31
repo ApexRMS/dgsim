@@ -118,21 +118,13 @@ Class DGSimTransformer
 
         If (Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay) Then
 
+            'Don't age the cohorts on the very first timestep as assume ages are specified for the census date already
             If (timestep <> Me.m_RunControl.MinimumTimestep) Then
 
                 For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
                     Cohort.Age += 1
                 Next
 
-                Me.AddStartDayAgeZeroCohorts(stratum, iteration, timestep)
-
-            Else
-                'Add initial calf population to recruits for first timestep.
-                For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
-                    If Cohort.Age = 0 Then
-                        Me.AddRecruitsToOutputToCollection(Cohort, stratum, Cohort.NumIndividuals, Cohort.Sex)
-                    End If
-                Next
             End If
 
         End If
@@ -164,30 +156,16 @@ Class DGSimTransformer
                 Cohort.Age += 1
             Next
 
-        Else
-            RemoveStartDayAgeZeroCohorts(stratum, RelAge)
         End If
 
         DetermineAnnualHarvest(stratum, iteration, timestep)
 
-        Dim AnyAgeZero As Boolean = AnyAgeZeroIndividuals(stratum.AgeSexCohorts)
-
-#If DEBUG Then
-        If (AnyAgeZero) Then
-            Debug.Assert(timestep = Me.m_RunControl.MinimumTimestep)
-        End If
-#End If
-
         For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
 
-            If (Not (timestep = Me.m_RunControl.MinimumTimestep And Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay)) Then
+            If (Cohort.Sex = Gender.Female) Then
 
-                If (Cohort.Sex = Gender.Female) Then
-
-                    NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Male, stratum, iteration, timestep, MaleCalfMortality)
-                    NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Female, stratum, iteration, timestep, FemaleCalfMortality)
-
-                End If
+                NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Male, stratum, iteration, timestep, MaleCalfMortality)
+                NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Female, stratum, iteration, timestep, FemaleCalfMortality)
 
             End If
 
@@ -225,9 +203,14 @@ Class DGSimTransformer
 
         Next
 
-        If (NumMaleOffspring > 0) Then
+        Dim NewCohortAge As Integer = 0
+        'When adding chorts that are born next year (before the census) specify the age as -1 so that they will be recorded as calves in the next census (aging happens before census).
+        If (Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay) Then
+            NewCohortAge = -1
+        End If
 
-            Dim c As New AgeSexCohort(0, RelAge - 1, Gender.Male, NumMaleOffspring)
+        If (NumMaleOffspring > 0) Then
+            Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Gender.Male, NumMaleOffspring)
             Me.AddMortalityOutputToCollection(c, stratum, MaleCalfMortality)
             stratum.AgeSexCohorts.Add(c)
 
@@ -235,7 +218,7 @@ Class DGSimTransformer
 
         If (NumFemaleOffspring > 0) Then
 
-            Dim c As New AgeSexCohort(0, RelAge - 1, Gender.Female, NumFemaleOffspring)
+            Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Gender.Female, NumFemaleOffspring)
             Me.AddMortalityOutputToCollection(c, stratum, FemaleCalfMortality)
             stratum.AgeSexCohorts.Add(c)
 

@@ -19,7 +19,8 @@ Class AgeSexCohort
         ByVal sex As Gender,
         ByVal numIndividuals As Double)
 
-        Debug.Assert(age >= 0)
+        'Age can be -1 if cohort is for next years calves
+        Debug.Assert(age >= -1)
         Debug.Assert(numIndividuals > 0)
 
         Me.m_Age = age
