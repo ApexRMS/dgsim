@@ -40,7 +40,7 @@ Class RecruitsReport
         c.Add(New ExportColumn("OffspringSex", "Offspring Sex"))
         c.Add(New ExportColumn("Recruits", "Recruits"))
 
-        c("Recruits").DecimalPlaces = 4
+        c("Recruits").DecimalPlaces = 0
         c("Recruits").Alignment = Core.ColumnAlignment.Right
 
         Return c

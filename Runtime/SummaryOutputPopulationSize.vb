@@ -10,7 +10,7 @@ Class SummaryOutputPopulationSize
     Private m_StratumId As Integer
     Private m_Sex As Gender
     Private m_AgeClassId As Integer
-    Private m_Population As Integer
+    Private m_Population As Double
 
     Public Sub New(
         ByVal stratumId As Integer,

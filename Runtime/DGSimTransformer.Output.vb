@@ -79,7 +79,7 @@ Partial Class DGSimTransformer
             NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
             NewRow(DATASHEET_SEX_COLUMN_NAME) = CInt(o.Sex)
             NewRow(DATASHEET_AGE_CLASS_ID_COLUMN_NAME) = o.AgeClassId
-            NewRow(OUTPUT_HARVEST_HARVEST_COLUMN_NAME) = CInt(o.Harvest) 'Convert to integer
+            NewRow(OUTPUT_HARVEST_HARVEST_COLUMN_NAME) = o.Harvest
 
             Me.m_OutputHarvestDataTable.Rows.Add(NewRow)
 
@@ -119,7 +119,7 @@ Partial Class DGSimTransformer
             NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
             NewRow(DATASHEET_MOTHER_AGECLASS_ID_COLUMN_NAME) = o.MotherAgeClassId
             NewRow(DATASHEET_OFFSPRING_SEX_COLUMN_NAME) = CInt(o.OffspringSex)
-            NewRow(OUTPUT_RECRUITS_COLUMN_NAME) = CInt(o.Recruits) 'convert to integer
+            NewRow(OUTPUT_RECRUITS_COLUMN_NAME) = o.Recruits
 
             Me.m_OutputRecruitsDataTable.Rows.Add(NewRow)
 
@@ -159,7 +159,7 @@ Partial Class DGSimTransformer
             NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
             NewRow(DATASHEET_SEX_COLUMN_NAME) = CInt(o.Sex)
             NewRow(DATASHEET_AGE_CLASS_ID_COLUMN_NAME) = o.AgeClassId
-            NewRow(OUTPUT_MORTALITY_MORTALITY_COLUMN_NAME) = CInt(o.Mortality) 'convert to integer
+            NewRow(OUTPUT_MORTALITY_MORTALITY_COLUMN_NAME) = o.Mortality
 
             Me.m_OutputMortalityDataTable.Rows.Add(NewRow)
 
