@@ -123,7 +123,7 @@ Partial Class DGSimTransformer
             dr(DATASHEET_SD_COLUMN_NAME) = DEFAULT_SD
 
             ds.GetData.Rows.Add(dr)
-            Me.RecordStatus(StatusType.Warning, DEFAULT_INITIAL_POP_SIZE_WARNING)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE)
 
         End If
 

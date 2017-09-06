@@ -226,6 +226,7 @@
     <EmbeddedResource Include="DataFeedViews\RunControlDataFeedView.resx">
       <DependentUpon>RunControlDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.kl.resx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

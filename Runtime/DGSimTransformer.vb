@@ -32,12 +32,12 @@ Class DGSimTransformer
         Me.ValidateModel()
         Me.NormalizeData()
 
-        Me.TimestepUnits = DATASHEET_TIMESTEP_COLUMN_HEADER_TEXT
+        Me.TimestepUnits = My.Resources.DGSIM_COLUMN_HEADER_TEXT_TIMESTEP
 
     End Sub
 
     ''' <summary>
-    ''' Overrides OnTransform
+    ''' Overrides Transform
     ''' </summary>
     ''' <remarks></remarks>
     Public Overrides Sub Transform()
@@ -420,7 +420,7 @@ Class DGSimTransformer
 
         For Each k As Integer In Rates.Keys
 
-            If (k = SortedKeyMapBase.WILDCARD_KEY) Then
+            If (k = SortedKeyMapBase.WildcardKey) Then
                 Continue For
             End If
 
@@ -621,7 +621,7 @@ Class DGSimTransformer
 
         For Each k As Integer In rates.Keys
 
-            If (k <> SortedKeyMapBase.WILDCARD_KEY) Then
+            If (k <> SortedKeyMapBase.WildcardKey) Then
                 Return True
             End If
 
@@ -645,7 +645,7 @@ Class DGSimTransformer
 
         For Each k As Integer In rates.Keys
 
-            If (k = SortedKeyMapBase.WILDCARD_KEY) Then
+            If (k = SortedKeyMapBase.WildcardKey) Then
                 Return rates(k)
             End If
 

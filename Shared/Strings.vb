@@ -7,8 +7,6 @@
 
 Module Strings
 
-    Public Const DEFAULT_RUN_CONTROL_WARNING As String = "Run control not specified.  Using default."
-    Public Const DEFAULT_INITIAL_POP_SIZE_WARNING As String = "Initial population size not specified.  Using default."
     Public Const DEFAULT_INITIAL_POP_DIST_WARNING As String = "Initial population distribution not specified.  Using default."
     Public Const DEFAULT_AGE_CLASS_RANGES_WARNING As String = "Age class ranges not specified.  Using default."
 
@@ -31,7 +29,6 @@ Module Strings
     Public Const DATASHEET_HAS_CENSUS_DATA_COLUMN_NAME As String = "HasCensusData"
 
     'Common column header text strings
-    Public Const DATASHEET_TIMESTEP_COLUMN_HEADER_TEXT As String = "Year"
     Public Const DATASHEET_STRATUM_ID_COLUMN_HEADER_TEXT As String = "Stratum"
     Public Const DATASHEET_AGE_CLASS_ID_COLUMN_HEADER_TEXT As String = "Age Class"
     Public Const DATASHEET_JULIAN_DAY_COLUMN_HEADER_TEXT As String = "Julian Day"

@@ -59,5 +59,23 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Year.
+        '''</summary>
+        Friend ReadOnly Property DGSIM_COLUMN_HEADER_TEXT_TIMESTEP() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_COLUMN_HEADER_TEXT_TIMESTEP", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Initial population size not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
