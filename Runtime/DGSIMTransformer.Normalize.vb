@@ -28,10 +28,6 @@ Partial Class DGSimTransformer
     ''' <remarks></remarks>
     Private Sub NormalizeRunControl()
 
-        Const STATUS_USING_DEFAULT_MAX_TIMESTEP_WARNING As String = "The number of timesteps was not specified.  Using default."
-        Const STATUS_USING_DEFAULT_MAX_ITERATIONS_WARNING As String = "The number of iterations was not specified.  Using default."
-        Const STATUS_USING_DEFAULT_START_JDAY_WARNING As String = "The number of iterations was not specified.  Using default."
-
         Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(RUN_CONTROL_DATASHEET_NAME)
         Dim dr As DataRow = ds.GetDataRow()
 
@@ -46,7 +42,7 @@ Partial Class DGSimTransformer
 
         If (dr("MaximumIteration") Is DBNull.Value) Then
             dr("MaximumIteration") = 1
-            Me.RecordStatus(StatusType.Warning, STATUS_USING_DEFAULT_MAX_ITERATIONS_WARNING)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_ITERATIONS)
         End If
 
         If (dr("MinimumTimestep") Is DBNull.Value) Then
@@ -55,12 +51,12 @@ Partial Class DGSimTransformer
 
         If (dr("MaximumTimestep") Is DBNull.Value) Then
             dr("MaximumTimestep") = 10
-            Me.RecordStatus(StatusType.Warning, STATUS_USING_DEFAULT_MAX_TIMESTEP_WARNING)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_TIMESTEPS)
         End If
 
         If (dr(RUN_CONTROL_DATASHEET_START_JULIAN_DAY_COLUMN_NAME) Is DBNull.Value) Then
             dr(RUN_CONTROL_DATASHEET_START_JULIAN_DAY_COLUMN_NAME) = 1
-            Me.RecordStatus(StatusType.Warning, STATUS_USING_DEFAULT_START_JDAY_WARNING)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_JDAY)
         End If
 
     End Sub
@@ -93,7 +89,7 @@ Partial Class DGSimTransformer
 
             Next
 
-            Me.RecordStatus(StatusType.Warning, DEFAULT_AGE_CLASS_RANGES_WARNING)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_AGE_CLASS_RANGES)
 
         End If
 
@@ -123,7 +119,7 @@ Partial Class DGSimTransformer
             dr(DATASHEET_SD_COLUMN_NAME) = DEFAULT_SD
 
             ds.GetData.Rows.Add(dr)
-            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE)
 
         End If
 
@@ -146,7 +142,7 @@ Partial Class DGSimTransformer
             dr(INITIAL_POPULATION_DISTRIBUTION_DATASHEET_RELATIVE_AMOUNT_COLUMN_NAME) = 1.0
 
             dt.Rows.Add(dr)
-            Me.RecordStatus(StatusType.Warning, DEFAULT_INITIAL_POP_DIST_WARNING)
+            Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_DISTRIBUTION)
 
         End If
 

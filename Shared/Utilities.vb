@@ -132,7 +132,7 @@ Module Utilities
             End If
 
             Dim m As String = String.Format(CultureInfo.InvariantCulture,
-                "Cannot get random Beta value.  The standard deviation is too large given the specified mean, min and max: Mean {0:N4}, SD {1:N4}, Min {2:N4}, Max {3:N4}.",
+                My.Resources.DGSIM_ERROR_RANDOM_BETA,
                 distributionMean, distributionSD.Value, min, distributionMaximum.Value)
 
             ThrowArgumentException(m)

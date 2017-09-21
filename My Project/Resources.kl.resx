@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DGSIM_COLUMN_HEADER_TEXT_TIMESTEP" xml:space="preserve">
-    <value>Year</value>
-  </data>
-  <data name="DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE" xml:space="preserve">
-    <value>Initial population size not specified.  Using default.</value>
-  </data>
 </root>

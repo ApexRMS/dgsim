@@ -7,12 +7,6 @@
 
 Module Strings
 
-    Public Const DEFAULT_INITIAL_POP_DIST_WARNING As String = "Initial population distribution not specified.  Using default."
-    Public Const DEFAULT_AGE_CLASS_RANGES_WARNING As String = "Age class ranges not specified.  Using default."
-
-    'Common categories
-    Public Const CATEGORY_DEMOGRAPHIC_PARAMETERS As String = "Demographic Parameters"
-
     'Common column names
     Public Const DATASHEET_ITERATION_COLUMN_NAME As String = "Iteration"
     Public Const DATASHEET_TIMESTEP_COLUMN_NAME As String = "Timestep"
@@ -27,14 +21,6 @@ Module Strings
     Public Const DATASHEET_MAX_COLUMN_NAME As String = "Maximum"
     Public Const DATASHEET_SD_COLUMN_NAME As String = "SD"
     Public Const DATASHEET_HAS_CENSUS_DATA_COLUMN_NAME As String = "HasCensusData"
-
-    'Common column header text strings
-    Public Const DATASHEET_STRATUM_ID_COLUMN_HEADER_TEXT As String = "Stratum"
-    Public Const DATASHEET_AGE_CLASS_ID_COLUMN_HEADER_TEXT As String = "Age Class"
-    Public Const DATASHEET_JULIAN_DAY_COLUMN_HEADER_TEXT As String = "Julian Day"
-    Public Const DATASHEET_MIN_AGE_COLUMN_HEADER_TEXT As String = "Minimum Age"
-    Public Const DATASHEET_MAX_AGE_COLUMN_HEADER_TEXT As String = "Maximum Age"
-    Public Const DATASHEET_SD_COLUMN_HEADER_TEXT As String = "Standard Deviation"
 
     'Stratum data sheet
     Public Const STRATUM_DATASHEET_NAME As String = "DGSim_Stratum"

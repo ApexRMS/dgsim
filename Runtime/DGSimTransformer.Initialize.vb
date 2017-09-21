@@ -66,7 +66,7 @@ Partial Class DGSimTransformer
             End If
 
             If (Me.m_AnnualHarvestPopFilterMinAge > Me.m_AnnualHarvestPopFilterMaxAge) Then
-                ThrowArgumentException("The annual harvest population filter minimum age is greater than the maximum age.")
+                ThrowArgumentException(My.Resources.DGSIM_ERROR_ANNUAL_HARVEST_POP_AGE)
             End If
 
         End If
@@ -80,11 +80,11 @@ Partial Class DGSimTransformer
     Private Sub ValidateModel()
 
         If (Me.Project.GetDataSheet(STRATUM_DATASHEET_NAME).GetData().Rows.Count = 0) Then
-            ThrowArgumentException("You must define at least one stratum.")
+            ThrowArgumentException(My.Resources.DGSIM_ERROR_NO_STRATA)
         End If
 
         If (Me.Project.GetDataSheet(AGE_CLASS_DATASHEET_NAME).GetData().Rows.Count = 0) Then
-            ThrowArgumentException("You must define at least one age class.")
+            ThrowArgumentException(My.Resources.DGSIM_ERROR_NO_AGE_CLASSES)
         End If
 
     End Sub

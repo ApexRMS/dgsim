@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DGSIM_COLUMN_HEADER_TEXT_TIMESTEP" xml:space="preserve">
+  <data name="DGSIM_ERROR_ANNUAL_HARVEST_POP_AGE" xml:space="preserve">
+    <value>The Annual Harvest Population filter minimum age is greater than the maximum age.</value>
+  </data>
+  <data name="DGSIM_ERROR_ANNUAL_HARVEST_VALUES" xml:space="preserve">
+    <value>Annual harvest values must be between 0 and 100 if they are specified as percentages.</value>
+  </data>
+  <data name="DGSIM_ERROR_NO_AGE_CLASSES" xml:space="preserve">
+    <value>You must define at least one Age Class.</value>
+  </data>
+  <data name="DGSIM_ERROR_NO_STRATA" xml:space="preserve">
+    <value>You must define at least one Stratum.</value>
+  </data>
+  <data name="DGSIM_ERROR_RANDOM_BETA" xml:space="preserve">
+    <value>Cannot get random Beta value.  The standard deviation is too large given the specified mean, min and max: Mean {0:N4}, SD {1:N4}, Min {2:N4}, Max {3:N4}.</value>
+  </data>
+  <data name="DGSIM_TIMESTEP" xml:space="preserve">
     <value>Year</value>
   </data>
-  <data name="DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE" xml:space="preserve">
-    <value>Initial population size not specified.  Using default.</value>
+  <data name="DGSIM_WARNING_USING_DEFAULT_AGE_CLASS_RANGES" xml:space="preserve">
+    <value>Age Class Ranges were not specified.  Using default.</value>
+  </data>
+  <data name="DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_DISTRIBUTION" xml:space="preserve">
+    <value>The Initial Population Distribution was not specified.  Using default.</value>
+  </data>
+  <data name="DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE" xml:space="preserve">
+    <value>The Initial Population Size was not specified.  Using default.</value>
+  </data>
+  <data name="DGSIM_WARNING_USING_DEFAULT_ITERATIONS" xml:space="preserve">
+    <value>The number of iterations was not specified.  Using default.</value>
+  </data>
+  <data name="DGSIM_WARNING_USING_DEFAULT_JDAY" xml:space="preserve">
+    <value>The start Julian Day was not specified.  Using default.</value>
+  </data>
+  <data name="DGSIM_WARNING_USING_DEFAULT_TIMESTEPS" xml:space="preserve">
+    <value>The number of timesteps was not specified.  Using default.</value>
   </data>
 </root>

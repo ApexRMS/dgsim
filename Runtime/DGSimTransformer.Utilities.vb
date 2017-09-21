@@ -458,10 +458,7 @@ Partial Class DGSimTransformer
         End If
 
         If (err) Then
-
-            Throw New InvalidOperationException(
-                "Annual harvest values must be between 0 and 100 if they are specified as percentages.")
-
+            Throw New InvalidOperationException(My.Resources.DGSIM_ERROR_ANNUAL_HARVEST_VALUES)
         End If
 
     End Sub

@@ -32,7 +32,7 @@ Class DGSimTransformer
         Me.ValidateModel()
         Me.NormalizeData()
 
-        Me.TimestepUnits = My.Resources.DGSIM_COLUMN_HEADER_TEXT_TIMESTEP
+        Me.TimestepUnits = My.Resources.DGSIM_TIMESTEP
 
     End Sub
 

@@ -61,20 +61,110 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Year.
+        '''  Looks up a localized string similar to The Annual Harvest Population filter minimum age is greater than the maximum age..
         '''</summary>
-        Friend ReadOnly Property DGSIM_COLUMN_HEADER_TEXT_TIMESTEP() As String
+        Friend ReadOnly Property DGSIM_ERROR_ANNUAL_HARVEST_POP_AGE() As String
             Get
-                Return ResourceManager.GetString("DGSIM_COLUMN_HEADER_TEXT_TIMESTEP", resourceCulture)
+                Return ResourceManager.GetString("DGSIM_ERROR_ANNUAL_HARVEST_POP_AGE", resourceCulture)
             End Get
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Initial population size not specified.  Using default..
+        '''  Looks up a localized string similar to Annual harvest values must be between 0 and 100 if they are specified as percentages..
         '''</summary>
-        Friend ReadOnly Property DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE() As String
+        Friend ReadOnly Property DGSIM_ERROR_ANNUAL_HARVEST_VALUES() As String
             Get
-                Return ResourceManager.GetString("DGSIM_STATUS_DEFAULT_INITIAL_POP_SIZE", resourceCulture)
+                Return ResourceManager.GetString("DGSIM_ERROR_ANNUAL_HARVEST_VALUES", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to You must define at least one Age Class..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_ERROR_NO_AGE_CLASSES() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_ERROR_NO_AGE_CLASSES", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to You must define at least one Stratum..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_ERROR_NO_STRATA() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_ERROR_NO_STRATA", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Cannot get random Beta value.  The standard deviation is too large given the specified mean, min and max: Mean {0:N4}, SD {1:N4}, Min {2:N4}, Max {3:N4}..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_ERROR_RANDOM_BETA() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_ERROR_RANDOM_BETA", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Year.
+        '''</summary>
+        Friend ReadOnly Property DGSIM_TIMESTEP() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_TIMESTEP", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Age Class Ranges were not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_WARNING_USING_DEFAULT_AGE_CLASS_RANGES() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_WARNING_USING_DEFAULT_AGE_CLASS_RANGES", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The Initial Population Distribution was not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_DISTRIBUTION() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_DISTRIBUTION", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The Initial Population Size was not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The number of iterations was not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_WARNING_USING_DEFAULT_ITERATIONS() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_WARNING_USING_DEFAULT_ITERATIONS", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The start Julian Day was not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_WARNING_USING_DEFAULT_JDAY() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_WARNING_USING_DEFAULT_JDAY", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to The number of timesteps was not specified.  Using default..
+        '''</summary>
+        Friend ReadOnly Property DGSIM_WARNING_USING_DEFAULT_TIMESTEPS() As String
+            Get
+                Return ResourceManager.GetString("DGSIM_WARNING_USING_DEFAULT_TIMESTEPS", resourceCulture)
             End Get
         End Property
     End Module
