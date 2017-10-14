@@ -214,6 +214,9 @@
     <Compile Include="Shared\Utilities.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.da.resx">
+      <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.resx">
       <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataFeedViews\OffspringPerFemaleDataFeedView.resx">
       <DependentUpon>OffspringPerFemaleDataFeedView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataFeedViews\RunControlDataFeedView.da.resx">
+      <DependentUpon>RunControlDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataFeedViews\RunControlDataFeedView.resx">
       <DependentUpon>RunControlDataFeedView.vb</DependentUpon>

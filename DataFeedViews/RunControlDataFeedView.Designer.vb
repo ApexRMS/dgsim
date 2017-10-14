@@ -22,6 +22,7 @@ Partial Class RunControlDataFeedView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RunControlDataFeedView))
         Me.TableLayoutPanelMain = New System.Windows.Forms.TableLayoutPanel()
         Me.LabelStartJulianDay = New System.Windows.Forms.Label()
         Me.ButtonClearAll = New System.Windows.Forms.Button()
@@ -37,9 +38,7 @@ Partial Class RunControlDataFeedView
         '
         'TableLayoutPanelMain
         '
-        Me.TableLayoutPanelMain.ColumnCount = 2
-        Me.TableLayoutPanelMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.23834!))
-        Me.TableLayoutPanelMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.76166!))
+        resources.ApplyResources(Me.TableLayoutPanelMain, "TableLayoutPanelMain")
         Me.TableLayoutPanelMain.Controls.Add(Me.LabelStartJulianDay, 0, 3)
         Me.TableLayoutPanelMain.Controls.Add(Me.ButtonClearAll, 1, 4)
         Me.TableLayoutPanelMain.Controls.Add(Me.TextBoxEndTimestep, 1, 1)
@@ -49,113 +48,60 @@ Partial Class RunControlDataFeedView
         Me.TableLayoutPanelMain.Controls.Add(Me.LabelTotalIterations, 0, 2)
         Me.TableLayoutPanelMain.Controls.Add(Me.TextBoxTotalIterations, 1, 2)
         Me.TableLayoutPanelMain.Controls.Add(Me.TextBoxStartJulianDay, 1, 3)
-        Me.TableLayoutPanelMain.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanelMain.Name = "TableLayoutPanelMain"
-        Me.TableLayoutPanelMain.RowCount = 5
-        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanelMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanelMain.Size = New System.Drawing.Size(373, 134)
-        Me.TableLayoutPanelMain.TabIndex = 9
         '
         'LabelStartJulianDay
         '
-        Me.LabelStartJulianDay.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LabelStartJulianDay.AutoSize = True
-        Me.LabelStartJulianDay.Location = New System.Drawing.Point(23, 83)
-        Me.LabelStartJulianDay.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        resources.ApplyResources(Me.LabelStartJulianDay, "LabelStartJulianDay")
         Me.LabelStartJulianDay.Name = "LabelStartJulianDay"
-        Me.LabelStartJulianDay.Size = New System.Drawing.Size(79, 13)
-        Me.LabelStartJulianDay.TabIndex = 8
-        Me.LabelStartJulianDay.Text = "Start julian day:"
-        Me.LabelStartJulianDay.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ButtonClearAll
         '
-        Me.ButtonClearAll.Location = New System.Drawing.Point(108, 107)
+        resources.ApplyResources(Me.ButtonClearAll, "ButtonClearAll")
         Me.ButtonClearAll.Name = "ButtonClearAll"
-        Me.ButtonClearAll.Size = New System.Drawing.Size(117, 23)
-        Me.ButtonClearAll.TabIndex = 7
-        Me.ButtonClearAll.Text = "Clear All"
         Me.ButtonClearAll.UseVisualStyleBackColor = True
         '
         'TextBoxEndTimestep
         '
-        Me.TextBoxEndTimestep.Location = New System.Drawing.Point(108, 29)
+        resources.ApplyResources(Me.TextBoxEndTimestep, "TextBoxEndTimestep")
         Me.TextBoxEndTimestep.Name = "TextBoxEndTimestep"
-        Me.TextBoxEndTimestep.Size = New System.Drawing.Size(117, 20)
-        Me.TextBoxEndTimestep.TabIndex = 3
-        Me.TextBoxEndTimestep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'LabelStartTimestep
         '
-        Me.LabelStartTimestep.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LabelStartTimestep.AutoSize = True
-        Me.LabelStartTimestep.Location = New System.Drawing.Point(47, 5)
-        Me.LabelStartTimestep.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        resources.ApplyResources(Me.LabelStartTimestep, "LabelStartTimestep")
         Me.LabelStartTimestep.Name = "LabelStartTimestep"
-        Me.LabelStartTimestep.Size = New System.Drawing.Size(55, 13)
-        Me.LabelStartTimestep.TabIndex = 0
-        Me.LabelStartTimestep.Text = "Start year:"
-        Me.LabelStartTimestep.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TextBoxStartTimestep
         '
-        Me.TextBoxStartTimestep.Location = New System.Drawing.Point(108, 3)
+        resources.ApplyResources(Me.TextBoxStartTimestep, "TextBoxStartTimestep")
         Me.TextBoxStartTimestep.Name = "TextBoxStartTimestep"
-        Me.TextBoxStartTimestep.Size = New System.Drawing.Size(117, 20)
-        Me.TextBoxStartTimestep.TabIndex = 1
-        Me.TextBoxStartTimestep.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'LabelEndTimestep
         '
-        Me.LabelEndTimestep.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LabelEndTimestep.AutoSize = True
-        Me.LabelEndTimestep.Location = New System.Drawing.Point(50, 31)
-        Me.LabelEndTimestep.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        resources.ApplyResources(Me.LabelEndTimestep, "LabelEndTimestep")
         Me.LabelEndTimestep.Name = "LabelEndTimestep"
-        Me.LabelEndTimestep.Size = New System.Drawing.Size(52, 13)
-        Me.LabelEndTimestep.TabIndex = 2
-        Me.LabelEndTimestep.Text = "End year:"
-        Me.LabelEndTimestep.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'LabelTotalIterations
         '
-        Me.LabelTotalIterations.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LabelTotalIterations.AutoSize = True
-        Me.LabelTotalIterations.Location = New System.Drawing.Point(23, 57)
-        Me.LabelTotalIterations.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        resources.ApplyResources(Me.LabelTotalIterations, "LabelTotalIterations")
         Me.LabelTotalIterations.Name = "LabelTotalIterations"
-        Me.LabelTotalIterations.Size = New System.Drawing.Size(79, 13)
-        Me.LabelTotalIterations.TabIndex = 4
-        Me.LabelTotalIterations.Text = "Total iterations:"
-        Me.LabelTotalIterations.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TextBoxTotalIterations
         '
-        Me.TextBoxTotalIterations.Location = New System.Drawing.Point(108, 55)
+        resources.ApplyResources(Me.TextBoxTotalIterations, "TextBoxTotalIterations")
         Me.TextBoxTotalIterations.Name = "TextBoxTotalIterations"
-        Me.TextBoxTotalIterations.Size = New System.Drawing.Size(117, 20)
-        Me.TextBoxTotalIterations.TabIndex = 5
-        Me.TextBoxTotalIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TextBoxStartJulianDay
         '
-        Me.TextBoxStartJulianDay.Location = New System.Drawing.Point(108, 81)
+        resources.ApplyResources(Me.TextBoxStartJulianDay, "TextBoxStartJulianDay")
         Me.TextBoxStartJulianDay.Name = "TextBoxStartJulianDay"
-        Me.TextBoxStartJulianDay.Size = New System.Drawing.Size(117, 20)
-        Me.TextBoxStartJulianDay.TabIndex = 5
-        Me.TextBoxStartJulianDay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'RunControlDataFeedView
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.TableLayoutPanelMain)
         Me.Name = "RunControlDataFeedView"
-        Me.Size = New System.Drawing.Size(379, 142)
         Me.TableLayoutPanelMain.ResumeLayout(False)
         Me.TableLayoutPanelMain.PerformLayout()
         Me.ResumeLayout(False)
