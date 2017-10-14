@@ -243,6 +243,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="module.config" />
+    <None Include="module.config.da" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
