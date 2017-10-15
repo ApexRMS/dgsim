@@ -64,7 +64,7 @@
                   <column name="Mean" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
                   <column name="Minimum" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
                   <column name="Maximum" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
-                  <column name="SD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0.0"/>
+                  <column name="SD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0"/>
                 </columns>
                 <validations>
                   <validation validationType="LessEqual" columns="Minimum|Maximum"/>
@@ -78,7 +78,7 @@
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
                   <column name="MinimumAge" displayName="MinimumAge" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
                   <column name="MaximumAge" displayName="MaximumAge" dataType="Integer" validationType="WholeNumber"/>
-                  <column name="RelativeAmount" displayName="Relative Amount" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0"/>
+                  <column name="RelativeAmount" displayName="Relative Amount" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
                 </columns>
                 <validations>
                   <validation validationType="LessEqual" columns="MinimumAge|MaximumAge"/>
@@ -116,10 +116,10 @@
                   <column name="CountJulianDay" displayName="Count Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
                   <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isOptional="True"/>
-                  <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0"/>
-                  <column name="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0" isOptional="True"/>
-                  <column name="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0" isOptional="True"/>
-                  <column name="SD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0.0" isOptional="True"/>
+                  <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+                  <column name="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                  <column name="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                  <column name="SD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
                 </columns>
                 <validations>
                   <validation validationType="LessEqual" columns="Minimum|Maximum"/>
@@ -139,10 +139,10 @@
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
                   <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isOptional="True"/>
-                  <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0"/>
-                  <column name="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0" isOptional="True"/>
-                  <column name="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0" isOptional="True"/>
-                  <column name="SD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0.0" isOptional="True"/>
+                  <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+                  <column name="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                  <column name="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                  <column name="SD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
                 </columns>
                 <validations>
                   <validation validationType="LessEqual" columns="Minimum|Maximum"/>
@@ -174,10 +174,10 @@
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
                   <column name="Sex" dataType="Integer" displayName="Køn" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
                   <column name="AgeClassID" displayName="Aldersklasse" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isOptional="True"/>
-                  <column name="Mean" dataType="Double" displayName="Middelværdi" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0"/>
-                  <column name="Minimum" dataType="Double" displayName="Minimum" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0" isOptional="True"/>
-                  <column name="Maximum" dataType="Double" displayName="Maksimum" validationType="Decimal" validationCondition="GreaterEqual" formula1="0.0" isOptional="True"/>
-                  <column name="SD" displayName="Standard Afvigelse" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0.0" isOptional="True"/>
+                  <column name="Mean" dataType="Double" displayName="Middelværdi" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+                  <column name="Minimum" dataType="Double" displayName="Minimum" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                  <column name="Maximum" dataType="Double" displayName="Maksimum" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                  <column name="SD" displayName="Standard Afvigelse" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
                 </columns>
               </datasheet>
             </datasheets>
@@ -191,8 +191,8 @@
                   <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
                   <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
                   <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass"/>
-                  <column name="Fecundity" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1.0"  formula2="1.0"/>
-                  <column name="Mortality" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1.0"  formula2="1.0"/>
+                  <column name="Fecundity" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
+                  <column name="Mortality" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
                 </columns>
                 <validations>
                   <validation validationType="Unique" columns="Iteration|Timestep|AgeClassID"/>
@@ -210,8 +210,8 @@
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum"/>
                   <column name="MinimumPopulation" displayName="Minimum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
                   <column name="MaximumPopulation" displayName="Maximum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
-                  <column name="MinimumMToFRatio" displayName="Minimum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0.0"  formula2="1.0" isOptional="True"/>
-                  <column name="MaximumMToFRatio" displayName="Maximum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0.0"  formula2="1.0" isOptional="True"/>
+                  <column name="MinimumMToFRatio" displayName="Minimum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
+                  <column name="MaximumMToFRatio" displayName="Maximum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
                 </columns>
                 <validations>
                   <validation validationType="LessEqual" columns="MinimumMToFRatio|MaximumMToFRatio"/>
@@ -244,7 +244,7 @@
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Harvest" dataType="Double" validationCondition="GreaterEqual" formula1="0.0" />
+                  <column name="Harvest" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
                 </columns>
               </datasheet>
             </datasheets>
@@ -259,7 +259,7 @@
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="MotherAgeClassID" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="OffspringSex" displayName="Offspring Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Recruits" dataType="Double" validationCondition="GreaterEqual" formula1="0.0" />
+                  <column name="Recruits" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
                 </columns>
               </datasheet>
             </datasheets>
@@ -274,7 +274,7 @@
                   <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Mortality" dataType="Double" validationCondition="GreaterEqual" formula1="0.0" />
+                  <column name="Mortality" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
                 </columns>
               </datasheet>
             </datasheets>
