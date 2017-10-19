@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-  <module name="dgsim" displayName="Demographic Population" version="2.1.4" configVersion="1.0000" contentType="any">
+  <module name="dgsim" displayName="Demographic Population" version="2.1.5" configVersion="1.0000" contentType="any">
     <transformers>
       <transformer name="dgsim" displayName="Demographic Population" isModel="True" isPrimary="True" previousNames="dgsim-model-transformer|dgsim:model-transformer">
         <runtime>
