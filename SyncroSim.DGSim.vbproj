@@ -229,6 +229,9 @@
     <EmbeddedResource Include="DataFeedViews\RunControlDataFeedView.da.resx">
       <DependentUpon>RunControlDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataFeedViews\RunControlDataFeedView.kl.resx">
+      <DependentUpon>RunControlDataFeedView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataFeedViews\RunControlDataFeedView.resx">
       <DependentUpon>RunControlDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +246,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="module.config" />
+    <None Include="module.config.kl" />
     <None Include="module.config.da" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

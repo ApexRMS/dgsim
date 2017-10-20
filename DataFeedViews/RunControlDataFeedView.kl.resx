@@ -117,40 +117,59 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DGSIM_ERROR_ANNUAL_HARVEST_POP_AGE" xml:space="preserve">
-    <value>Ukiumut pisat immikkoortiterneranni ukiukinnerpaat ukioqqortunerpaanit amerlanerupput</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LabelStartJulianDay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 83</value>
   </data>
-  <data name="DGSIM_ERROR_ANNUAL_HARVEST_VALUES" xml:space="preserve">
-    <value>Ukiumut pisat naleqassusaat 0-ip 100-llu akornanniissaaq, procentinngortissimagaanni (%)</value>
+  <data name="LabelStartJulianDay.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 13</value>
   </data>
-  <data name="DGSIM_ERROR_NO_AGE_CLASSES" xml:space="preserve">
-    <value>Ukioqatigiiaat minnerpaamik ataatsit nassuiassavatit</value>
+  <data name="LabelStartJulianDay.Text" xml:space="preserve">
+    <value>Julian ulloq:</value>
   </data>
-  <data name="DGSIM_ERROR_NO_STRATA" xml:space="preserve">
-    <value>Stratum minnerpaamik ataaseq nassuiassavat</value>
+  <data name="ButtonClearAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 107</value>
   </data>
-  <data name="DGSIM_ERROR_RANDOM_BETA" xml:space="preserve">
-    <value>Betap nalinganik misiligut nassaassaanngilaq. Nalinginnaasumit nikingassut angivallaarpoq, nalinginnaasumik naleqassuseq tunuliaqutaralugu, minnerpaaq  aamma annerpaaq: agguaqatigiissinnerat: {0:N4},stDEV{1:N4}, Min{2:N4}, Maks{3:N4}</value>
+  <data name="ButtonClearAll.Text" xml:space="preserve">
+    <value>Taamaasa piikkit</value>
   </data>
-  <data name="DGSIM_TIMESTEP" xml:space="preserve">
-    <value>Ukiut</value>
+  <data name="TextBoxEndTimestep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 29</value>
   </data>
-  <data name="DGSIM_WARNING_USING_DEFAULT_AGE_CLASS_RANGES" xml:space="preserve">
-    <value>Ukioqatigiiaat akuttussusaat erseqqissarneqarsimanngilaq. Nalinnginnaasumik siunnersuut atorneqarpoq.</value>
+  <data name="LabelStartTimestep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 5</value>
   </data>
-  <data name="DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_DISTRIBUTION" xml:space="preserve">
-    <value>Uumasoqatigiiaanik agguaanerup aallartinnera erseqqissarneqanngilaq. Nalinginnaasumik siunnersuut atorneqarpoq.</value>
+  <data name="LabelStartTimestep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
   </data>
-  <data name="DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE" xml:space="preserve">
-    <value>Uumasoqatigiiaat angissusiat erseqqissarneqarsimanngilaq.Nalinginnaasumik siunnersuut atorneqarpoq</value>
+  <data name="LabelStartTimestep.Text" xml:space="preserve">
+    <value>Ukiup aallartiffia:</value>
   </data>
-  <data name="DGSIM_WARNING_USING_DEFAULT_ITERATIONS" xml:space="preserve">
-    <value>Uteqattaarinerit amerlassusaat erseqqissarneqarsimanngilaq. Nalinginnaasumik siunnersuut atorneqarpoq</value>
+  <data name="TextBoxStartTimestep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 3</value>
   </data>
-  <data name="DGSIM_WARNING_USING_DEFAULT_JDAY" xml:space="preserve">
-    <value>Julian Dag-ip aallartiffia erseqqissarneqarsimanngilaq. Nalinginnaasumik siunnersuut atorneqarpoq</value>
+  <data name="LabelEndTimestep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 31</value>
   </data>
-  <data name="DGSIM_WARNING_USING_DEFAULT_TIMESTEPS" xml:space="preserve">
-    <value>Piffissat amerlassusaat erseqqissarneqarsimanngillat. Nalinginnaasumik siunnersuut atorneqarpoq</value>
+  <data name="LabelEndTimestep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="LabelEndTimestep.Text" xml:space="preserve">
+    <value>Ukioq naaffia:</value>
+  </data>
+  <data name="LabelTotalIterations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 57</value>
+  </data>
+  <data name="LabelTotalIterations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 13</value>
+  </data>
+  <data name="LabelTotalIterations.Text" xml:space="preserve">
+    <value>Uteqqiinerit amerlassusiat katillugit:</value>
+  </data>
+  <data name="TextBoxTotalIterations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 55</value>
+  </data>
+  <data name="TextBoxStartJulianDay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>203, 81</value>
   </data>
 </root>

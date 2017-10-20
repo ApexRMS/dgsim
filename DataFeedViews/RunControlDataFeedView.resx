@@ -264,9 +264,6 @@
   <data name="LabelStartTimestep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>SyncroSim.Core.Forms.DataFeedView, SyncroSim.Core.Forms, Version=2.0.7.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="LabelStartJulianDay.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
   </data>
@@ -312,9 +309,6 @@
   <data name="LabelEndTimestep.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 13</value>
   </data>
-  <data name="LabelStartJulianDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 83</value>
-  </data>
   <data name="&gt;&gt;ButtonClearAll.Parent" xml:space="preserve">
     <value>TableLayoutPanelMain</value>
   </data>
@@ -324,8 +318,8 @@
   <data name="&gt;&gt;ButtonClearAll.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="TextBoxStartJulianDay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="LabelStartJulianDay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 83</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanelMain.Name" xml:space="preserve">
     <value>TableLayoutPanelMain</value>
@@ -359,6 +353,9 @@
   </data>
   <data name="LabelStartJulianDay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
+  </data>
+  <data name="TextBoxStartJulianDay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
   </data>
   <data name="TableLayoutPanelMain.RowCount" type="System.Int32, mscorlib">
     <value>5</value>
@@ -405,8 +402,8 @@
   <data name="LabelStartTimestep.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
   </data>
-  <data name="LabelEndTimestep.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>SyncroSim.Core.Forms.DataFeedView, SyncroSim.Core.Forms, Version=2.0.9.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="TextBoxEndTimestep.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 20</value>
@@ -417,11 +414,14 @@
   <data name="&gt;&gt;LabelTotalIterations.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="LabelEndTimestep.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;TextBoxEndTimestep.Name" xml:space="preserve">
     <value>TextBoxEndTimestep</value>
   </data>
   <data name="TableLayoutPanelMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LabelStartJulianDay" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ButtonClearAll" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxEndTimestep" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelStartTimestep" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxStartTimestep" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelEndTimestep" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LabelTotalIterations" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxTotalIterations" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxStartJulianDay" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,41.55496,Percent,58.44504" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="LabelStartJulianDay" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="ButtonClearAll" Row="4" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxEndTimestep" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelStartTimestep" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxStartTimestep" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LabelEndTimestep" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="LabelTotalIterations" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxTotalIterations" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="TextBoxStartJulianDay" Row="3" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,53.8874,Percent,46.1126" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="LabelStartTimestep.Location" type="System.Drawing.Point, System.Drawing">
     <value>47, 5</value>
@@ -430,6 +430,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>da</value>
+    <value>kl</value>
   </metadata>
 </root>
