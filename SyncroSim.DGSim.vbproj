@@ -217,6 +217,9 @@
     <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.da.resx">
       <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.kl.resx">
+      <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.resx">
       <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
     </EmbeddedResource>

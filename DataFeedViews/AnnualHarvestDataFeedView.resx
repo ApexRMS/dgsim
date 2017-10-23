@@ -219,14 +219,17 @@
   <data name="&gt;&gt;ButtonClearAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Name" xml:space="preserve">
-    <value>ComboBoxSpecifyHarvestAs</value>
+  <data name="LabelPopFilterSex.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="TextBoxPopFilterMaxAge.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
   </data>
   <data name="LabelSpecifyHarvestAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 13</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Name" xml:space="preserve">
+    <value>ComboBoxSpecifyHarvestAs</value>
   </data>
   <data name="PanelValues.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 188</value>
@@ -324,9 +327,6 @@
   <data name="&gt;&gt;ButtonClearAll.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="TextBoxPopFilterMinAge.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -351,8 +351,8 @@
   <data name="&gt;&gt;ComboBoxPopGender.Name" xml:space="preserve">
     <value>ComboBoxPopGender</value>
   </data>
-  <data name="LabelPopFilterSex.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TextBoxPopFilterMaxAge.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
