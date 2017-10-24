@@ -152,7 +152,7 @@
           </datafeed>
           <datafeed name="dgsim:annual-harvest-datafeed" displayName="Årlig Fangst" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_AnnualHarvestOption" displayName="Årlig Fangst Valg" isSingleRow="True">
+              <datasheet name="DGSim_AnnualHarvestOption" displayName="Årlig Fangst Option" isSingleRow="True">
                 <columns>
                   <column name="AnnualHarvestOptionID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
@@ -165,7 +165,7 @@
                   <validation validationType="LessEqual" columns="PopFilterMinAge|PopFilterMaxAge"/>
                 </validations>
               </datasheet>
-              <datasheet name="DGSim_AnnualHarvestValue" displayName="Årlig Fangst Værdien">
+              <datasheet name="DGSim_AnnualHarvestValue" displayName="Årlig Fangsttal">
                 <columns>
                   <column name="AnnualHarvestValueID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
