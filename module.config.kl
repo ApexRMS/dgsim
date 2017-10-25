@@ -165,7 +165,7 @@
                   <validation validationType="LessEqual" columns="PopFilterMinAge|PopFilterMaxAge"/>
                 </validations>
               </datasheet>
-              <datasheet name="DGSim_AnnualHarvestValue" displayName="Annual Harvest Value">
+              <datasheet name="DGSim_AnnualHarvestValue" displayName="Pisat ukiumut amerlassusiat">
                 <columns>
                   <column name="AnnualHarvestValueID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
