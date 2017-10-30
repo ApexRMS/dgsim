@@ -149,8 +149,8 @@
                 </validations>
               </datasheet>
             </datasheets>
-          </datafeed>
-          <datafeed name="dgsim:annual-harvest-datafeed" displayName="Årlig Fangst" dataScope="Scenario">
+          </datafeed>                            
+          <datafeed name="dgsim:annual-harvest-option-datafeed" displayName="Årlig Fangst Option" dataScope="Scenario">
             <datasheets>
               <datasheet name="DGSim_AnnualHarvestOption" displayName="Årlig Fangst Option" isSingleRow="True">
                 <columns>
@@ -165,6 +165,10 @@
                   <validation validationType="LessEqual" columns="PopFilterMinAge|PopFilterMaxAge"/>
                 </validations>
               </datasheet>
+            </datasheets>
+          </datafeed>
+          <datafeed name="dgsim:annual-harvest-value-datafeed" displayName="Årlig Fangsttal" dataScope="Scenario">
+            <datasheets>
               <datasheet name="DGSim_AnnualHarvestValue" displayName="Årlig Fangsttal">
                 <columns>
                   <column name="AnnualHarvestValueID" dataType="Integer" isPrimary="True"/>
@@ -181,7 +185,7 @@
                 </columns>
               </datasheet>
             </datasheets>
-          </datafeed>
+          </datafeed>                    
           <datafeed name="dgsim:demographic-rate-shift-datafeed" displayName="Demographic Rate Shifts" dataScope="Scenario">
             <datasheets>
               <datasheet name="DGSim_DemographicRateShift" displayName="Demographic Rate Shifts">
@@ -315,7 +319,7 @@
       <visualizer name="dgsim:run-control-datafeed-visualizer" target="dgsim:run-control-datafeed" className="SyncroSim.DGSim.RunControlDataFeedView" classAssembly="SyncroSim.DGSim"/>
       <visualizer name="dgsim:initial-population-datafeed-visualizer" target="dgsim:initial-population-datafeed" className="SyncroSim.DGSim.InitialPopulationDataFeedView" classAssembly="SyncroSim.DGSim"/>
       <visualizer name="dgsim:offspring-per-female-datafeed-visualizer" target="dgsim:offspring-per-female-datafeed" className="SyncroSim.DGSim.OffspringPerFemaleDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <visualizer name="dgsim:annual-harvest-datafeed-visualizer" target="dgsim:annual-harvest-datafeed" className="SyncroSim.DGSim.AnnualHarvestDataFeedView" classAssembly="SyncroSim.DGSim"/>
+      <visualizer name="dgsim:annual-harvest-option-datafeed-visualizer" target="dgsim:annual-harvest-option-datafeed" className="SyncroSim.DGSim.AnnualHarvestOptionDataFeedView" classAssembly="SyncroSim.DGSim"/>
     </visualizers>
     <layouts>
       <layout name="system-forms:result-transformers" model="dgsim">
@@ -344,14 +348,17 @@
           <item name="dgsim:ageclass-range-datafeed"/>
           <item name="dgsim:offspring-per-female-datafeed"/>
           <item name="dgsim:annualized-mortality-rate-datafeed"/>
-          <item name="dgsim:annual-harvest-datafeed"/>
           <item name="dgsim:demographic-rate-shift-datafeed"/>
+        </group>
+        <group name="Harvest">
+          <item name="dgsim:annual-harvest-value-datafeed" displayName="Årlig Fangst"/>
+          <item name="dgsim:annual-harvest-option-datafeed" displayName="Options"/>
         </group>
         <item name="dgsim:census-datafeed"/>
       </layout>
       <layout name="system-forms:scenario-datafeeds-lite" model="dgsim">
         <item name="dgsim:run-control-datafeed"/>
-        <item name="dgsim:annual-harvest-datafeed"/>
+        <item name="dgsim:annual-harvest-value-datafeed"/>
       </layout>
       <layout name="stime:charts" configurationSheet="DGSim_RunControl" model="dgsim">
         <item name="Population" dataSheet="DGSim_OutputPopulationSize" column="Population" filter="AgeClassID|Sex|StratumID"/>

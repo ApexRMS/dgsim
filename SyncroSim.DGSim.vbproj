@@ -121,10 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assembly.vb" />
-    <Compile Include="DataFeedViews\AnnualHarvestDataFeedView.Designer.vb">
-      <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
+    <Compile Include="DataFeedViews\AnnualHarvestOptionDataFeedView.Designer.vb">
+      <DependentUpon>AnnualHarvestOptionDataFeedView.vb</DependentUpon>
     </Compile>
-    <Compile Include="DataFeedViews\AnnualHarvestDataFeedView.vb">
+    <Compile Include="DataFeedViews\AnnualHarvestOptionDataFeedView.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DataFeedViews\InitialPopulationDataFeedView.Designer.vb">
@@ -214,14 +214,14 @@
     <Compile Include="Shared\Utilities.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.da.resx">
-      <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
+    <EmbeddedResource Include="DataFeedViews\AnnualHarvestOptionDataFeedView.da.resx">
+      <DependentUpon>AnnualHarvestOptionDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.kl.resx">
-      <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
+    <EmbeddedResource Include="DataFeedViews\AnnualHarvestOptionDataFeedView.kl.resx">
+      <DependentUpon>AnnualHarvestOptionDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataFeedViews\AnnualHarvestDataFeedView.resx">
-      <DependentUpon>AnnualHarvestDataFeedView.vb</DependentUpon>
+    <EmbeddedResource Include="DataFeedViews\AnnualHarvestOptionDataFeedView.resx">
+      <DependentUpon>AnnualHarvestOptionDataFeedView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataFeedViews\InitialPopulationDataFeedView.resx">
       <DependentUpon>InitialPopulationDataFeedView.vb</DependentUpon>

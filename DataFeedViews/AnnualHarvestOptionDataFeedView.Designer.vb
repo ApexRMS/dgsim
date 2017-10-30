@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class AnnualHarvestDataFeedView
+Partial Class AnnualHarvestOptionDataFeedView
     Inherits SyncroSim.Core.Forms.DataFeedView
 
     'UserControl overrides dispose to clean up the component list.
@@ -22,8 +22,7 @@ Partial Class AnnualHarvestDataFeedView
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AnnualHarvestDataFeedView))
-        Me.PanelValues = New System.Windows.Forms.Panel()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AnnualHarvestOptionDataFeedView))
         Me.LabelSpecifyHarvestAs = New System.Windows.Forms.Label()
         Me.ComboBoxSpecifyHarvestAs = New System.Windows.Forms.ComboBox()
         Me.ComboBoxPopGender = New System.Windows.Forms.ComboBox()
@@ -36,11 +35,6 @@ Partial Class AnnualHarvestDataFeedView
         Me.GroupBoxPopFilters = New System.Windows.Forms.GroupBox()
         Me.GroupBoxPopFilters.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'PanelValues
-        '
-        resources.ApplyResources(Me.PanelValues, "PanelValues")
-        Me.PanelValues.Name = "PanelValues"
         '
         'LabelSpecifyHarvestAs
         '
@@ -104,7 +98,7 @@ Partial Class AnnualHarvestDataFeedView
         Me.GroupBoxPopFilters.Name = "GroupBoxPopFilters"
         Me.GroupBoxPopFilters.TabStop = False
         '
-        'AnnualHarvestDataFeedView
+        'AnnualHarvestOptionDataFeedView
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -112,15 +106,13 @@ Partial Class AnnualHarvestDataFeedView
         Me.Controls.Add(Me.GroupBoxPopFilters)
         Me.Controls.Add(Me.ComboBoxSpecifyHarvestAs)
         Me.Controls.Add(Me.LabelSpecifyHarvestAs)
-        Me.Controls.Add(Me.PanelValues)
-        Me.Name = "AnnualHarvestDataFeedView"
+        Me.Name = "AnnualHarvestOptionDataFeedView"
         Me.GroupBoxPopFilters.ResumeLayout(False)
         Me.GroupBoxPopFilters.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents PanelValues As System.Windows.Forms.Panel
     Friend WithEvents LabelSpecifyHarvestAs As System.Windows.Forms.Label
     Friend WithEvents ComboBoxSpecifyHarvestAs As System.Windows.Forms.ComboBox
     Friend WithEvents ComboBoxPopGender As System.Windows.Forms.ComboBox

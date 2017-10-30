@@ -5,46 +5,25 @@
 '
 '*********************************************************************************************
 
-Imports SyncroSim.Core
-Imports SyncroSim.Core.Forms
 Imports System.Reflection
+Imports SyncroSim.Core
 
 <ObfuscationAttribute(Exclude:=True, ApplyToMembers:=False)>
-Class AnnualHarvestDataFeedView
+Class AnnualHarvestOptionDataFeedView
 
-    Protected Overrides Sub InitializeView()
-
-        MyBase.InitializeView()
-
-        Dim v As DataFeedView = Me.Session.CreateMultiRowDataFeedView(Me.Scenario, Me.ControllingScenario)
-        Me.PanelValues.Controls.Add(v)
-
-    End Sub
-
-    Public Overrides Sub LoadDataFeed(ByVal dataFeed As DataFeed)
+    Public Overrides Sub LoadDataFeed(dataFeed As DataFeed)
 
         MyBase.LoadDataFeed(dataFeed)
 
-        Me.SetComboBoxBinding(Me.ComboBoxSpecifyHarvestAs, ANNUAL_HARVEST_OPTION_DATASHEET_NAME, ANNUAL_HARVEST_SPECIFICATION_COLUMN_NAME)
-        Me.SetComboBoxBinding(Me.ComboBoxPopGender, ANNUAL_HARVEST_OPTION_DATASHEET_NAME, ANNUAL_HARVEST_POP_FILTER_GENDER_COLUMN_NAME)
-        Me.SetTextBoxBinding(Me.TextBoxPopFilterMinAge, ANNUAL_HARVEST_OPTION_DATASHEET_NAME, ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME)
-        Me.SetTextBoxBinding(Me.TextBoxPopFilterMaxAge, ANNUAL_HARVEST_OPTION_DATASHEET_NAME, ANNUAL_HARVEST_POP_FILTER_MAX_AGE_COLUMN_NAME)
-
-        Dim v As DataFeedView = CType(Me.PanelValues.Controls(0), DataFeedView)
-        v.LoadDataFeed(dataFeed, ANNUAL_HARVEST_VALUE_DATASHEET_NAME)
+        Me.SetComboBoxBinding(Me.ComboBoxSpecifyHarvestAs, ANNUAL_HARVEST_SPECIFICATION_COLUMN_NAME)
+        Me.SetComboBoxBinding(Me.ComboBoxPopGender, ANNUAL_HARVEST_POP_FILTER_GENDER_COLUMN_NAME)
+        Me.SetTextBoxBinding(Me.TextBoxPopFilterMinAge, ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME)
+        Me.SetTextBoxBinding(Me.TextBoxPopFilterMaxAge, ANNUAL_HARVEST_POP_FILTER_MAX_AGE_COLUMN_NAME)
 
         Me.RefreshBoundControls()
 
     End Sub
 
-    ''' <summary>
-    ''' Overrides EnableView
-    ''' </summary>
-    ''' <param name="enable"></param>
-    ''' <remarks>
-    ''' We need to do our own enabling or the data feed views will be 
-    ''' completely disabled instead of just grayed.
-    ''' </remarks>
     Public Overrides Sub EnableView(enable As Boolean)
 
         Me.ComboBoxSpecifyHarvestAs.Enabled = enable
@@ -57,13 +36,6 @@ Class AnnualHarvestDataFeedView
         Me.LabelPopFilterMinAge.Enabled = enable
         Me.LabelPopFilterMaxAge.Enabled = enable
         Me.ButtonClearAll.Enabled = enable
-
-        If (Me.PanelValues.Controls.Count > 0) Then
-
-            Dim v As DataFeedView = CType(Me.PanelValues.Controls(0), DataFeedView)
-            v.EnableView(enable)
-
-        End If
 
         Me.EnableControls()
 
