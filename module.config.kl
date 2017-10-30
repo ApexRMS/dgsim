@@ -358,7 +358,7 @@
       </layout>
       <layout name="system-forms:scenario-datafeeds-lite" model="dgsim">
         <item name="dgsim:run-control-datafeed"/>
-        <item name="dgsim:annual-harvest-value-datafeed"/>
+        <item name="dgsim:annual-harvest-value-datafeed" displayName="Periarfissat"/>
       </layout>
       <layout name="stime:charts" configurationSheet="DGSim_RunControl" model="dgsim">
         <item name="Population" dataSheet="DGSim_OutputPopulationSize" column="Population" filter="AgeClassID|Sex|StratumID"/>
