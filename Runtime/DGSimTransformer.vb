@@ -37,10 +37,9 @@ Class DGSimTransformer
     End Sub
 
     ''' <summary>
-    ''' Overrides Transform
+    ''' Overrides Initialize
     ''' </summary>
-    ''' <remarks></remarks>
-    Public Overrides Sub Transform()
+    Public Overrides Sub Initialize()
 
         Me.InitializeRunControl()
         Me.InitializeOffspringPerFemaleBirthJDay()
@@ -48,8 +47,6 @@ Class DGSimTransformer
         Me.InitializeCollections()
         Me.InitializeOutputDataTables()
         Me.CreateMaps()
-
-        MyBase.Transform()
 
     End Sub
 
