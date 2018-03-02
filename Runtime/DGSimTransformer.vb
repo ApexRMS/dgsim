@@ -339,7 +339,6 @@ Class DGSimTransformer
 
         If (opf IsNot Nothing) Then
 
-            'DEVTODO: remove the scaling of the harvest from this equation and check that numbers make sense.
             Dim d1 As Double = (cohort.NumIndividuals * (1 - Mortality)) - (cohort.AnnualHarvest)
 
             If d1 < 0.0 Then
@@ -489,110 +488,6 @@ Class DGSimTransformer
         Return (1 - CumulativeSurvival)
 
     End Function
-
-    Private Sub AddStartDayAgeZeroCohorts(
-        ByVal stratum As Stratum,
-        ByVal iteration As Integer,
-        ByVal timestep As Integer)
-
-        Dim MaleOffspring As Double = 0
-        Dim FemaleOffspring As Double = 0
-        Dim TimestepToUse As Integer = timestep
-
-        For Each Cohort In stratum.AgeSexCohorts
-
-            If (Cohort.Sex <> Gender.Female) Then
-                Continue For
-            End If
-
-            Dim AgeClassId As Integer = GetAgeClassIdFromAge(Cohort.Age)
-            Dim opf As OffspringPerFemaleValue = Me.m_OffspringPerFemaleValueMap.GetItem(stratum.Id, AgeClassId, iteration, timestep)
-
-            If (opf IsNot Nothing) Then
-
-                Dim FecundityAdjustment As Double = Me.m_DemographicRateShiftMap.GetFecundityAdjustment(iteration, timestep, AgeClassId)
-                Dim NumOffspringPerFemale = CalculateOffspringPerFemale(opf, FecundityAdjustment)
-                Dim OffspringAgeClassId As Integer = GetAgeClassIdFromAge(0)
-                Dim RelativeEndDay As Integer = CalculateOffspringRelativeCountDay(stratum.Id, iteration, timestep, AgeClassId)
-                Dim RelativeStartDay As Integer = 0
-
-                ' If the calf per cow count day is between birth and census 
-                ' calculate the number of calves surviving from count to census
-                ' Otherwise its the number of days from census to count
-                If ((opf.CountJulianDay >= Me.m_OffspringPerFemaleBirthJDay) And (opf.CountJulianDay < Me.m_RunControl.StartJulianDay)) Then
-                    RelativeStartDay = RelativeEndDay
-                    ' 365 day year but zero indexed
-                    RelativeEndDay = 364
-                    ' Because data is before the census we need the previous years rate
-                    TimestepToUse = timestep - 1
-                End If
-
-                Dim SurvivalToCountDayM As Double = (1 - (CalculateTimePeriodMortality(
-                    stratum, iteration, TimestepToUse, Gender.Male, OffspringAgeClassId, RelativeStartDay, RelativeEndDay)))
-
-                Dim SurvivalToCountDayF As Double = (1 - (CalculateTimePeriodMortality(
-                    stratum, iteration, TimestepToUse, Gender.Female, OffspringAgeClassId, RelativeStartDay, RelativeEndDay)))
-
-                Dim dm As Double = 0.0
-                Dim df As Double = 0.0
-
-                ' If the count day is between birth and census
-                If ((opf.CountJulianDay >= Me.m_OffspringPerFemaleBirthJDay) And (opf.CountJulianDay < Me.m_RunControl.StartJulianDay)) Then
-
-                    ' Calculate the number of mothers at the count day
-                    ' TODO: So far we are not including harvest mortality of mothers as part of this calculation
-                    Dim MotherMortalitySinceCount As Double = CalculateTimePeriodMortality(stratum, iteration, TimestepToUse, Gender.Female, AgeClassId, RelativeStartDay, RelativeEndDay)
-
-                    If MotherMortalitySinceCount < 1.0 Then
-
-                        ' Count day is before census so divide by survival rate
-                        Dim NumberOfMothers As Double = Cohort.NumIndividuals / (1.0 - MotherMortalitySinceCount)
-
-                        ' Calculate the number of ofspring
-                        ' Count day is before the census to need to multiply by survival rate
-                        dm = (0.5 * NumOffspringPerFemale * NumberOfMothers) * SurvivalToCountDayM
-                        df = (0.5 * NumOffspringPerFemale * NumberOfMothers) * SurvivalToCountDayF
-
-                    End If
-
-                Else
-
-                    ' Calculate the number of mothers at the count day
-                    ' Count day is after census so multiply by survival rate
-                    ' TODO: So far we are not including harvest mortality of mothers as part of this calculation
-                    Dim MotherMortalityToCount As Double = CalculateTimePeriodMortality(stratum, iteration, TimestepToUse, Gender.Female, AgeClassId, RelativeStartDay, RelativeEndDay)
-                    Dim NumberOfMothers As Double = Cohort.NumIndividuals * (1 - MotherMortalityToCount)
-
-                    ' Calculate the number of ofspring
-                    ' Count day is after the census to need to divide by survival rate
-                    If SurvivalToCountDayM > 0.0 Then
-                        dm = (0.5 * NumOffspringPerFemale * NumberOfMothers) / SurvivalToCountDayM
-                    End If
-
-                    If SurvivalToCountDayF > 0.0 Then
-                        df = (0.5 * NumOffspringPerFemale * NumberOfMothers) / SurvivalToCountDayF
-                    End If
-
-                End If
-
-                MaleOffspring += dm
-                FemaleOffspring += df
-
-            End If
-
-        Next
-
-        Dim RelAge As Integer = (Me.m_RunControl.MinimumTimestep - timestep)
-
-        If (MaleOffspring > 0) Then
-            stratum.AgeSexCohorts.Add(New AgeSexCohort(0, RelAge - 1, Gender.Male, MaleOffspring))
-        End If
-
-        If (FemaleOffspring > 0) Then
-            stratum.AgeSexCohorts.Add(New AgeSexCohort(0, RelAge - 1, Gender.Female, FemaleOffspring))
-        End If
-
-    End Sub
 
     Private Shared Sub RemoveStartDayAgeZeroCohorts(ByVal stratum As Stratum, ByVal RelAge As Integer)
 
