@@ -247,12 +247,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Gets the age class Id from the specified age
-    ''' </summary>
-    ''' <param name="age"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
     Private Function GetAgeClassIdFromAge(ByVal age As Integer) As Integer
 
         For Each acr As AgeClassRange In Me.m_AgeClassRanges
@@ -285,14 +279,6 @@ Partial Class DGSimTransformer
 
     End Function
 
-    ''' <summary>
-    ''' Adds an age cohort
-    ''' </summary>
-    ''' <param name="age"></param>
-    ''' <param name="sex"></param>
-    ''' <param name="numIndArg"></param>
-    ''' <param name="stratumId"></param>
-    ''' <remarks></remarks>
     Private Sub AddAgeCohort(
         ByVal age As Integer,
         ByVal sex As Gender,

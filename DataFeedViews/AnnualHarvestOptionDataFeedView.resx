@@ -125,8 +125,8 @@
   <data name="TextBoxPopFilterMinAge.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;LabelPopFilterSex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="GroupBoxPopFilters.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 107</value>
   </data>
   <data name="&gt;&gt;LabelPopFilterMaxAge.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -134,14 +134,14 @@
   <data name="ButtonClearAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 159</value>
   </data>
-  <data name="LabelPopFilterSex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 24</value>
+  <data name="&gt;&gt;LabelPopFilterMaxAge.Parent" xml:space="preserve">
+    <value>GroupBoxPopFilters</value>
   </data>
-  <data name="ComboBoxPopGender.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 21</value>
+  <data name="LabelPopFilterMinAge.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="LabelPopFilterMaxAge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
+  <data name="&gt;&gt;ButtonClearAll.Name" xml:space="preserve">
+    <value>ButtonClearAll</value>
   </data>
   <data name="ComboBoxPopGender.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -152,8 +152,8 @@
   <data name="LabelPopFilterMinAge.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 50</value>
   </data>
-  <data name="&gt;&gt;LabelSpecifyHarvestAs.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="LabelPopFilterMinAge.Text" xml:space="preserve">
+    <value>Minimum age:</value>
   </data>
   <data name="&gt;&gt;ComboBoxPopGender.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -173,23 +173,20 @@
   <data name="LabelSpecifyHarvestAs.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;TextBoxPopFilterMaxAge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ButtonClearAll.Text" xml:space="preserve">
+    <value>Clear All</value>
   </data>
   <data name="LabelPopFilterMinAge.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;ButtonClearAll.Name" xml:space="preserve">
-    <value>ButtonClearAll</value>
+  <data name="LabelPopFilterMaxAge.Text" xml:space="preserve">
+    <value>Maximum age:</value>
   </data>
   <data name="&gt;&gt;TextBoxPopFilterMaxAge.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
-  </data>
-  <data name="LabelPopFilterMinAge.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="GroupBoxPopFilters.Text" xml:space="preserve">
     <value>Filter population by:</value>
@@ -222,14 +219,8 @@
   <data name="LabelSpecifyHarvestAs.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 13</value>
   </data>
-  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Name" xml:space="preserve">
-    <value>ComboBoxSpecifyHarvestAs</value>
-  </data>
-  <data name="GroupBoxPopFilters.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ButtonClearAll.Text" xml:space="preserve">
-    <value>Clear All</value>
+  <data name="&gt;&gt;LabelPopFilterSex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TextBoxPopFilterMaxAge.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 73</value>
@@ -252,6 +243,9 @@
   <data name="LabelPopFilterMaxAge.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="TextBoxPopFilterMaxAge.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
   <data name="ComboBoxPopGender.Location" type="System.Drawing.Point, System.Drawing">
     <value>146, 22</value>
   </data>
@@ -261,20 +255,17 @@
   <data name="&gt;&gt;ButtonClearAll.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="LabelPopFilterMaxAge.Text" xml:space="preserve">
-    <value>Maximum age:</value>
-  </data>
-  <data name="&gt;&gt;LabelPopFilterMaxAge.Parent" xml:space="preserve">
-    <value>GroupBoxPopFilters</value>
+  <data name="ComboBoxSpecifyHarvestAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 21</value>
   </data>
   <data name="&gt;&gt;LabelPopFilterSex.Parent" xml:space="preserve">
     <value>GroupBoxPopFilters</value>
   </data>
+  <data name="&gt;&gt;LabelSpecifyHarvestAs.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;LabelPopFilterMinAge.Parent" xml:space="preserve">
     <value>GroupBoxPopFilters</value>
-  </data>
-  <data name="ComboBoxSpecifyHarvestAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 21</value>
   </data>
   <data name="LabelPopFilterSex.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 13</value>
@@ -285,17 +276,17 @@
   <data name="&gt;&gt;LabelPopFilterMaxAge.Name" xml:space="preserve">
     <value>LabelPopFilterMaxAge</value>
   </data>
-  <data name="GroupBoxPopFilters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 107</value>
-  </data>
-  <data name="LabelPopFilterMinAge.Text" xml:space="preserve">
-    <value>Minimum age:</value>
+  <data name="GroupBoxPopFilters.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;GroupBoxPopFilters.Name" xml:space="preserve">
     <value>GroupBoxPopFilters</value>
   </data>
   <data name="&gt;&gt;LabelPopFilterMinAge.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="ComboBoxPopGender.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 21</value>
   </data>
   <data name="LabelSpecifyHarvestAs.Text" xml:space="preserve">
     <value>Specify harvest as:</value>
@@ -327,20 +318,26 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>363, 193</value>
   </data>
+  <data name="&gt;&gt;TextBoxPopFilterMaxAge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="LabelPopFilterSex.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;ComboBoxPopGender.Name" xml:space="preserve">
     <value>ComboBoxPopGender</value>
   </data>
-  <data name="TextBoxPopFilterMaxAge.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Name" xml:space="preserve">
+    <value>ComboBoxSpecifyHarvestAs</value>
   </data>
   <data name="&gt;&gt;LabelSpecifyHarvestAs.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;TextBoxPopFilterMinAge.Name" xml:space="preserve">
-    <value>TextBoxPopFilterMinAge</value>
+  <data name="LabelPopFilterSex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 24</value>
   </data>
   <data name="&gt;&gt;LabelPopFilterMinAge.Name" xml:space="preserve">
     <value>LabelPopFilterMinAge</value>
@@ -357,11 +354,11 @@
   <data name="&gt;&gt;TextBoxPopFilterMaxAge.Name" xml:space="preserve">
     <value>TextBoxPopFilterMaxAge</value>
   </data>
-  <data name="&gt;&gt;ComboBoxSpecifyHarvestAs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="LabelPopFilterMaxAge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 13</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>SyncroSim.Core.Forms.DataFeedView, SyncroSim.Core.Forms, Version=2.0.11.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>SyncroSim.Core.Forms.DataFeedView, SyncroSim.Core.Forms, Version=2.0.21.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;ComboBoxPopGender.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -372,6 +369,9 @@
   <data name="ComboBoxSpecifyHarvestAs.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;TextBoxPopFilterMinAge.Name" xml:space="preserve">
+    <value>TextBoxPopFilterMinAge</value>
+  </data>
   <data name="&gt;&gt;TextBoxPopFilterMinAge.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -380,8 +380,5 @@
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>kl</value>
   </metadata>
 </root>

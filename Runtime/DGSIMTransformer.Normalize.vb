@@ -9,11 +9,7 @@ Imports SyncroSim.Core
 
 Partial Class DGSimTransformer
 
-    ''' <summary>
-    ''' Normalizes the model data
-    ''' </summary>
-    ''' <remarks></remarks>
-    Private Sub NormalizeData()
+    Private Sub NormalizeModelData()
 
         Me.NormalizeRunControl()
         Me.NormalizeAgeClassRanges()
@@ -22,10 +18,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Normalizes the run control values
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub NormalizeRunControl()
 
         Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(RUN_CONTROL_DATASHEET_NAME)
@@ -61,10 +53,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Normalizes the age class ranges
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub NormalizeAgeClassRanges()
 
         Dim dtacr As DataTable = Me.ResultScenario.GetDataSheet(AGE_CLASS_RANGE_DATASHEET_NAME).GetData()
@@ -95,10 +83,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Normalizes the initial population size
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub NormalizeInitialPopulationSize()
 
         Const DEFAULT_MEAN As Integer = 1000
@@ -125,10 +109,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Normalizes the Initial Population Distribution
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub NormalizeInitialPopulationDistribution()
 
         Dim dt As DataTable = Me.ResultScenario.GetDataSheet(INITIAL_POPULATION_DISTRIBUTION_DATASHEET_NAME).GetData()

@@ -15,10 +15,6 @@ Partial Class DGSimTransformer
     Private m_AnnualHarvestPopFilterMinAge As Integer
     Private m_AnnualHarvestPopFilterMaxAge As Integer
 
-    ''' <summary>
-    ''' Initializes the Offspring per Female Birth Julian Day
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub InitializeOffspringPerFemaleBirthJDay()
 
         Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(OFFSPRING_PER_FEMALE_OPTION_DATASHEET_NAME)
@@ -32,10 +28,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Initializes Annual Harvest Variables
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub InitializeAnnualHarvestVariables()
 
         Dim dr As DataRow = Me.ResultScenario.GetDataSheet(ANNUAL_HARVEST_OPTION_DATASHEET_NAME).GetDataRow()
@@ -73,10 +65,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Validates the model
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub ValidateModel()
 
         If (Me.Project.GetDataSheet(STRATUM_DATASHEET_NAME).GetData().Rows.Count = 0) Then
@@ -89,10 +77,6 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Initializes the output data tables
-    ''' </summary>
-    ''' <remarks></remarks>
     Private Sub InitializeOutputDataTables()
 
         Dim dspop As DataSheet = Me.ResultScenario.GetDataSheet(OUTPUT_POPULATION_SIZE_DATASHEET_NAME)

@@ -21,24 +21,17 @@ Class DGSimTransformer
     Private m_OutputPosteriorDistDataTable As DataTable
     Private m_RandomGenerator As New RandomGenerator()
 
-    ''' <summary>
-    ''' Overrides Configure
-    ''' </summary>
-    ''' <remarks></remarks>
     Public Overrides Sub Configure()
 
         MyBase.Configure()
 
         Me.ValidateModel()
-        Me.NormalizeData()
+        Me.NormalizeModelData()
 
         Me.TimestepUnits = My.Resources.DGSIM_TIMESTEP
 
     End Sub
 
-    ''' <summary>
-    ''' Overrides Initialize
-    ''' </summary>
     Public Overrides Sub Initialize()
 
         Me.InitializeRunControl()
@@ -50,11 +43,6 @@ Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Overrides OnIteration
-    ''' </summary>
-    ''' <param name="iteration"></param>
-    ''' <remarks></remarks>
     Protected Overrides Sub OnIteration(iteration As Integer)
 
         MyBase.OnIteration(iteration)
@@ -62,12 +50,6 @@ Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Overrides OnTimestep
-    ''' </summary>
-    ''' <param name="iteration"></param>
-    ''' <param name="timestep"></param>
-    ''' <remarks></remarks>
     Protected Overrides Sub OnTimestep(iteration As Integer, timestep As Integer)
 
         MyBase.OnTimestep(iteration, timestep)
@@ -95,13 +77,6 @@ Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Runs the model for the specified startum, iteration, and timestep
-    ''' </summary>
-    ''' <param name="stratum"></param>
-    ''' <param name="iteration"></param>
-    ''' <param name="timestep"></param>
-    ''' <remarks></remarks>
     Private Sub SimulateTimestep(ByVal stratum As Stratum, ByVal iteration As Integer, ByVal timestep As Integer)
 
         Dim NumMaleOffspring As Double = 0
@@ -115,7 +90,9 @@ Class DGSimTransformer
 
         If (Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay) Then
 
-            'Don't age the cohorts on the very first timestep as assume ages are specified for the census date already
+            'We don't age the cohorts on the very first timestep since we assume 
+            'these ages are specified for the census date already.
+
             If (timestep <> Me.m_RunControl.MinimumTimestep) Then
 
                 For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
@@ -166,7 +143,7 @@ Class DGSimTransformer
 
             End If
 
-            ' Calculate mortality from census to birthday first
+            'Calculate mortality from census to birthday first
             Dim AgeClassId As Integer = GetAgeClassIdFromAge(Cohort.Age)
             Dim TimePeriodMortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Cohort.Sex, AgeClassId, 0, (GetRelativeJulianDay(Me.m_OffspringPerFemaleBirthJDay, Me.m_RunControl.StartJulianDay) - 1))
             Dim TotalMortality As Double = TimePeriodMortality * Cohort.NumIndividuals
@@ -201,7 +178,10 @@ Class DGSimTransformer
         Next
 
         Dim NewCohortAge As Integer = 0
-        'When adding chorts that are born next year (before the census) specify the age as -1 so that they will be recorded as calves in the next census (aging happens before census).
+
+        'When adding chorts that are born next year (before the census) specify the age as -1 
+        'so that they will be recorded as calves in the next census (aging happens before census).
+
         If (Me.m_OffspringPerFemaleBirthJDay < Me.m_RunControl.StartJulianDay) Then
             NewCohortAge = -1
         End If
@@ -274,10 +254,6 @@ Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Initializes the Age/Sex cohort collection
-    ''' </summary>
-    ''' <remarks>This is done for each iteration</remarks>
     Private Sub InitializeAgeSexCohortCollection()
 
         Dim PopSize As Integer =
@@ -326,7 +302,6 @@ Class DGSimTransformer
         ByVal timestep As Integer,
         ByRef calfMortality As Double) As Double
 
-
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim RelativeCountDay As Integer = Me.CalculateOffspringRelativeCountDay(stratum.Id, iteration, timestep, AgeClassId)
         Dim Mortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Gender.Female, AgeClassId, 1, RelativeCountDay)
@@ -353,7 +328,6 @@ Class DGSimTransformer
             Dim d4 As Double = (d1 * d2 * (1 - d3))
 
             calfMortality += (d3 * d1 * d2)
-
             Return d4
 
         Else

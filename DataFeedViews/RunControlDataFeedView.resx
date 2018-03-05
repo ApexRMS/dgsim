@@ -141,14 +141,11 @@
   <data name="ButtonClearAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 107</value>
   </data>
-  <data name="&gt;&gt;LabelTotalIterations.Parent" xml:space="preserve">
-    <value>TableLayoutPanelMain</value>
+  <data name="ButtonClearAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 23</value>
   </data>
-  <data name="&gt;&gt;TextBoxStartTimestep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TextBoxStartJulianDay.Parent" xml:space="preserve">
-    <value>TableLayoutPanelMain</value>
+  <data name="TextBoxEndTimestep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 29</value>
   </data>
   <data name="LabelTotalIterations.Text" xml:space="preserve">
     <value>Total iterations:</value>
@@ -195,6 +192,9 @@
   <data name="TextBoxEndTimestep.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="TextBoxStartTimestep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 20</value>
+  </data>
   <data name="TextBoxStartJulianDay.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 81</value>
   </data>
@@ -203,6 +203,9 @@
   </data>
   <data name="&gt;&gt;LabelStartTimestep.Name" xml:space="preserve">
     <value>LabelStartTimestep</value>
+  </data>
+  <data name="TextBoxEndTimestep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 20</value>
   </data>
   <data name="&gt;&gt;ButtonClearAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -234,14 +237,14 @@
   <data name="LabelStartJulianDay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 0</value>
   </data>
-  <data name="TextBoxStartTimestep.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
   <data name="TextBoxTotalIterations.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 55</value>
   </data>
   <data name="&gt;&gt;TextBoxEndTimestep.Parent" xml:space="preserve">
     <value>TableLayoutPanelMain</value>
+  </data>
+  <data name="&gt;&gt;TextBoxStartTimestep.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="LabelEndTimestep.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -251,6 +254,9 @@
   </data>
   <data name="LabelEndTimestep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;LabelTotalIterations.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;TableLayoutPanelMain.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -276,13 +282,10 @@
   <data name="LabelStartTimestep.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;TextBoxTotalIterations.Name" xml:space="preserve">
-    <value>TextBoxTotalIterations</value>
+  <data name="LabelStartJulianDay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;LabelStartJulianDay.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;TableLayoutPanelMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="TextBoxStartTimestep.TabIndex" type="System.Int32, mscorlib">
@@ -321,8 +324,8 @@
   <data name="LabelStartJulianDay.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 83</value>
   </data>
-  <data name="&gt;&gt;TableLayoutPanelMain.Name" xml:space="preserve">
-    <value>TableLayoutPanelMain</value>
+  <data name="&gt;&gt;LabelTotalIterations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LabelStartTimestep.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -330,14 +333,14 @@
   <data name="&gt;&gt;TextBoxStartJulianDay.Name" xml:space="preserve">
     <value>TextBoxStartJulianDay</value>
   </data>
-  <data name="TextBoxStartTimestep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 20</value>
+  <data name="TextBoxStartTimestep.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
   </data>
-  <data name="ButtonClearAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 23</value>
+  <data name="&gt;&gt;TableLayoutPanelMain.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;TextBoxStartTimestep.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;TableLayoutPanelMain.Name" xml:space="preserve">
+    <value>TableLayoutPanelMain</value>
   </data>
   <data name="&gt;&gt;LabelEndTimestep.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -351,8 +354,8 @@
   <data name="TextBoxStartJulianDay.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="LabelStartJulianDay.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;LabelTotalIterations.Parent" xml:space="preserve">
+    <value>TableLayoutPanelMain</value>
   </data>
   <data name="TextBoxStartJulianDay.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -369,17 +372,14 @@
   <data name="&gt;&gt;TextBoxTotalIterations.Parent" xml:space="preserve">
     <value>TableLayoutPanelMain</value>
   </data>
-  <data name="TableLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
   <data name="TextBoxStartJulianDay.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 20</value>
   </data>
-  <data name="TextBoxEndTimestep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 29</value>
+  <data name="TableLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;LabelTotalIterations.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;TextBoxStartJulianDay.Parent" xml:space="preserve">
+    <value>TableLayoutPanelMain</value>
   </data>
   <data name="LabelEndTimestep.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -403,16 +403,16 @@
     <value>55, 13</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>SyncroSim.Core.Forms.DataFeedView, SyncroSim.Core.Forms, Version=2.0.9.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>SyncroSim.Core.Forms.DataFeedView, SyncroSim.Core.Forms, Version=2.0.21.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="TextBoxEndTimestep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 20</value>
+  <data name="&gt;&gt;TextBoxStartTimestep.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TableLayoutPanelMain.ColumnCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;LabelTotalIterations.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;TextBoxTotalIterations.Name" xml:space="preserve">
+    <value>TextBoxTotalIterations</value>
   </data>
   <data name="LabelEndTimestep.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -428,8 +428,5 @@
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>kl</value>
   </metadata>
 </root>

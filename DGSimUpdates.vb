@@ -13,7 +13,7 @@ Class DGSimUpdates
     Inherits UpdateProvider
 
     ''' <summary>
-    ''' Performs the database updates for Caribou Cumulative Effects
+    ''' Performs the database updates for DG-Sim
     ''' </summary>
     ''' <param name="store"></param>
     ''' <param name="currentSchemaVersion"></param>
