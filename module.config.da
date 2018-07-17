@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-  <module name="dgsim" displayName="Demographic Population" version="2.1.25" configVersion="1.0000" contentType="any">
+  <module name="dgsim" displayName="Demographic Population" version="2.1.26" configVersion="1.0000" contentType="any">
     <transformers>
       <transformer name="dgsim" displayName="Demographic Population" isModel="True" isPrimary="True" previousNames="dgsim-model-transformer|dgsim:model-transformer">
         <runtime>
@@ -367,6 +367,6 @@
         <item name="Mortality" dataSheet="DGSim_OutputMortality" column="Mortality" filter="AgeClassID|Sex|StratumID"/>
       </layout>
     </layouts>
-    <updateProvider schemaVersionTableName="DGSim_Version" schemaVersion="1" minimumModuleVersion="2.1.0" className="SyncroSim.DGSim.DGSimUpdates" classAssembly="SyncroSim.DGSim"/>
+    <updateProvider schemaVersionTableName="DGSim_Version" schemaVersion="1" minimumModuleVersion="2.1.26" className="SyncroSim.DGSim.DGSimUpdates" classAssembly="SyncroSim.DGSim"/>
   </module>
 </configuration>
