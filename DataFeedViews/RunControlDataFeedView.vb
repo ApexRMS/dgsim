@@ -19,6 +19,7 @@ Class RunControlDataFeedView
         Me.SetTextBoxBinding(Me.TextBoxStartJulianDay, "StartJulianDay")
 
         Me.RefreshBoundControls()
+        Me.AddStandardCommands()
 
     End Sub
 
