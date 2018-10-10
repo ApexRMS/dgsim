@@ -7,7 +7,7 @@
 
 Module Enums
 
-    Enum Gender
+    Enum Sex
         Male = 0
         Female = 1
     End Enum

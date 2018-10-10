@@ -8,14 +8,14 @@
 Class InitialPopulationDistribution
 
     Private m_StratumId As Nullable(Of Integer)
-    Private m_Sex As Nullable(Of Gender)
+    Private m_Sex As Nullable(Of Sex)
     Private m_AgeMin As Integer
     Private m_AgeMax As Integer
     Private m_RelativeAmount As Double
 
     Public Sub New(
         ByVal stratumId As Nullable(Of Integer),
-        ByVal sex As Nullable(Of Gender),
+        ByVal sex As Nullable(Of Sex),
         ByVal ageMin As Integer,
         ByVal ageMax As Integer,
         ByVal relativeAmount As Double)
@@ -34,7 +34,7 @@ Class InitialPopulationDistribution
         End Get
     End Property
 
-    Public ReadOnly Property Sex As Nullable(Of Gender)
+    Public ReadOnly Property Sex As Nullable(Of Sex)
         Get
             Return Me.m_Sex
         End Get

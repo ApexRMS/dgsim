@@ -25,7 +25,7 @@ Partial Class AnnualHarvestOptionDataFeedView
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AnnualHarvestOptionDataFeedView))
         Me.LabelSpecifyHarvestAs = New System.Windows.Forms.Label()
         Me.ComboBoxSpecifyHarvestAs = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxPopGender = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxPopSex = New System.Windows.Forms.ComboBox()
         Me.TextBoxPopFilterMaxAge = New System.Windows.Forms.TextBox()
         Me.TextBoxPopFilterMinAge = New System.Windows.Forms.TextBox()
         Me.LabelPopFilterMaxAge = New System.Windows.Forms.Label()
@@ -43,17 +43,17 @@ Partial Class AnnualHarvestOptionDataFeedView
         '
         'ComboBoxSpecifyHarvestAs
         '
-        resources.ApplyResources(Me.ComboBoxSpecifyHarvestAs, "ComboBoxSpecifyHarvestAs")
         Me.ComboBoxSpecifyHarvestAs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBoxSpecifyHarvestAs.FormattingEnabled = True
+        resources.ApplyResources(Me.ComboBoxSpecifyHarvestAs, "ComboBoxSpecifyHarvestAs")
         Me.ComboBoxSpecifyHarvestAs.Name = "ComboBoxSpecifyHarvestAs"
         '
-        'ComboBoxPopGender
+        'ComboBoxPopSex
         '
-        resources.ApplyResources(Me.ComboBoxPopGender, "ComboBoxPopGender")
-        Me.ComboBoxPopGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxPopGender.FormattingEnabled = True
-        Me.ComboBoxPopGender.Name = "ComboBoxPopGender"
+        Me.ComboBoxPopSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxPopSex.FormattingEnabled = True
+        resources.ApplyResources(Me.ComboBoxPopSex, "ComboBoxPopSex")
+        Me.ComboBoxPopSex.Name = "ComboBoxPopSex"
         '
         'TextBoxPopFilterMaxAge
         '
@@ -88,13 +88,13 @@ Partial Class AnnualHarvestOptionDataFeedView
         '
         'GroupBoxPopFilters
         '
-        resources.ApplyResources(Me.GroupBoxPopFilters, "GroupBoxPopFilters")
         Me.GroupBoxPopFilters.Controls.Add(Me.TextBoxPopFilterMaxAge)
         Me.GroupBoxPopFilters.Controls.Add(Me.TextBoxPopFilterMinAge)
         Me.GroupBoxPopFilters.Controls.Add(Me.LabelPopFilterMaxAge)
         Me.GroupBoxPopFilters.Controls.Add(Me.LabelPopFilterMinAge)
         Me.GroupBoxPopFilters.Controls.Add(Me.LabelPopFilterSex)
-        Me.GroupBoxPopFilters.Controls.Add(Me.ComboBoxPopGender)
+        Me.GroupBoxPopFilters.Controls.Add(Me.ComboBoxPopSex)
+        resources.ApplyResources(Me.GroupBoxPopFilters, "GroupBoxPopFilters")
         Me.GroupBoxPopFilters.Name = "GroupBoxPopFilters"
         Me.GroupBoxPopFilters.TabStop = False
         '
@@ -115,7 +115,7 @@ Partial Class AnnualHarvestOptionDataFeedView
     End Sub
     Friend WithEvents LabelSpecifyHarvestAs As System.Windows.Forms.Label
     Friend WithEvents ComboBoxSpecifyHarvestAs As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxPopGender As System.Windows.Forms.ComboBox
+    Friend WithEvents ComboBoxPopSex As System.Windows.Forms.ComboBox
     Friend WithEvents TextBoxPopFilterMaxAge As System.Windows.Forms.TextBox
     Friend WithEvents TextBoxPopFilterMinAge As System.Windows.Forms.TextBox
     Friend WithEvents LabelPopFilterMaxAge As System.Windows.Forms.Label

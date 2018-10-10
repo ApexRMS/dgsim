@@ -9,14 +9,14 @@ Class AgeSexCohort
 
     Private m_Age As Integer
     Private m_InitialAge As Integer
-    Private m_Sex As Gender
+    Private m_Sex As Sex
     Private m_NumIndividuals As Double
     Private m_AnnualHarvest As Double
 
     Public Sub New(
         ByVal age As Integer,
         ByVal initialAge As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal numIndividuals As Double)
 
         'Age can be -1 if cohort is for next years calves
@@ -45,7 +45,7 @@ Class AgeSexCohort
         End Get
     End Property
 
-    Public ReadOnly Property Sex As Gender
+    Public ReadOnly Property Sex As Sex
         Get
             Return Me.m_Sex
         End Get

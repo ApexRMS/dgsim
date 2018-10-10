@@ -62,7 +62,7 @@ Module Strings
     Public Const ANNUAL_HARVEST_OPTION_DATASHEET_NAME As String = "DGSim_AnnualHarvestOption"
     Public Const ANNUAL_HARVEST_VALUE_DATASHEET_NAME As String = "DGSim_AnnualHarvestValue"
     Public Const ANNUAL_HARVEST_SPECIFICATION_COLUMN_NAME As String = "Specification"
-    Public Const ANNUAL_HARVEST_POP_FILTER_GENDER_COLUMN_NAME As String = "PopFilterGender"
+    Public Const ANNUAL_HARVEST_POP_FILTER_SEX_COLUMN_NAME As String = "PopFilterGender"
     Public Const ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME As String = "PopFilterMinAge"
     Public Const ANNUAL_HARVEST_POP_FILTER_MAX_AGE_COLUMN_NAME As String = "PopFilterMaxAge"
 

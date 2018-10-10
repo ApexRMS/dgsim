@@ -113,7 +113,7 @@ Partial Class DGSimTransformer
 
             Me.m_InitialPopulationDistributions.Add(New InitialPopulationDistribution(
                  GetNullableInt(dr, DATASHEET_STRATUM_ID_COLUMN_NAME),
-                 CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Gender)),
+                 CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)),
                  CInt(dr(DATASHEET_MIN_AGE_COLUMN_NAME)),
                  CInt(dr(DATASHEET_MAX_AGE_COLUMN_NAME)),
                  CDbl(dr(INITIAL_POPULATION_DISTRIBUTION_DATASHEET_RELATIVE_AMOUNT_COLUMN_NAME))))
@@ -218,7 +218,7 @@ Partial Class DGSimTransformer
                     GetNullableDouble(dr, DATASHEET_MAX_COLUMN_NAME),
                     Me.m_RandomGenerator,
                     GetNullableInt(dr, DATASHEET_JULIAN_DAY_COLUMN_NAME),
-                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Gender)))
+                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)))
 
                 Item.Initialize()
                 Me.m_AnnualizedMortalityRates.Add(Item)
@@ -232,9 +232,9 @@ Partial Class DGSimTransformer
                     jd = CStr(Item.JulianDay.Value)
                 End If
 
-                If (Item.Gender.HasValue) Then
+                If (Item.Sex.HasValue) Then
 
-                    If (Item.Gender.Value = Gender.Female) Then
+                    If (Item.Sex.Value = Sex.Female) Then
                         sx = "Female"
                     Else
                         sx = "Male"
@@ -284,7 +284,7 @@ Partial Class DGSimTransformer
                     GetNullableDouble(dr, DATASHEET_MIN_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_MAX_COLUMN_NAME),
                     Me.m_RandomGenerator,
-                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Gender)))
+                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)))
 
                 If (Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.PercentageOfCohort Or
                     Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.PercentageOfPopulation) Then
@@ -300,9 +300,9 @@ Partial Class DGSimTransformer
 
                 Dim sx As String = "NULL"
 
-                If (Item.Gender.HasValue) Then
+                If (Item.Sex.HasValue) Then
 
-                    If (Item.Gender.Value = Gender.Female) Then
+                    If (Item.Sex.Value = Sex.Female) Then
                         sx = "Female"
                     Else
                         sx = "Male"

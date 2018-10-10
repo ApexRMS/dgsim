@@ -12,7 +12,7 @@ Class AnnualizedMortalityRate
 
     Private m_JulianDay As Nullable(Of Integer)
     Private m_RelativeJulianDay As Nullable(Of Integer)
-    Private m_Gender As Nullable(Of Gender)
+    Private m_Sex As Nullable(Of Sex)
 
     Public Sub New(
         ByVal project As Project,
@@ -26,7 +26,7 @@ Class AnnualizedMortalityRate
         ByVal distributionMaximum As Nullable(Of Double),
         ByVal randomGenerator As RandomGenerator,
         ByVal julianDay As Nullable(Of Integer),
-        ByVal gender As Nullable(Of Gender))
+        ByVal sex As Nullable(Of Sex))
 
         MyBase.New(
             project,
@@ -41,7 +41,7 @@ Class AnnualizedMortalityRate
             randomGenerator)
 
         Me.m_JulianDay = julianDay
-        Me.m_Gender = gender
+        Me.m_Sex = sex
 
     End Sub
 
@@ -60,9 +60,9 @@ Class AnnualizedMortalityRate
         End Set
     End Property
 
-    Public ReadOnly Property Gender As Nullable(Of Gender)
+    Public ReadOnly Property Sex As Nullable(Of Sex)
         Get
-            Return Me.m_Gender
+            Return Me.m_Sex
         End Get
     End Property
 

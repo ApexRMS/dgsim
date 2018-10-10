@@ -119,7 +119,7 @@ Partial Class DGSimTransformer
     Private Function GetPopulationSize(
         ByVal stratum As Stratum,
         ByVal ageClassId As Nullable(Of Integer),
-        ByVal sex As Nullable(Of Gender)) As Double
+        ByVal sex As Nullable(Of Sex)) As Double
 
         If (Not ageClassId.HasValue And Not sex.HasValue) Then
             Return CalculateStratumPopulationSize(stratum)
@@ -151,7 +151,7 @@ Partial Class DGSimTransformer
         ByVal stratum As Stratum,
         ByVal ageMin As Integer,
         ByVal ageMax As Integer,
-        ByVal sex As Nullable(Of Gender)) As Double
+        ByVal sex As Nullable(Of Sex)) As Double
 
         Dim PopSize As Double = 0
 
@@ -201,9 +201,9 @@ Partial Class DGSimTransformer
 
                 If ((Not ah.AgeClassId.HasValue) OrElse (id = ah.AgeClassId.Value)) Then
 
-                    If ((Not ah.Gender.HasValue) OrElse (cohort.Sex = ah.Gender.Value)) Then
+                    If ((Not ah.Sex.HasValue) OrElse (cohort.Sex = ah.Sex.Value)) Then
 
-                        Dim pSize As Double = GetPopulationSize(stratum, ah.AgeClassId, ah.Gender)
+                        Dim pSize As Double = GetPopulationSize(stratum, ah.AgeClassId, ah.Sex)
                         Dim InputHarvestAmount As Double = 0.0
 
                         If (pSize > 0.0) Then
@@ -221,7 +221,7 @@ Partial Class DGSimTransformer
                                     stratum,
                                     Me.m_AnnualHarvestPopFilterMinAge,
                                     Me.m_AnnualHarvestPopFilterMaxAge,
-                                    Me.m_AnnualHarvestPopFilterGender)
+                                    Me.m_AnnualHarvestPopFilterSex)
 
                                 InputHarvestAmount = (ah.CurrentValue / 100.0) * popsize
 
@@ -281,7 +281,7 @@ Partial Class DGSimTransformer
 
     Private Sub AddAgeCohort(
         ByVal age As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal numIndArg As Double,
         ByVal stratumId As Nullable(Of Integer))
 
@@ -365,7 +365,7 @@ Partial Class DGSimTransformer
 
     End Function
 
-    Private Shared Function CalculatePopulationBySex(ByVal cohorts As AgeSexCohortCollection, ByVal gender As Gender) As Integer
+    Private Shared Function CalculatePopulationBySex(ByVal cohorts As AgeSexCohortCollection, ByVal sex As Sex) As Integer
 
         Dim t As Double = 0
 
@@ -373,7 +373,7 @@ Partial Class DGSimTransformer
 
             If (c.Age > 0) Then
 
-                If (c.Sex = gender) Then
+                If (c.Sex = sex) Then
                     t += c.NumIndividuals
                 End If
 
@@ -394,7 +394,7 @@ Partial Class DGSimTransformer
 
             If (c.Age > 0) Then
 
-                If (c.Sex = Gender.Male) Then
+                If (c.Sex = Sex.Male) Then
                     TotalMale += c.NumIndividuals
                 Else
                     TotalFemale += c.NumIndividuals

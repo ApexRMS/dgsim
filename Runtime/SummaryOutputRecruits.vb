@@ -9,13 +9,13 @@ Class SummaryOutputRecruits
 
     Private m_StratumId As Integer
     Private m_MotherAgeClassId As Integer
-    Private m_OffspringSex As Gender
+    Private m_OffspringSex As Sex
     Private m_Recruits As Double
 
     Public Sub New(
         ByVal stratumId As Integer,
         ByVal motherAgeClassId As Integer,
-        ByVal offspringSex As Gender,
+        ByVal offspringSex As Sex,
         ByVal recruits As Double)
 
         Me.m_StratumId = stratumId
@@ -37,7 +37,7 @@ Class SummaryOutputRecruits
         End Get
     End Property
 
-    Public ReadOnly Property OffspringSex As Gender
+    Public ReadOnly Property OffspringSex As Sex
         Get
             Return Me.m_OffspringSex
         End Get

@@ -11,7 +11,7 @@ Partial Class DGSimTransformer
 
     Private m_OffspringPerFemaleBirthJDay As Integer
     Private m_AnnualHarvestSpecification As AnnualHarvestSpecification
-    Private m_AnnualHarvestPopFilterGender As Nullable(Of Gender)
+    Private m_AnnualHarvestPopFilterSex As Nullable(Of Sex)
     Private m_AnnualHarvestPopFilterMinAge As Integer
     Private m_AnnualHarvestPopFilterMaxAge As Integer
 
@@ -33,7 +33,7 @@ Partial Class DGSimTransformer
         Dim dr As DataRow = Me.ResultScenario.GetDataSheet(ANNUAL_HARVEST_OPTION_DATASHEET_NAME).GetDataRow()
 
         Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.AbsoluteNumber
-        Me.m_AnnualHarvestPopFilterGender = Nothing
+        Me.m_AnnualHarvestPopFilterSex = Nothing
         Me.m_AnnualHarvestPopFilterMinAge = Integer.MinValue
         Me.m_AnnualHarvestPopFilterMaxAge = Integer.MaxValue
 
@@ -45,8 +45,8 @@ Partial Class DGSimTransformer
                 Me.m_AnnualHarvestSpecification = CType(dr(ANNUAL_HARVEST_SPECIFICATION_COLUMN_NAME), AnnualHarvestSpecification)
             End If
 
-            If (dr(ANNUAL_HARVEST_POP_FILTER_GENDER_COLUMN_NAME) IsNot DBNull.Value) Then
-                Me.m_AnnualHarvestPopFilterGender = CType(dr(ANNUAL_HARVEST_POP_FILTER_GENDER_COLUMN_NAME), Gender)
+            If (dr(ANNUAL_HARVEST_POP_FILTER_SEX_COLUMN_NAME) IsNot DBNull.Value) Then
+                Me.m_AnnualHarvestPopFilterSex = CType(dr(ANNUAL_HARVEST_POP_FILTER_SEX_COLUMN_NAME), Sex)
             End If
 
             If (dr(ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME) IsNot DBNull.Value) Then

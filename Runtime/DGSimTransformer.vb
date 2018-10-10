@@ -136,10 +136,10 @@ Class DGSimTransformer
 
         For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
 
-            If (Cohort.Sex = Gender.Female) Then
+            If (Cohort.Sex = Sex.Female) Then
 
-                NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Male, stratum, iteration, timestep, MaleCalfMortality)
-                NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Gender.Female, stratum, iteration, timestep, FemaleCalfMortality)
+                NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Sex.Male, stratum, iteration, timestep, MaleCalfMortality)
+                NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Sex.Female, stratum, iteration, timestep, FemaleCalfMortality)
 
             End If
 
@@ -187,7 +187,7 @@ Class DGSimTransformer
         End If
 
         If (NumMaleOffspring > 0) Then
-            Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Gender.Male, NumMaleOffspring)
+            Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Sex.Male, NumMaleOffspring)
             Me.AddMortalityOutputToCollection(c, stratum, MaleCalfMortality)
             stratum.AgeSexCohorts.Add(c)
 
@@ -195,7 +195,7 @@ Class DGSimTransformer
 
         If (NumFemaleOffspring > 0) Then
 
-            Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Gender.Female, NumFemaleOffspring)
+            Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Sex.Female, NumFemaleOffspring)
             Me.AddMortalityOutputToCollection(c, stratum, FemaleCalfMortality)
             stratum.AgeSexCohorts.Add(c)
 
@@ -231,14 +231,14 @@ Class DGSimTransformer
             TargetPopulation = Me.m_RandomGenerator.GetNextInteger(cdata.MinimumPopulation, cdata.MaximumPopulation)
         End If
 
-        Dim TotalMales As Integer = CalculatePopulationBySex(stratum.AgeSexCohorts, Gender.Male)
-        Dim TotalFemales As Integer = CalculatePopulationBySex(stratum.AgeSexCohorts, Gender.Female)
+        Dim TotalMales As Integer = CalculatePopulationBySex(stratum.AgeSexCohorts, Sex.Male)
+        Dim TotalFemales As Integer = CalculatePopulationBySex(stratum.AgeSexCohorts, Sex.Female)
         Dim MaleMultiplier As Double = TargetM2FRatio * (1 / CurrentM2FRatio) * (TargetPopulation / (TotalMales * TargetM2FRatio * (1 / CurrentM2FRatio) + TotalFemales))
         Dim FemaleMultiplier As Double = (TargetPopulation / (TotalMales * TargetM2FRatio * (1 / CurrentM2FRatio) + TotalFemales))
 
         For Each c As AgeSexCohort In stratum.AgeSexCohorts
 
-            If (c.Sex = Gender.Male) Then
+            If (c.Sex = Sex.Male) Then
 
                 Dim d As Double = c.NumIndividuals * MaleMultiplier
                 c.NumIndividuals = d
@@ -283,8 +283,8 @@ Class DGSimTransformer
                     Me.AddAgeCohort(Age, ipd.Sex.Value, NumIndDiv1, ipd.StratumId)
                 Else
 
-                    Me.AddAgeCohort(Age, Gender.Male, NumIndDiv2, ipd.StratumId)
-                    Me.AddAgeCohort(Age, Gender.Female, NumIndDiv2, ipd.StratumId)
+                    Me.AddAgeCohort(Age, Sex.Male, NumIndDiv2, ipd.StratumId)
+                    Me.AddAgeCohort(Age, Sex.Female, NumIndDiv2, ipd.StratumId)
 
                 End If
 
@@ -296,7 +296,7 @@ Class DGSimTransformer
 
     Private Function CalculateNumOffspring(
         ByVal cohort As AgeSexCohort,
-        ByVal offspringSex As Gender,
+        ByVal offspringSex As Sex,
         ByVal stratum As Stratum,
         ByVal iteration As Integer,
         ByVal timestep As Integer,
@@ -304,7 +304,7 @@ Class DGSimTransformer
 
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim RelativeCountDay As Integer = Me.CalculateOffspringRelativeCountDay(stratum.Id, iteration, timestep, AgeClassId)
-        Dim Mortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Gender.Female, AgeClassId, 1, RelativeCountDay)
+        Dim Mortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Sex.Female, AgeClassId, 1, RelativeCountDay)
         Dim FecundityAdjustment As Double = Me.m_DemographicRateShiftMap.GetFecundityAdjustment(iteration, timestep, AgeClassId)
         Dim OffspringAgeClassId As Integer = GetAgeClassIdFromAge(0)
 
@@ -340,7 +340,7 @@ Class DGSimTransformer
         ByVal stratum As Stratum,
         ByVal iteration As Integer,
         ByVal timestep As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal ageClassId As Integer,
         ByVal relativeStartDay As Integer,
         ByVal relativeEndDay As Integer) As Double
@@ -465,8 +465,8 @@ Class DGSimTransformer
 
     Private Shared Sub RemoveStartDayAgeZeroCohorts(ByVal stratum As Stratum, ByVal RelAge As Integer)
 
-        Dim mkey As New TwoIntegerLookupKey(RelAge - 1, Gender.Male)
-        Dim fkey As New TwoIntegerLookupKey(RelAge - 1, Gender.Female)
+        Dim mkey As New TwoIntegerLookupKey(RelAge - 1, Sex.Male)
+        Dim fkey As New TwoIntegerLookupKey(RelAge - 1, Sex.Female)
 
         stratum.AgeSexCohorts.Remove(mkey)
         stratum.AgeSexCohorts.Remove(fkey)

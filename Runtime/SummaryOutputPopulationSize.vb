@@ -8,13 +8,13 @@
 Class SummaryOutputPopulationSize
 
     Private m_StratumId As Integer
-    Private m_Sex As Gender
+    Private m_Sex As Sex
     Private m_AgeClassId As Integer
     Private m_Population As Double
 
     Public Sub New(
         ByVal stratumId As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal ageClassId As Integer,
         ByVal population As Double)
 
@@ -31,7 +31,7 @@ Class SummaryOutputPopulationSize
         End Get
     End Property
 
-    Public ReadOnly Property Sex As Gender
+    Public ReadOnly Property Sex As Sex
         Get
             Return Me.m_Sex
         End Get

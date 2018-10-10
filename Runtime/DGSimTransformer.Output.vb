@@ -89,7 +89,7 @@ Partial Class DGSimTransformer
 
     End Sub
 
-    Private Sub AddRecruitsToOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal numRecruits As Double, offspringSex As Gender)
+    Private Sub AddRecruitsToOutputToCollection(ByVal cohort As AgeSexCohort, ByVal stratum As Stratum, ByVal numRecruits As Double, offspringSex As Sex)
 
         Dim MotherAgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim key As New ThreeIntegerLookupKey(stratum.Id, MotherAgeClassId, offspringSex)
@@ -205,7 +205,7 @@ Partial Class DGSimTransformer
                 NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
                 NewRow(DATASHEET_HAS_CENSUS_DATA_COLUMN_NAME) = CInt(hasCensusData)
                 NewRow(DATASHEET_JULIAN_DAY_COLUMN_NAME) = DBNull.Value
-                NewRow(DATASHEET_SEX_COLUMN_NAME) = GetNullableDatabaseValue(r.Gender)
+                NewRow(DATASHEET_SEX_COLUMN_NAME) = GetNullableDatabaseValue(r.Sex)
                 NewRow(DATASHEET_AGE_CLASS_ID_COLUMN_NAME) = GetNullableDatabaseValue(r.AgeClassId)
                 NewRow(OUTPUT_POSTERIOR_DIST_VALUE_DATASHEET_VARIABLE_COLUMN_NAME) = CInt(PosteriorDistribution.Harvest)
                 NewRow(OUTPUT_POSTERIOR_DIST_VALUE_DATASHEET_ISFILTERED_COLUMN_NAME) = CInt(isFiltered)
@@ -226,14 +226,14 @@ Partial Class DGSimTransformer
         ByVal hasCensusData As Boolean,
         ByVal isFiltered As Boolean)
 
-        Me.ProcessMortRateByGender(stratumId, Gender.Male, iteration, timestep, hasCensusData, isFiltered)
-        Me.ProcessMortRateByGender(stratumId, Gender.Female, iteration, timestep, hasCensusData, isFiltered)
+        Me.ProcessMortRateBySex(stratumId, Sex.Male, iteration, timestep, hasCensusData, isFiltered)
+        Me.ProcessMortRateBySex(stratumId, Sex.Female, iteration, timestep, hasCensusData, isFiltered)
 
     End Sub
 
-    Private Sub ProcessMortRateByGender(
+    Private Sub ProcessMortRateBySex(
         ByVal stratumId As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal iteration As Integer,
         ByVal timestep As Integer,
         ByVal hasCensusData As Boolean,
@@ -264,7 +264,7 @@ Partial Class DGSimTransformer
         ByVal iteration As Integer,
         ByVal timestep As Integer,
         ByVal a As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal hasCensusData As Boolean,
         ByVal isFiltered As Boolean)
 
@@ -305,7 +305,7 @@ Partial Class DGSimTransformer
                 NewRow(DATASHEET_TIMESTEP_COLUMN_NAME) = timestep
                 NewRow(DATASHEET_HAS_CENSUS_DATA_COLUMN_NAME) = CInt(hasCensusData)
                 NewRow(DATASHEET_JULIAN_DAY_COLUMN_NAME) = GetNullableDatabaseValue(r.CountJulianDay)
-                NewRow(DATASHEET_SEX_COLUMN_NAME) = CInt(Gender.Female)
+                NewRow(DATASHEET_SEX_COLUMN_NAME) = CInt(Sex.Female)
                 NewRow(DATASHEET_AGE_CLASS_ID_COLUMN_NAME) = GetNullableDatabaseValue(r.AgeClassId)
                 NewRow(OUTPUT_POSTERIOR_DIST_VALUE_DATASHEET_VARIABLE_COLUMN_NAME) = CInt(PosteriorDistribution.Offspring)
                 NewRow(OUTPUT_POSTERIOR_DIST_VALUE_DATASHEET_ISFILTERED_COLUMN_NAME) = CInt(isFiltered)

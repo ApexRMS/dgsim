@@ -16,7 +16,7 @@ Class AnnualHarvestOptionDataFeedView
         MyBase.LoadDataFeed(dataFeed)
 
         Me.SetComboBoxBinding(Me.ComboBoxSpecifyHarvestAs, ANNUAL_HARVEST_SPECIFICATION_COLUMN_NAME)
-        Me.SetComboBoxBinding(Me.ComboBoxPopGender, ANNUAL_HARVEST_POP_FILTER_GENDER_COLUMN_NAME)
+        Me.SetComboBoxBinding(Me.ComboBoxPopSex, ANNUAL_HARVEST_POP_FILTER_SEX_COLUMN_NAME)
         Me.SetTextBoxBinding(Me.TextBoxPopFilterMinAge, ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME)
         Me.SetTextBoxBinding(Me.TextBoxPopFilterMaxAge, ANNUAL_HARVEST_POP_FILTER_MAX_AGE_COLUMN_NAME)
 
@@ -27,7 +27,7 @@ Class AnnualHarvestOptionDataFeedView
     Public Overrides Sub EnableView(enable As Boolean)
 
         Me.ComboBoxSpecifyHarvestAs.Enabled = enable
-        Me.ComboBoxPopGender.Enabled = enable
+        Me.ComboBoxPopSex.Enabled = enable
         Me.TextBoxPopFilterMinAge.Enabled = enable
         Me.TextBoxPopFilterMaxAge.Enabled = enable
         Me.GroupBoxPopFilters.Enabled = enable
@@ -55,7 +55,7 @@ Class AnnualHarvestOptionDataFeedView
             Dim FiltersEnabled As Boolean = Me.EnablePopulationFilters()
 
             Me.GroupBoxPopFilters.Enabled = FiltersEnabled
-            Me.ComboBoxPopGender.Enabled = FiltersEnabled
+            Me.ComboBoxPopSex.Enabled = FiltersEnabled
             Me.TextBoxPopFilterMinAge.Enabled = FiltersEnabled
             Me.TextBoxPopFilterMaxAge.Enabled = FiltersEnabled
 

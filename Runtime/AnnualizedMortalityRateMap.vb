@@ -19,12 +19,12 @@ Class AnnualizedMortalityRateMap
         For Each item As AnnualizedMortalityRate In items
 
             Dim m As SortedKeyMap3(Of AnnualizedMortalityRate) =
-                Me.m_map.GetItemExact(item.StratumId, item.Gender, item.AgeClassId)
+                Me.m_map.GetItemExact(item.StratumId, item.Sex, item.AgeClassId)
 
             If (m Is Nothing) Then
 
                 m = New SortedKeyMap3(Of AnnualizedMortalityRate)(SearchMode.ExactPrevNext)
-                Me.m_map.AddItem(item.StratumId, item.Gender, item.AgeClassId, m)
+                Me.m_map.AddItem(item.StratumId, item.Sex, item.AgeClassId, m)
 
             End If
 
@@ -68,7 +68,7 @@ Class AnnualizedMortalityRateMap
                         item.DistributionMaximum,
                         item.RandomGenerator,
                         item.JulianDay,
-                        item.Gender)
+                        item.Sex)
 
                     NewItem.Initialize()
                     NewItem.ReSample()
@@ -90,7 +90,7 @@ Class AnnualizedMortalityRateMap
 
     Public Function GetItems(
         ByVal stratumId As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal ageClassId As Integer,
         ByVal iteration As Integer,
         ByVal timestep As Integer) As SortedList(Of Integer, AnnualizedMortalityRate)
@@ -108,7 +108,7 @@ Class AnnualizedMortalityRateMap
 
     Private Function GetFinalMap(
         ByVal stratumId As Integer,
-        ByVal sex As Gender,
+        ByVal sex As Sex,
         ByVal ageClassId As Integer,
         ByVal iteration As Integer,
         ByVal timestep As Integer) As SortedKeyMap1(Of AnnualizedMortalityRate)

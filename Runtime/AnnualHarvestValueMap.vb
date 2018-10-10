@@ -50,7 +50,7 @@ Class AnnualHarvestValueMap
                         item.DistributionMinimum,
                         item.DistributionMaximum,
                         item.RandomGenerator,
-                        item.Gender)
+                        item.Sex)
 
                     NewItem.Initialize()
                     NewItem.ReSample()

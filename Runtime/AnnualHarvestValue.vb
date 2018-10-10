@@ -10,7 +10,7 @@ Imports SyncroSim.Core
 Class AnnualHarvestValue
     Inherits ModelItemBase
 
-    Private m_Gender As Nullable(Of Gender)
+    Private m_Sex As Nullable(Of Sex)
 
     Public Sub New(
         ByVal project As Project,
@@ -23,7 +23,7 @@ Class AnnualHarvestValue
         ByVal distributionMinimum As Nullable(Of Double),
         ByVal distributionMaximum As Nullable(Of Double),
         ByVal randomGenerator As RandomGenerator,
-        ByVal gender As Nullable(Of Gender))
+        ByVal sex As Nullable(Of Sex))
 
         MyBase.New(
             project,
@@ -37,13 +37,13 @@ Class AnnualHarvestValue
             distributionMaximum,
             randomGenerator)
 
-        Me.m_Gender = gender
+        Me.m_Sex = sex
 
     End Sub
 
-    Public ReadOnly Property Gender As Nullable(Of Gender)
+    Public ReadOnly Property Sex As Nullable(Of Sex)
         Get
-            Return Me.m_Gender
+            Return Me.m_Sex
         End Get
     End Property
 
