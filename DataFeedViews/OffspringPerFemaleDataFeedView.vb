@@ -42,8 +42,10 @@ Class OffspringPerFemaleDataFeedView
         Me.TextBoxBirthJDay.Enabled = enable
 
         If (Me.PanelValues.Controls.Count > 0) Then
+
             Dim v As DataFeedView = CType(Me.PanelValues.Controls(0), DataFeedView)
             v.EnableView(enable)
+
         End If
 
     End Sub

@@ -9,7 +9,6 @@ Imports SyncroSim.Common
 
 Class DemographicRateShiftMap
 
-
     Private m_map As New MultiLevelKeyMap3(Of DemographicRateShift)
 
     Public Sub Initialize(ByVal items As DemographicRateShiftCollection)

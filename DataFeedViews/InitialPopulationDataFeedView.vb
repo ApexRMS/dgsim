@@ -46,13 +46,17 @@ Class InitialPopulationDataFeedView
     Public Overrides Sub EnableView(enable As Boolean)
 
         If (Me.PanelInitialPopulationSize.Controls.Count > 0) Then
+
             Dim v As DataFeedView = CType(Me.PanelInitialPopulationSize.Controls(0), DataFeedView)
             v.EnableView(enable)
+
         End If
 
         If (Me.PanelInitialPopulationDistribution.Controls.Count > 0) Then
+
             Dim v As DataFeedView = CType(Me.PanelInitialPopulationDistribution.Controls(0), DataFeedView)
             v.EnableView(enable)
+
         End If
 
         Me.LabelInitialPopSize.Enabled = enable

@@ -41,7 +41,7 @@ Class AnnualHarvestOptionDataFeedView
 
     End Sub
 
-    Protected Overrides Sub OnBoundComboBoxSelectedValueChanged(comboBox As System.Windows.Forms.ComboBox, columnName As String)
+    Protected Overrides Sub OnBoundComboBoxSelectedValueChanged(comboBox As Windows.Forms.ComboBox, columnName As String)
 
         MyBase.OnBoundComboBoxSelectedValueChanged(comboBox, columnName)
         Me.EnableControls()
@@ -74,7 +74,7 @@ Class AnnualHarvestOptionDataFeedView
 
     End Function
 
-    Private Sub ButtonClearAll_Click(sender As System.Object, e As System.EventArgs) Handles ButtonClearAll.Click
+    Private Sub ButtonClearAll_Click(sender As Object, e As EventArgs) Handles ButtonClearAll.Click
 
         Me.DataFeed.GetDataSheet(ANNUAL_HARVEST_OPTION_DATASHEET_NAME).ClearData()
         Me.EnableControls()
