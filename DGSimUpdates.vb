@@ -15,7 +15,7 @@ Class DGSimUpdates
 
     Public Overrides Sub PerformUpdate(store As DataStore, currentSchemaVersion As Integer)
 
-        Me.PerformUpdateInternal(store, currentSchemaVersion)
+        PerformUpdateInternal(store, currentSchemaVersion)
 
 #If DEBUG Then
 
@@ -32,7 +32,7 @@ Class DGSimUpdates
 
     End Sub
 
-    Private Sub PerformUpdateInternal(store As DataStore, currentSchemaVersion As Integer)
+    Private Shared Sub PerformUpdateInternal(store As DataStore, currentSchemaVersion As Integer)
 
 
         If (currentSchemaVersion < 1) Then

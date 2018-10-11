@@ -86,16 +86,6 @@ Module Utilities
         End If
     End Function
 
-    Public Function FormatNullableDouble(ByVal value As Nullable(Of Double)) As String
-
-        If (value.HasValue) Then
-            Return value.Value.ToString("N4", CultureInfo.InvariantCulture)
-        Else
-            Return "NULL"
-        End If
-
-    End Function
-
     Public Function FormatNullableSexAsString(ByVal value As Nullable(Of Sex)) As String
 
         Dim sx As String = "NULL"
