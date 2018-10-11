@@ -9,22 +9,20 @@ Imports SyncroSim.Common
 
 Class AnnualHarvestValueMap
 
-    Private m_map As New MultiLevelKeyMap1(Of SortedKeyMap3(Of AnnualHarvestValue))
+    Private m_Map As New MultiLevelKeyMap1(Of SortedKeyMap3(Of AnnualHarvestValue))
 
-    Public Sub Initialize(
-        ByVal items As AnnualHarvestValueCollection,
-        ByVal maxIterations As Integer)
+    Public Sub Initialize(ByVal items As AnnualHarvestValueCollection, ByVal runControl As RunControl)
 
         Dim id As Integer = 0
 
         For Each item As AnnualHarvestValue In items
 
-            Dim m As SortedKeyMap3(Of AnnualHarvestValue) = Me.m_map.GetItemExact(item.StratumId)
+            Dim m As SortedKeyMap3(Of AnnualHarvestValue) = Me.m_Map.GetItemExact(item.StratumId)
 
             If (m Is Nothing) Then
 
                 m = New SortedKeyMap3(Of AnnualHarvestValue)(SearchMode.ExactPrevNext)
-                Me.m_map.AddItem(item.StratumId, m)
+                Me.m_Map.AddItem(item.StratumId, m)
 
             End If
 
@@ -37,7 +35,7 @@ Class AnnualHarvestValueMap
 
             Else
 
-                For Iteration As Integer = 1 To maxIterations
+                For Iteration As Integer = runControl.MinimumIteration To runControl.MaximumIteration
 
                     Dim NewItem As New AnnualHarvestValue(
                         item.Project,
@@ -45,12 +43,13 @@ Class AnnualHarvestValueMap
                         Iteration,
                         item.Timestep,
                         item.AgeClassId,
-                        item.DistributionMean,
+                        item.Sex,
+                        item.Mean,
+                        item.DistributionType,
                         item.DistributionSD,
-                        item.DistributionMinimum,
-                        item.DistributionMaximum,
-                        item.RandomGenerator,
-                        item.Sex)
+                        item.DistributionMin,
+                        item.DistributionMax,
+                        item.DistributionProvider)
 
                     NewItem.Initialize()
                     NewItem.ReSample()
@@ -86,7 +85,7 @@ Class AnnualHarvestValueMap
         ByVal iteration As Integer,
         ByVal timestep As Integer) As SortedKeyMap1(Of AnnualHarvestValue)
 
-        Dim m1 As SortedKeyMap3(Of AnnualHarvestValue) = Me.m_map.GetItem(stratumId)
+        Dim m1 As SortedKeyMap3(Of AnnualHarvestValue) = Me.m_Map.GetItem(stratumId)
 
         If (m1 Is Nothing OrElse m1.Map.Count = 0) Then
             Return Nothing

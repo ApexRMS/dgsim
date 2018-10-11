@@ -17,9 +17,10 @@ Module Strings
     Public Const DATASHEET_MIN_AGE_COLUMN_NAME As String = "MinimumAge"
     Public Const DATASHEET_MAX_AGE_COLUMN_NAME As String = "MaximumAge"
     Public Const DATASHEET_MEAN_COLUMN_NAME As String = "Mean"
-    Public Const DATASHEET_MIN_COLUMN_NAME As String = "Minimum"
-    Public Const DATASHEET_MAX_COLUMN_NAME As String = "Maximum"
-    Public Const DATASHEET_SD_COLUMN_NAME As String = "SD"
+    Public Const DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME = "DistributionType"
+    Public Const DATASHEET_DISTRIBUTION_SD_COLUMN_NAME = "DistributionSD"
+    Public Const DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME = "DistributionMin"
+    Public Const DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME = "DistributionMax"
     Public Const DATASHEET_HAS_CENSUS_DATA_COLUMN_NAME As String = "HasCensusData"
 
     'Stratum data sheet
@@ -62,7 +63,7 @@ Module Strings
     Public Const ANNUAL_HARVEST_OPTION_DATASHEET_NAME As String = "DGSim_AnnualHarvestOption"
     Public Const ANNUAL_HARVEST_VALUE_DATASHEET_NAME As String = "DGSim_AnnualHarvestValue"
     Public Const ANNUAL_HARVEST_SPECIFICATION_COLUMN_NAME As String = "Specification"
-    Public Const ANNUAL_HARVEST_POP_FILTER_SEX_COLUMN_NAME As String = "PopFilterGender"
+    Public Const ANNUAL_HARVEST_POP_FILTER_SEX_COLUMN_NAME As String = "PopFilterSex"
     Public Const ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME As String = "PopFilterMinAge"
     Public Const ANNUAL_HARVEST_POP_FILTER_MAX_AGE_COLUMN_NAME As String = "PopFilterMaxAge"
 

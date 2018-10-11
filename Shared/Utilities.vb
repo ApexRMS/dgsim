@@ -77,73 +77,79 @@ Module Utilities
 
     End Function
 
-    Public Function DGSimGetRandomBeta(
-        ByVal distributionMean As Double,
-        ByVal distributionSD As Nullable(Of Double),
-        ByVal distributionMinimum As Nullable(Of Double),
-        ByVal distributionMaximum As Nullable(Of Double),
-        ByVal randomGen As RandomGenerator,
-        ByVal caller As String) As Double
+    Public Function FormatNullableInt(ByVal value As Nullable(Of Integer)) As String
 
-        Try
-            Return DGSimGetRandomBeta(distributionMean, distributionSD, distributionMinimum, distributionMaximum, randomGen)
-        Catch ex As ArgumentException
+        If (value.HasValue) Then
+            Return CStr(value.Value)
+        Else
+            Return "NULL"
+        End If
+    End Function
 
-            Dim m As String = String.Format(CultureInfo.InvariantCulture, "{0} -> {1}", caller, ex.Message)
-            Throw New ArgumentException(m)
+    Public Function FormatNullableDouble(ByVal value As Nullable(Of Double)) As String
 
-        End Try
+        If (value.HasValue) Then
+            Return value.Value.ToString("N4", CultureInfo.InvariantCulture)
+        Else
+            Return "NULL"
+        End If
 
     End Function
 
-    Private Function DGSimGetRandomBeta(
-        ByVal distributionMean As Double,
-        ByVal distributionSD As Nullable(Of Double),
-        ByVal distributionMinimum As Nullable(Of Double),
-        ByVal distributionMaximum As Nullable(Of Double),
-        ByVal randomGen As RandomGenerator) As Double
+    Public Function FormatNullableSexAsString(ByVal value As Nullable(Of Sex)) As String
 
-        If (Not distributionMaximum.HasValue Or
-            Not distributionSD.HasValue) Then
+        Dim sx As String = "NULL"
 
-            Return distributionMean
+        If (value.HasValue) Then
 
-        End If
-
-        Dim MinWasNull As Boolean = (Not distributionMinimum.HasValue)
-
-        If (Not distributionMinimum.HasValue) Then
-            distributionMinimum = 0.0
-        End If
-
-        Debug.Assert(distributionSD.Value > 0.0)
-        Debug.Assert(distributionMinimum.Value <= distributionMaximum.Value)
-
-        If (Not randomGen.CanGetRandomBeta(
-            distributionMean,
-            distributionSD.Value,
-            distributionMinimum.Value,
-            distributionMaximum.Value)) Then
-
-            Dim min As String = "NULL"
-
-            If (distributionMinimum.HasValue And (Not MinWasNull)) Then
-                min = distributionMinimum.Value.ToString("N4", CultureInfo.InvariantCulture)
+            If (value.Value = Sex.Female) Then
+                sx = "Female"
+            Else
+                sx = "Male"
             End If
 
-            Dim m As String = String.Format(CultureInfo.InvariantCulture,
-                My.Resources.DGSIM_ERROR_RANDOM_BETA,
-                distributionMean, distributionSD.Value, min, distributionMaximum.Value)
-
-            ThrowArgumentException(m)
-
         End If
 
-        Return randomGen.GetRandomBeta(
-            distributionMean,
-            distributionSD.Value,
-            distributionMinimum.Value,
-            distributionMaximum.Value)
+        Return sx
+
+    End Function
+
+    Public Function GetDatasheetValue(ByVal project As Project, ByVal datasheetName As String, ByVal value As Nullable(Of Integer)) As String
+
+        If (value.HasValue) Then
+
+            Dim ds As DataSheet = project.GetDataSheet(datasheetName)
+            Return ds.ValidationTable.GetDisplayName(value.Value)
+
+        Else
+            Return "NULL"
+        End If
+
+    End Function
+
+    Public Function GetCommonFormattedExceptionData(
+        ByVal ex As Exception,
+        ByVal dataSheet As DataSheet,
+        ByVal stratumId As Nullable(Of Integer),
+        ByVal iteration As Nullable(Of Integer),
+        ByVal timestep As Nullable(Of Integer),
+        ByVal ageClassId As Nullable(Of Integer))
+
+        Dim st As String = GetDatasheetValue(dataSheet.Project, STRATUM_DATASHEET_NAME, stratumId)
+        Dim it As String = FormatNullableInt(iteration)
+        Dim ts As String = FormatNullableInt(timestep)
+        Dim ac As String = GetDatasheetValue(dataSheet.Project, AGE_CLASS_DATASHEET_NAME, ageClassId)
+
+        Dim m As String = Nothing
+
+        m = m & dataSheet.DisplayName & vbCrLf
+        m = m & ex.Message & vbCrLf
+        m = m & "Stratum: " & st & vbCrLf
+        m = m & "Iteration: " & it & vbCrLf
+        m = m & "Timestep: " & ts & vbCrLf
+        m = m & "Age Class: " & ac
+
+        Return m
 
     End Function
 

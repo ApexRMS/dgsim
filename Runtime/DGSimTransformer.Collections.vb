@@ -96,11 +96,19 @@ Partial Class DGSimTransformer
         Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(INITIAL_POPULATION_SIZE_DATASHEET_NAME)
         Dim dr As DataRow = ds.GetDataRow()
 
-        Me.m_InitialPopulationSize = New InitialPopulationSize(
-            CInt(dr(DATASHEET_MEAN_COLUMN_NAME)),
-            CInt(dr(DATASHEET_MIN_COLUMN_NAME)),
-            CInt(dr(DATASHEET_MAX_COLUMN_NAME)),
-            CDbl(dr(DATASHEET_SD_COLUMN_NAME)))
+        Try
+
+            Me.m_InitialPopulationSize = New InitialPopulationSize(
+                GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
+                GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
+                GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
+                GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME),
+                Me.m_DistributionProvider)
+
+        Catch ex As Exception
+            Throw New ArgumentException(ds.DisplayName & vbCrLf & ex.Message)
+        End Try
 
     End Sub
 
@@ -158,28 +166,26 @@ Partial Class DGSimTransformer
                     GetNullableInt(dr, DATASHEET_ITERATION_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_TIMESTEP_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
-                    CDbl(dr(DATASHEET_MEAN_COLUMN_NAME)),
-                    GetNullableDouble(dr, DATASHEET_SD_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MIN_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MAX_COLUMN_NAME),
-                    Me.m_RandomGenerator,
-                    GetNullableInt(dr, OFFSPRING_PER_FEMALE_COUNT_JULIAN_DAY_COLUMN_NAME))
+                    GetNullableInt(dr, OFFSPRING_PER_FEMALE_COUNT_JULIAN_DAY_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                    GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME),
+                    Me.m_DistributionProvider)
 
                 Item.Initialize()
                 Me.m_OffspringPerFemaleValues.Add(Item)
 
             Catch ex As ArgumentException
 
-                Dim cjd As String = "NULL"
-
-                If (Item.CountJulianDay.HasValue) Then
-                    cjd = CStr(Item.CountJulianDay.Value)
+                If (Item Is Nothing) Then
+                    Throw
                 End If
 
                 Throw New ArgumentException(
-                    ds.DisplayName & vbCrLf &
-                    ex.Message & vbCrLf &
-                    "Count Julian Day: " & cjd)
+                    GetCommonFormattedExceptionData(ex, ds, Item.StratumId, Item.Iteration, Item.Timestep, Item.AgeClassId) & vbCrLf &
+                    "Count Julian Day: " & FormatNullableInt(Item.CountJulianDay))
 
             End Try
 
@@ -212,41 +218,28 @@ Partial Class DGSimTransformer
                     GetNullableInt(dr, DATASHEET_ITERATION_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_TIMESTEP_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
-                    CDbl(dr(DATASHEET_MEAN_COLUMN_NAME)),
-                    GetNullableDouble(dr, DATASHEET_SD_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MIN_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MAX_COLUMN_NAME),
-                    Me.m_RandomGenerator,
                     GetNullableInt(dr, DATASHEET_JULIAN_DAY_COLUMN_NAME),
-                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)))
+                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)),
+                    GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                    GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME),
+                    Me.m_DistributionProvider)
 
                 Item.Initialize()
                 Me.m_AnnualizedMortalityRates.Add(Item)
 
             Catch ex As ArgumentException
 
-                Dim jd As String = "NULL"
-                Dim sx As String = "NULL"
-
-                If (Item.JulianDay.HasValue) Then
-                    jd = CStr(Item.JulianDay.Value)
-                End If
-
-                If (Item.Sex.HasValue) Then
-
-                    If (Item.Sex.Value = Sex.Female) Then
-                        sx = "Female"
-                    Else
-                        sx = "Male"
-                    End If
-
+                If (Item Is Nothing) Then
+                    Throw
                 End If
 
                 Throw New ArgumentException(
-                    ds.DisplayName & vbCrLf &
-                    ex.Message & vbCrLf &
-                    "Julian Day: " & jd & vbCrLf &
-                    "Sex: " & sx)
+                    GetCommonFormattedExceptionData(ex, ds, Item.StratumId, Item.Iteration, Item.Timestep, Item.AgeClassId) & vbCrLf &
+                    "Julian Day: " & FormatNullableInt(Item.JulianDay) & vbCrLf &
+                    "Sex: " & FormatNullableSexAsString(Item.Sex))
 
             End Try
 
@@ -279,12 +272,13 @@ Partial Class DGSimTransformer
                     GetNullableInt(dr, DATASHEET_ITERATION_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_TIMESTEP_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
-                    CDbl(dr(DATASHEET_MEAN_COLUMN_NAME)),
-                    GetNullableDouble(dr, DATASHEET_SD_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MIN_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MAX_COLUMN_NAME),
-                    Me.m_RandomGenerator,
-                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)))
+                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)),
+                    GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                    GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME),
+                    Me.m_DistributionProvider)
 
                 If (Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.PercentageOfCohort Or
                     Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.PercentageOfPopulation) Then
@@ -298,22 +292,13 @@ Partial Class DGSimTransformer
 
             Catch ex As ArgumentException
 
-                Dim sx As String = "NULL"
-
-                If (Item.Sex.HasValue) Then
-
-                    If (Item.Sex.Value = Sex.Female) Then
-                        sx = "Female"
-                    Else
-                        sx = "Male"
-                    End If
-
+                If (Item Is Nothing) Then
+                    Throw
                 End If
 
                 Throw New ArgumentException(
-                    ds.DisplayName & vbCrLf &
-                    ex.Message & vbCrLf &
-                    "Sex: " & sx)
+                    GetCommonFormattedExceptionData(ex, ds, Item.StratumId, Item.Iteration, Item.Timestep, Item.AgeClassId) & vbCrLf &
+                    "Sex: " & FormatNullableSexAsString(Item.Sex))
 
             End Try
 

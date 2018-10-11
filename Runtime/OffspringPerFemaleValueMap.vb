@@ -11,9 +11,7 @@ Class OffspringPerFemaleValueMap
 
     Private m_map As New MultiLevelKeyMap2(Of SortedKeyMap2(Of OffspringPerFemaleValue))
 
-    Public Sub Initialize(
-        ByVal items As OffspringPerFemaleValueCollection,
-        ByVal maxIterations As Integer)
+    Public Sub Initialize(ByVal items As OffspringPerFemaleValueCollection, ByVal runControl As RunControl)
 
         For Each item As OffspringPerFemaleValue In items
 
@@ -33,7 +31,7 @@ Class OffspringPerFemaleValueMap
 
             Else
 
-                For Iteration As Integer = 1 To maxIterations
+                For Iteration As Integer = runControl.MinimumIteration To runControl.MaximumIteration
 
                     Dim NewItem As New OffspringPerFemaleValue(
                         item.Project,
@@ -41,12 +39,13 @@ Class OffspringPerFemaleValueMap
                         Iteration,
                         item.Timestep,
                         item.AgeClassId,
-                        item.DistributionMean,
+                        item.CountJulianDay,
+                        item.Mean,
+                        item.DistributionType,
                         item.DistributionSD,
-                        item.DistributionMinimum,
-                        item.DistributionMaximum,
-                        item.RandomGenerator,
-                        item.CountJulianDay)
+                        item.DistributionMin,
+                        item.DistributionMax,
+                        item.DistributionProvider)
 
                     NewItem.Initialize()
                     NewItem.ReSample()

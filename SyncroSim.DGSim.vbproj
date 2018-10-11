@@ -191,10 +191,10 @@
     <Compile Include="Runtime\DGSimTransformer.Output.vb" />
     <Compile Include="Runtime\DGSimTransformer.Utilities.vb" />
     <Compile Include="Runtime\DGSimTransformer.vb" />
+    <Compile Include="Runtime\DistributionBase.vb" />
     <Compile Include="Runtime\InitialPopulationDistribution.vb" />
     <Compile Include="Runtime\InitialPopulationDistributionCollection.vb" />
     <Compile Include="Runtime\InitialPopulationSize.vb" />
-    <Compile Include="Runtime\ModelItemBase.vb" />
     <Compile Include="Runtime\OffspringPerFemaleValue.vb" />
     <Compile Include="Runtime\OffspringPerFemaleValueCollection.vb" />
     <Compile Include="Runtime\OffspringPerFemaleValueMap.vb" />

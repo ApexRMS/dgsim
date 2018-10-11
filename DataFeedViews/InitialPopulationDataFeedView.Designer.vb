@@ -30,9 +30,9 @@ Partial Class InitialPopulationDataFeedView
         '
         'PanelInitialPopulationSize
         '
-        Me.PanelInitialPopulationSize.Location = New System.Drawing.Point(6, 26)
+        Me.PanelInitialPopulationSize.Location = New System.Drawing.Point(6, 28)
         Me.PanelInitialPopulationSize.Name = "PanelInitialPopulationSize"
-        Me.PanelInitialPopulationSize.Size = New System.Drawing.Size(216, 91)
+        Me.PanelInitialPopulationSize.Size = New System.Drawing.Size(216, 113)
         Me.PanelInitialPopulationSize.TabIndex = 1
         '
         'LabelInitialPopSize
@@ -47,7 +47,7 @@ Partial Class InitialPopulationDataFeedView
         'LabelInitialPopDist
         '
         Me.LabelInitialPopDist.AutoSize = True
-        Me.LabelInitialPopDist.Location = New System.Drawing.Point(5, 131)
+        Me.LabelInitialPopDist.Location = New System.Drawing.Point(5, 162)
         Me.LabelInitialPopDist.Name = "LabelInitialPopDist"
         Me.LabelInitialPopDist.Size = New System.Drawing.Size(139, 13)
         Me.LabelInitialPopDist.TabIndex = 2
@@ -58,9 +58,9 @@ Partial Class InitialPopulationDataFeedView
         Me.PanelInitialPopulationDistribution.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PanelInitialPopulationDistribution.Location = New System.Drawing.Point(6, 149)
+        Me.PanelInitialPopulationDistribution.Location = New System.Drawing.Point(6, 182)
         Me.PanelInitialPopulationDistribution.Name = "PanelInitialPopulationDistribution"
-        Me.PanelInitialPopulationDistribution.Size = New System.Drawing.Size(702, 393)
+        Me.PanelInitialPopulationDistribution.Size = New System.Drawing.Size(702, 360)
         Me.PanelInitialPopulationDistribution.TabIndex = 3
         '
         'InitialPopulationDataFeedView

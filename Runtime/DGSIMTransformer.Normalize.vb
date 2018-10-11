@@ -61,9 +61,9 @@ Partial Class DGSimTransformer
 
             Dim ds As DataSheet = Me.Project.GetDataSheet(AGE_CLASS_DATASHEET_NAME)
             Dim dtac As DataTable = ds.GetData()
-            Debug.Assert(dtac.Rows.Count > 0)
-
             Dim val As Integer = 1
+
+            Debug.Assert(dtac.Rows.Count > 0)
 
             For Each dr As DataRow In dtac.Rows
 
@@ -86,9 +86,6 @@ Partial Class DGSimTransformer
     Private Sub NormalizeInitialPopulationSize()
 
         Const DEFAULT_MEAN As Integer = 1000
-        Const DEFAULT_MIN As Integer = 900
-        Const DEFAULT_MAX As Integer = 1100
-        Const DEFAULT_SD As Double = 20
 
         Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(INITIAL_POPULATION_SIZE_DATASHEET_NAME)
         Dim dr As DataRow = ds.GetDataRow()
@@ -96,13 +93,9 @@ Partial Class DGSimTransformer
         If (dr Is Nothing) Then
 
             dr = ds.GetData().NewRow()
-
             dr(DATASHEET_MEAN_COLUMN_NAME) = DEFAULT_MEAN
-            dr(DATASHEET_MIN_COLUMN_NAME) = DEFAULT_MIN
-            dr(DATASHEET_MAX_COLUMN_NAME) = DEFAULT_MAX
-            dr(DATASHEET_SD_COLUMN_NAME) = DEFAULT_SD
-
             ds.GetData.Rows.Add(dr)
+
             Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE)
 
         End If
@@ -116,12 +109,11 @@ Partial Class DGSimTransformer
         If (dt.Rows.Count = 0) Then
 
             Dim dr As DataRow = dt.NewRow
-
             dr(DATASHEET_MIN_AGE_COLUMN_NAME) = 1
             dr(DATASHEET_MAX_AGE_COLUMN_NAME) = 1
             dr(INITIAL_POPULATION_DISTRIBUTION_DATASHEET_RELATIVE_AMOUNT_COLUMN_NAME) = 1.0
-
             dt.Rows.Add(dr)
+
             Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_DISTRIBUTION)
 
         End If

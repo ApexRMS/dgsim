@@ -9,22 +9,19 @@ Imports SyncroSim.Common
 
 Class AnnualizedMortalityRateMap
 
-    Private m_map As New MultiLevelKeyMap3(Of SortedKeyMap3(Of AnnualizedMortalityRate))
+    Private m_Map As New MultiLevelKeyMap3(Of SortedKeyMap3(Of AnnualizedMortalityRate))
 
-    Public Sub Initialize(
-        ByVal items As AnnualizedMortalityRateCollection,
-        ByVal startJulianDay As Integer,
-        ByVal maxIterations As Integer)
+    Public Sub Initialize(ByVal items As AnnualizedMortalityRateCollection, ByVal runControl As RunControl)
 
         For Each item As AnnualizedMortalityRate In items
 
             Dim m As SortedKeyMap3(Of AnnualizedMortalityRate) =
-                Me.m_map.GetItemExact(item.StratumId, item.Sex, item.AgeClassId)
+                Me.m_Map.GetItemExact(item.StratumId, item.Sex, item.AgeClassId)
 
             If (m Is Nothing) Then
 
                 m = New SortedKeyMap3(Of AnnualizedMortalityRate)(SearchMode.ExactPrevNext)
-                Me.m_map.AddItem(item.StratumId, item.Sex, item.AgeClassId, m)
+                Me.m_Map.AddItem(item.StratumId, item.Sex, item.AgeClassId, m)
 
             End If
 
@@ -34,7 +31,7 @@ Class AnnualizedMortalityRateMap
 
                 If (item.JulianDay.HasValue) Then
 
-                    If (item.JulianDay.Value < startJulianDay) Then
+                    If (item.JulianDay.Value < runControl.StartJulianDay) Then
                         ts -= 1
                     End If
 
@@ -54,7 +51,7 @@ Class AnnualizedMortalityRateMap
 
             Else
 
-                For Iteration As Integer = 1 To maxIterations
+                For Iteration As Integer = runControl.MinimumIteration To runControl.MaximumIteration
 
                     Dim NewItem As New AnnualizedMortalityRate(
                         item.Project,
@@ -62,13 +59,14 @@ Class AnnualizedMortalityRateMap
                         Iteration,
                         item.Timestep,
                         item.AgeClassId,
-                        item.DistributionMean,
-                        item.DistributionSD,
-                        item.DistributionMinimum,
-                        item.DistributionMaximum,
-                        item.RandomGenerator,
                         item.JulianDay,
-                        item.Sex)
+                        item.Sex,
+                        item.Mean,
+                        item.DistributionType,
+                        item.DistributionSD,
+                        item.DistributionMin,
+                        item.DistributionMax,
+                        item.DistributionProvider)
 
                     NewItem.Initialize()
                     NewItem.ReSample()
@@ -114,7 +112,7 @@ Class AnnualizedMortalityRateMap
         ByVal timestep As Integer) As SortedKeyMap1(Of AnnualizedMortalityRate)
 
         Dim m1 As SortedKeyMap3(Of AnnualizedMortalityRate) =
-            Me.m_map.GetItem(stratumId, sex, ageClassId)
+            Me.m_Map.GetItem(stratumId, sex, ageClassId)
 
         If (m1 Is Nothing OrElse m1.Map.Count = 0) Then
             Return Nothing

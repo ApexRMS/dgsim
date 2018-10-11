@@ -433,11 +433,11 @@ Partial Class DGSimTransformer
 
         Dim err As Boolean = False
 
-        If (ah.DistributionMean > 100.0) Then
+        If (ah.Mean > 100.0) Then
             err = True
-        ElseIf (ah.DistributionMinimum.HasValue AndAlso ah.DistributionMinimum.Value > 100.0) Then
+        ElseIf (ah.DistributionMin.HasValue AndAlso ah.DistributionMin.Value > 100.0) Then
             err = True
-        ElseIf (ah.DistributionMaximum.HasValue AndAlso ah.DistributionMaximum.Value > 100.0) Then
+        ElseIf (ah.DistributionMax.HasValue AndAlso ah.DistributionMax.Value > 100.0) Then
             err = True
         ElseIf (ah.DistributionSD.HasValue AndAlso ah.DistributionSD.Value > 100.0) Then
             err = True

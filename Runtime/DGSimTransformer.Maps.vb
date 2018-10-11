@@ -13,13 +13,13 @@ Partial Class DGSimTransformer
     Private m_DemographicRateShiftMap As New DemographicRateShiftMap()
     Private m_CensusDataMap As New CensusDataMap()
 
-    Private Sub CreateMaps()
+    Private Sub CreateCollectionMaps()
 
         Debug.Assert(Me.Project Is Me.ResultScenario.Project)
 
-        Me.m_AnnualHarvestValueMap.Initialize(Me.m_AnnualHarvestValues, Me.m_RunControl.MaximumIteration)
-        Me.m_AnnualizedMortalityRateMap.Initialize(Me.m_AnnualizedMortalityRates, Me.m_RunControl.StartJulianDay, Me.m_RunControl.MaximumIteration)
-        Me.m_OffspringPerFemaleValueMap.Initialize(Me.m_OffspringPerFemaleValues, Me.m_RunControl.MaximumIteration)
+        Me.m_AnnualHarvestValueMap.Initialize(Me.m_AnnualHarvestValues, Me.m_RunControl)
+        Me.m_AnnualizedMortalityRateMap.Initialize(Me.m_AnnualizedMortalityRates, Me.m_RunControl)
+        Me.m_OffspringPerFemaleValueMap.Initialize(Me.m_OffspringPerFemaleValues, Me.m_RunControl)
         Me.m_DemographicRateShiftMap.Initialize(Me.m_DemographicRateShifts)
         Me.m_CensusDataMap.Initialize(Me.m_CensusData)
 

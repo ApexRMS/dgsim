@@ -5,48 +5,21 @@
 '
 '*********************************************************************************************
 
-Class InitialPopulationSize
+Imports SyncroSim.StochasticTime
 
-    Private m_Mean As Integer
-    Private m_Min As Integer
-    Private m_Max As Integer
-    Private m_SD As Double
+Class InitialPopulationSize
+    Inherits DistributionBase
 
     Public Sub New(
-        ByVal mean As Integer,
-        ByVal min As Integer,
-        ByVal max As Integer,
-        ByVal sd As Double)
+        ByVal mean As Nullable(Of Double),
+        ByVal distributionType As Nullable(Of Double),
+        ByVal distributionSD As Nullable(Of Double),
+        ByVal distributionMin As Nullable(Of Double),
+        ByVal distributionMax As Nullable(Of Double),
+        ByVal distributionProvider As DistributionProvider)
 
-        Me.m_Mean = mean
-        Me.m_Min = min
-        Me.m_Max = max
-        Me.m_SD = sd
+        MyBase.New(mean, distributionType, distributionSD, distributionMin, distributionMax, distributionProvider)
 
     End Sub
-
-    Public ReadOnly Property Mean As Integer
-        Get
-            Return Me.m_Mean
-        End Get
-    End Property
-
-    Public ReadOnly Property Min As Integer
-        Get
-            Return Me.m_Min
-        End Get
-    End Property
-
-    Public ReadOnly Property Max As Integer
-        Get
-            Return Me.m_Max
-        End Get
-    End Property
-
-    Public ReadOnly Property SD As Double
-        Get
-            Return Me.m_SD
-        End Get
-    End Property
 
 End Class

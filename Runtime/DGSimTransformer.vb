@@ -19,7 +19,8 @@ Class DGSimTransformer
     Private m_OutputRecruitsDataTable As DataTable
     Private m_OutputMortalityDataTable As DataTable
     Private m_OutputPosteriorDistDataTable As DataTable
-    Private m_RandomGenerator As New RandomGenerator()
+    Private m_RandomGenerator As RandomGenerator
+    Private m_DistributionProvider As DistributionProvider
 
     Public Overrides Sub Configure()
 
@@ -28,18 +29,31 @@ Class DGSimTransformer
         Me.ValidateModel()
         Me.NormalizeModelData()
 
-        Me.TimestepUnits = My.Resources.DGSIM_TIMESTEP
-
     End Sub
 
     Public Overrides Sub Initialize()
 
+        MyBase.Initialize()
+
+        Me.InitializeModel()
         Me.InitializeRunControl()
         Me.InitializeOffspringPerFemaleBirthJDay()
         Me.InitializeAnnualHarvestVariables()
         Me.InitializeCollections()
         Me.InitializeOutputDataTables()
-        Me.CreateMaps()
+        Me.CreateCollectionMaps()
+
+    End Sub
+
+    Private Sub ValidateModel()
+
+        If (Me.Project.GetDataSheet(STRATUM_DATASHEET_NAME).GetData().Rows.Count = 0) Then
+            ThrowArgumentException(My.Resources.DGSIM_ERROR_NO_STRATA)
+        End If
+
+        If (Me.Project.GetDataSheet(AGE_CLASS_DATASHEET_NAME).GetData().Rows.Count = 0) Then
+            ThrowArgumentException(My.Resources.DGSIM_ERROR_NO_AGE_CLASSES)
+        End If
 
     End Sub
 
@@ -63,12 +77,6 @@ Class DGSimTransformer
 
     End Sub
 
-    ''' <summary>
-    ''' Runs the model for the specified iteration and timestep
-    ''' </summary>
-    ''' <param name="iteration"></param>
-    ''' <param name="timestep"></param>
-    ''' <remarks></remarks>
     Private Sub SimulateTimestep(ByVal iteration As Integer, ByVal timestep As Integer)
 
         For Each Stratum As Stratum In Me.m_Strata
@@ -256,15 +264,7 @@ Class DGSimTransformer
 
     Private Sub InitializeAgeSexCohortCollection()
 
-        Dim PopSize As Integer =
-            CInt(DGSimGetRandomBeta(
-                CDbl(Me.m_InitialPopulationSize.Mean),
-                Me.m_InitialPopulationSize.SD,
-                CDbl(Me.m_InitialPopulationSize.Min),
-                CDbl(Me.m_InitialPopulationSize.Max),
-                Me.m_RandomGenerator,
-                "Core Model"))
-
+        Dim PopSize As Integer = Me.m_InitialPopulationSize.ReSample()
         Dim SumRel As Double = Me.GetDistSumOfRelativeAmount()
 
         For Each Stratum As Stratum In Me.m_Strata

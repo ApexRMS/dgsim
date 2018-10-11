@@ -6,6 +6,7 @@
 '*********************************************************************************************
 
 Imports SyncroSim.Core
+Imports SyncroSim.StochasticTime
 
 Partial Class DGSimTransformer
 
@@ -14,6 +15,14 @@ Partial Class DGSimTransformer
     Private m_AnnualHarvestPopFilterSex As Nullable(Of Sex)
     Private m_AnnualHarvestPopFilterMinAge As Integer
     Private m_AnnualHarvestPopFilterMaxAge As Integer
+
+    Private Sub InitializeModel()
+
+        Me.TimestepUnits = My.Resources.DGSIM_TIMESTEP
+        Me.m_RandomGenerator = New RandomGenerator()
+        Me.m_DistributionProvider = New DistributionProvider(Me.ResultScenario, Me.m_RandomGenerator)
+
+    End Sub
 
     Private Sub InitializeOffspringPerFemaleBirthJDay()
 
@@ -61,18 +70,6 @@ Partial Class DGSimTransformer
                 ThrowArgumentException(My.Resources.DGSIM_ERROR_ANNUAL_HARVEST_POP_AGE)
             End If
 
-        End If
-
-    End Sub
-
-    Private Sub ValidateModel()
-
-        If (Me.Project.GetDataSheet(STRATUM_DATASHEET_NAME).GetData().Rows.Count = 0) Then
-            ThrowArgumentException(My.Resources.DGSIM_ERROR_NO_STRATA)
-        End If
-
-        If (Me.Project.GetDataSheet(AGE_CLASS_DATASHEET_NAME).GetData().Rows.Count = 0) Then
-            ThrowArgumentException(My.Resources.DGSIM_ERROR_NO_AGE_CLASSES)
         End If
 
     End Sub
