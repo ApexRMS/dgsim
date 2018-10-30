@@ -262,6 +262,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CommonForms\SyncroSim.Common.Forms.csproj">
+      <Project>{13919907-3117-49c5-bb13-2a5d4ccefa57}</Project>
+      <Name>SyncroSim.Common.Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\SyncroSim.Common.csproj">
       <Project>{1376529f-fc5a-43e8-8554-8341b4fe2496}</Project>
       <Name>SyncroSim.Common</Name>
