@@ -34,7 +34,6 @@ Class DGSimUpdates
 
     Private Shared Sub PerformUpdateInternal(store As DataStore, currentSchemaVersion As Integer)
 
-
         If (currentSchemaVersion < 1) Then
             DGSIM0000001(store)
         End If
