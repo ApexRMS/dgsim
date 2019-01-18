@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("SyncroSim.DGSim")>
-<Assembly: AssemblyDescription("A SyncroSim Module for simulating demographics of wildlife populations.")>
+<Assembly: AssemblyDescription("A SyncroSim Package for simulating demographics of wildlife populations.")>
 <Assembly: AssemblyCompany("ApexRMS")>
 <Assembly: AssemblyProduct("SyncroSim.DGSim")>
 <Assembly: AssemblyCopyright("Copyright © 2007-2018 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.")>
