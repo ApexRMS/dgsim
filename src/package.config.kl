@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-  <module name="dgsim" displayName="Demographic Population" version="2.1.40" configVersion="1.0000" contentType="any">
+  <package name="dgsim" displayName="Demographic Population" version="2.1.40" configVersion="1.0000" contentType="any">
     <transformers>
       <transformer name="dgsim" displayName="Demographic Population" isModel="True" isPrimary="True" previousNames="dgsim-model-transformer|dgsim:model-transformer">
         <runtime>
@@ -380,5 +380,5 @@
       minimumModuleVersion="2.1.29" 
       className="SyncroSim.DGSim.DGSimUpdates" 
       classAssembly="SyncroSim.DGSim"/>
-  </module>
+  </package>
 </configuration>
