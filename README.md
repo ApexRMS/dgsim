@@ -1,2 +1,2 @@
-# carep
-A SyncroSim Package for the Caribou Energy Protein Model.
+# dgsim
+A SyncroSim Package for simulating demographics of wildlife populations.
