@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-  <package name="dgsim" displayName="Demographic Population" version="2.1.40" configVersion="2.0000" contentType="any" url="https://github.com/ApexRMS/dgsim">
+  <package name="dgsim" displayName="Demographic Population" version="2.2.0" configVersion="2.0000" contentType="any" url="https://github.com/ApexRMS/dgsim">
     <transformers>
       <transformer name="dgsim" displayName="Demographic Population" isModel="True" isPrimary="True" previousNames="dgsim-model-transformer|dgsim:model-transformer">
         <runtime>
