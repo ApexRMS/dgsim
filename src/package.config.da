@@ -372,11 +372,11 @@
         <item name="Mortality" dataSheet="DGSim_OutputMortality" column="Mortality" filter="AgeClassID|Sex|StratumID"/>
       </layout>
     </layouts>
-    <updateProvider 
-      schemaVersionTableName="DGSim_Version" 
-      schemaVersion="2" 
-      minimumModuleVersion="2.1.29" 
-      className="SyncroSim.DGSim.DGSimUpdates" 
+    <updateProvider
+      tableName="DGSim_Version"
+      schemaVersion="2"
+      packageVersion="2.1.29"
+      className="SyncroSim.DGSim.DGSimUpdates"
       classAssembly="SyncroSim.DGSim"/>
   </package>
 </configuration>
