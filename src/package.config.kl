@@ -2,7 +2,7 @@
 <configuration>
   <package name="dgsim" displayName="SyncroSim Base Package for simulating demographics of wildlife populations." version="2.2.0" configVersion="2.0000" url="https://github.com/ApexRMS/dgsim">
     <transformers>
-      <transformer name="dgsim" isModel="True" isPrimary="True">
+      <transformer name="dgsim" isPrimary="True">
         <runtime>
           <transformer name="dgsim:runtime"/>
         </runtime>
