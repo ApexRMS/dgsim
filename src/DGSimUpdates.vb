@@ -32,6 +32,22 @@ Class DGSimUpdates
 
     End Sub
 
+#If DEBUG Then
+
+    Private Shared Sub ASSERT_INDEX_EXISTS(ByVal store As DataStore, ByVal tableName As String)
+
+        If (store.TableExists(tableName)) Then
+
+            Dim IndexName As String = tableName + "_Index"
+            Dim Query As String = String.Format(CultureInfo.InvariantCulture, "SELECT COUNT(name) FROM sqlite_master WHERE type = 'index' AND name = '{0}'", IndexName)
+            Debug.Assert(CInt(store.ExecuteScalar(Query)) = 1)
+
+        End If
+
+    End Sub
+
+#End If
+
     Private Shared Sub PerformUpdateInternal(store As DataStore, currentSchemaVersion As Integer)
 
         If (currentSchemaVersion < 1) Then
