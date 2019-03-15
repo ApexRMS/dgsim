@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("A SyncroSim Package for simulating demographics of wildlife populations.")>
 <Assembly: AssemblyCompany("ApexRMS")>
 <Assembly: AssemblyProduct("SyncroSim.DGSim")>
-<Assembly: AssemblyCopyright("Copyright © 2007-2019 Apex Resource Management Solution Ltd. (ApexRMS). All rights reserved.")>
+<Assembly: AssemblyCopyright("Copyright © 2007-2019 Apex Resource Management Solutions Ltd. (ApexRMS). All rights reserved.")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
