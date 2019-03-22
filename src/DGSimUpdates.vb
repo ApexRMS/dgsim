@@ -58,6 +58,14 @@ Class DGSimUpdates
             DGSIM0000002(store)
         End If
 
+        'This Is the beginning of the v2.1.0 schema lineage.
+        'We are setting the base version to 100 to leave room
+        'for the legacy v2.0.N legacy branch.
+
+        If (currentSchemaVersion < 100) Then
+            DGSIM0000100(store)
+        End If
+
     End Sub
 
     ''' <summary>
@@ -258,6 +266,17 @@ Class DGSimUpdates
 
         Next
 
+    End Sub
+
+    ''' <summary>
+    ''' DGSIM0000100
+    ''' </summary>
+    ''' <param name="store"></param>
+    ''' <remarks>
+    ''' Dummy function to force update to schema version 100 for 2.1.0 release.
+    ''' </remarks>
+    Private Shared Sub DGSIM0000100(ByVal store As DataStore)
+        Return
     End Sub
 
 End Class
