@@ -144,13 +144,6 @@ Class DGSimTransformer
 
         For Each Cohort As AgeSexCohort In stratum.AgeSexCohorts
 
-            If (Cohort.Sex = Sex.Female) Then
-
-                NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Sex.Male, stratum, iteration, timestep, MaleCalfMortality)
-                NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Sex.Female, stratum, iteration, timestep, FemaleCalfMortality)
-
-            End If
-
             'Calculate mortality from census to birthday first
             Dim AgeClassId As Integer = GetAgeClassIdFromAge(Cohort.Age)
             Dim TimePeriodMortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Cohort.Sex, AgeClassId, 0, (GetRelativeJulianDay(Me.m_OffspringPerFemaleBirthJDay, Me.m_RunControl.StartJulianDay) - 1))
@@ -170,6 +163,15 @@ Class DGSimTransformer
 
             If NumIndividuals < 0.0 Then
                 NumIndividuals = 0.0
+            End If
+
+            Cohort.NumIndividuals = NumIndividuals
+
+            If (Cohort.Sex = Sex.Female) Then
+
+                NumMaleOffspring += Me.CalculateNumOffspring(Cohort, Sex.Male, stratum, iteration, timestep, MaleCalfMortality)
+                NumFemaleOffspring += Me.CalculateNumOffspring(Cohort, Sex.Female, stratum, iteration, timestep, FemaleCalfMortality)
+
             End If
 
             ' Now calculate mortality from birthday to census
@@ -309,26 +311,15 @@ Class DGSimTransformer
 
         Dim AgeClassId As Integer = GetAgeClassIdFromAge(cohort.Age)
         Dim RelativeCountDay As Integer = Me.CalculateOffspringRelativeCountDay(stratum.Id, iteration, timestep, AgeClassId)
-        Dim Mortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Sex.Female, AgeClassId, 1, RelativeCountDay)
         Dim FecundityAdjustment As Double = Me.m_DemographicRateShiftMap.GetFecundityAdjustment(iteration, timestep, AgeClassId)
         Dim OffspringAgeClassId As Integer = GetAgeClassIdFromAge(0)
-
-        Debug.Assert(Mortality >= 0.0 And Mortality <= 1.0)
-
-        Dim NumIndRounded = Math.Round(cohort.NumIndividuals)
-        Dim NumIndividualsDying As Integer = Me.m_RandomGenerator.GetRandomBinomial(Mortality, NumIndRounded)
         Dim opf As OffspringPerFemaleValue = Me.m_OffspringPerFemaleValueMap.GetItem(stratum.Id, AgeClassId, iteration, timestep)
 
         If (opf IsNot Nothing) Then
 
-            Dim d1 As Double = cohort.NumIndividuals - NumIndividualsDying - cohort.AnnualHarvest
-
-            If d1 < 0.0 Then
-                d1 = 0.0
-            End If
-
+            Debug.Assert(cohort.NumIndividuals > 0)
             Dim d2 As Double = CalculateOffspringPerFemale(opf, FecundityAdjustment) * 0.5
-            Dim d1Rounded As Integer = Math.Round(d1)
+            Dim d1Rounded As Integer = Math.Round(cohort.NumIndividuals)
             Dim NumCalvesBorn = Me.m_RandomGenerator.GetRandomBinomial(d2, d1Rounded)
 
             Me.AddRecruitsToOutputToCollection(cohort, stratum, NumCalvesBorn, offspringSex)
