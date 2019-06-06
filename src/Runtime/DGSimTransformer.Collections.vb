@@ -106,6 +106,8 @@ Partial Class DGSimTransformer
                 GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME),
                 Me.m_DistributionProvider)
 
+            Me.m_InitialPopulationSize.Initialize()
+
         Catch ex As Exception
             Throw New ArgumentException(ds.DisplayName & vbCrLf & ex.Message)
         End Try
