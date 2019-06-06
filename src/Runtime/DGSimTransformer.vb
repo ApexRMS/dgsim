@@ -184,6 +184,11 @@ Class DGSimTransformer
             Me.AddMortalityOutputToCollection(Cohort, stratum, TotalMortality)
 
             NumIndividuals = NumIndividuals - AdditionalMortality
+
+            If NumIndividuals < 0.0 Then
+                NumIndividuals = 0.0
+            End If
+
             Debug.Assert(NumIndividuals >= 0.0)
             Cohort.NumIndividuals = NumIndividuals
 
