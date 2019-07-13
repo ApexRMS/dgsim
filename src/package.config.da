@@ -375,7 +375,7 @@
     <updateProvider
       tableName="DGSim_Version"
       schemaVersion="100" 
-      packageVersion="2.2.0" 
+      minPackageVersion="2.2.0" 
       className="SyncroSim.DGSim.DGSimUpdates"
       classAssembly="SyncroSim.DGSim"/>
   </package>
