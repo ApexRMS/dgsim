@@ -22,11 +22,11 @@ Class DGSimUpdates
         'Verify that all expected indexes exist after the update because it Is easy to forget to recreate them after 
         'adding a column to an existing table (which requires the table to be recreated if you want to preserve column order.)
 
-        ASSERT_INDEX_EXISTS(store, "DGSim_OutputPopulationSize")
-        ASSERT_INDEX_EXISTS(store, "DGSim_OutputHarvest")
-        ASSERT_INDEX_EXISTS(store, "DGSim_OutputRecruits")
-        ASSERT_INDEX_EXISTS(store, "DGSim_OutputMortality")
-        ASSERT_INDEX_EXISTS(store, "DGSim_OutputPosteriorDistributionValue")
+        ASSERT_INDEX_EXISTS(store, "dgsim__OutputPopulationSize")
+        ASSERT_INDEX_EXISTS(store, "dgsim__OutputHarvest")
+        ASSERT_INDEX_EXISTS(store, "dgsim__OutputRecruits")
+        ASSERT_INDEX_EXISTS(store, "dgsim__OutputMortality")
+        ASSERT_INDEX_EXISTS(store, "dgsim__OutputPosteriorDistributionValue")
 
 #End If
 
@@ -64,6 +64,10 @@ Class DGSimUpdates
 
         If (currentSchemaVersion < 100) Then
             DGSIM0000100(store)
+        End If
+
+        If (currentSchemaVersion < 101) Then
+            DGSIM0000101(store)
         End If
 
     End Sub
@@ -172,7 +176,7 @@ Class DGSimUpdates
 
         '#4 above
 
-        Dim Scenarios As DataTable = store.CreateDataTable("SSim_Scenario")
+        Dim Scenarios As DataTable = store.CreateDataTable("system__Scenario")
         Dim BetaDistIds As Dictionary(Of Integer, Integer) = CreateProjectXDistTypeIdDictionary(store)
 
         For Each dr In Scenarios.Rows
@@ -201,7 +205,7 @@ Class DGSimUpdates
 
     Private Shared Function CreateProjectXDistTypeIdDictionary(ByVal store As DataStore) As Dictionary(Of Integer, Integer)
 
-        Dim DistTypes As DataTable = store.CreateDataTableFromQuery("SELECT * FROM STime_DistributionType WHERE Name='Beta'", "DistTypes")
+        Dim DistTypes As DataTable = store.CreateDataTableFromQuery("SELECT * FROM stime__DistributionType WHERE Name='Beta'", "DistTypes")
         Dim BetaDistIds As Dictionary(Of Integer, Integer) = New Dictionary(Of Integer, Integer)
 
         For Each dr As DataRow In DistTypes.Rows
@@ -222,11 +226,11 @@ Class DGSimUpdates
         'Note that it is possible that STime_DistributionType already exists.  If it does, 
         'it should have the correct distribution type records.
 
-        If (store.TableExists("STime_DistributionType")) Then
+        If (store.TableExists("stime__DistributionType")) Then
             Return
         End If
 
-        store.ExecuteNonQuery("CREATE TABLE STime_DistributionType ( 
+        store.ExecuteNonQuery("CREATE TABLE stime__DistributionType ( 
             DistributionTypeID INTEGER PRIMARY KEY,
             ProjectID          INTEGER,
             Name               TEXT,
@@ -240,7 +244,7 @@ Class DGSimUpdates
         '  <record columns = "Name|Description|IsInternal" values="Uniform Integer|Uniform Integer Distribution|-1"/>
         '</defaultRecords>
 
-        Dim Projects As DataTable = store.CreateDataTable("SSim_Project")
+        Dim Projects As DataTable = store.CreateDataTable("system__Project")
 
         For Each ProjectRow As DataRow In Projects.Rows
 
@@ -249,7 +253,7 @@ Class DGSimUpdates
             Dim NormalDistTypeId As Integer = Library.GetNextSequenceId(store)
             Dim UniformDistTypeId As Integer = Library.GetNextSequenceId(store)
             Dim UniformIntegerDistTypeId As Integer = Library.GetNextSequenceId(store)
-            Dim Template As String = "INSERT INTO STime_DistributionType(DistributionTypeID, ProjectID, Name, Description, IsInternal) VALUES({0}, {1}, '{2}', '{3}', -1)"
+            Dim Template As String = "INSERT INTO stime__DistributionType(DistributionTypeID, ProjectID, Name, Description, IsInternal) VALUES({0}, {1}, '{2}', '{3}', -1)"
             Dim Query As String = Nothing
 
             Query = String.Format(CultureInfo.InvariantCulture, Template, BetaDistTypeId, ProjectId, "Beta", "Beta Distribution")
@@ -277,6 +281,37 @@ Class DGSimUpdates
     ''' </remarks>
     Private Shared Sub DGSIM0000100(ByVal store As DataStore)
         Return
+    End Sub
+
+    ''' <summary>
+    ''' DGSIM0000101
+    ''' </summary>
+    ''' <param name="store"></param>
+    ''' <remarks>
+    ''' This update renames the dgsim tables for the new namespace rules.
+    ''' </remarks>
+    Private Shared Sub DGSIM0000101(ByVal store As DataStore)
+
+        UpdateProvider.RenameTablesWithPrefix(store, "DGSim_", "dgsim__")
+
+        store.ExecuteNonQuery("DROP INDEX IF EXISTS DGSim_OutputPopulationSize_Index")
+        store.ExecuteNonQuery("DROP INDEX IF EXISTS DGSim_OutputHarvest_Index")
+        store.ExecuteNonQuery("DROP INDEX IF EXISTS DGSim_OutputRecruits_Index")
+        store.ExecuteNonQuery("DROP INDEX IF EXISTS DGSim_OutputMortality_Index")
+        store.ExecuteNonQuery("DROP INDEX IF EXISTS DGSim_OutputPosteriorDistributionValue_Index")
+
+        UpdateProvider.CreateIndex(store, "dgsim__OutputPopulationSize", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID", "Sex", "AgeClassID"})
+        UpdateProvider.CreateIndex(store, "dgsim__OutputHarvest", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID", "Sex", "AgeClassID"})
+        UpdateProvider.CreateIndex(store, "dgsim__OutputRecruits", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID", "MotherAgeClassID", "OffspringSex"})
+        UpdateProvider.CreateIndex(store, "dgsim__OutputMortality", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID", "Sex", "AgeClassID"})
+        UpdateProvider.CreateIndex(store, "dgsim__OutputPosteriorDistributionValue", New String() {"ScenarioID", "Iteration", "Timestep", "StratumID", "Sex", "AgeClassID"})
+
+        store.ExecuteNonQuery("UPDATE stime__Chart SET Criteria = REPLACE(Criteria, 'DGSim_', 'dgsim__')")
+        store.ExecuteNonQuery("UPDATE stime__Chart SET Criteria = REPLACE(Criteria, 'Population', 'dgsim__Population')")
+        store.ExecuteNonQuery("UPDATE stime__Chart SET Criteria = REPLACE(Criteria, 'Harvest', 'dgsim__Harvest')")
+        store.ExecuteNonQuery("UPDATE stime__Chart SET Criteria = REPLACE(Criteria, 'Recruits', 'dgsim__Recruits')")
+        store.ExecuteNonQuery("UPDATE stime__Chart SET Criteria = REPLACE(Criteria, 'Mortality', 'dgsim__Mortality')")
+
     End Sub
 
 End Class
