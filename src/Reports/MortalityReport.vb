@@ -51,21 +51,21 @@ Class MortalityReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "dgsim__OutputMortality.ScenarioID, " &
-            "system__Scenario.Name AS ScenarioName, " &
-            "dgsim__OutputMortality.Iteration, " &
-            "dgsim__OutputMortality.Timestep, " &
-            "dgsim__Stratum.Name AS StratumName, " &
-            "CASE WHEN dgsim__OutputMortality.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
-            "dgsim__AgeClass.Name AS AgeClassName, " &
-            "dgsim__OutputMortality.Mortality " &
-            "FROM dgsim__OutputMortality " &
-            "INNER JOIN system__Scenario ON system__Scenario.ScenarioID = dgsim__OutputMortality.ScenarioID " &
-            "INNER JOIN dgsim__Stratum ON dgsim__OutputMortality.StratumID = dgsim__Stratum.StratumID " &
-            "INNER JOIN dgsim__AgeClass ON dgsim__OutputMortality.AgeClassID = dgsim__AgeClass.AgeClassID " &
-            "WHERE dgsim__OutputMortality.ScenarioID IN ({0}) " &
+            "dgsim_OutputMortality.ScenarioID, " &
+            "core_Scenario.Name AS ScenarioName, " &
+            "dgsim_OutputMortality.Iteration, " &
+            "dgsim_OutputMortality.Timestep, " &
+            "dgsim_Stratum.Name AS StratumName, " &
+            "CASE WHEN dgsim_OutputMortality.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
+            "dgsim_AgeClass.Name AS AgeClassName, " &
+            "dgsim_OutputMortality.Mortality " &
+            "FROM dgsim_OutputMortality " &
+            "INNER JOIN core_Scenario ON core_Scenario.ScenarioID = dgsim_OutputMortality.ScenarioID " &
+            "INNER JOIN dgsim_Stratum ON dgsim_OutputMortality.StratumID = dgsim_Stratum.StratumID " &
+            "INNER JOIN dgsim_AgeClass ON dgsim_OutputMortality.AgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputMortality.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "dgsim__OutputMortality.ScenarioID, " &
+            "dgsim_OutputMortality.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &

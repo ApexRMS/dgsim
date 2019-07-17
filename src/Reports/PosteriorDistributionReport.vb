@@ -53,24 +53,24 @@ Class PosteriorDistributionReport
     Private Function CreateReportQuery() As String
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
-            "SELECT dgsim__OutputPosteriorDistributionValue.ScenarioID, " &
-            "system__Scenario.Name as ScenarioName, " &
-            "dgsim__Stratum.Name as StratumName, " &
+            "SELECT dgsim_OutputPosteriorDistributionValue.ScenarioID, " &
+            "core_Scenario.Name as ScenarioName, " &
+            "dgsim_Stratum.Name as StratumName, " &
             "Iteration, " &
             "Timestep, " &
             "CASE WHEN HasCensusData=0 THEN 'No' ELSE 'Yes' END AS HasCensusData, " &
             "JulianDay, " &
             "CASE WHEN Sex=0 THEN 'Male' WHEN Sex=1 THEN 'Female' ELSE NULL END AS Sex, " &
-            "dgsim__AgeClass.Name as AgeClassName, " &
+            "dgsim_AgeClass.Name as AgeClassName, " &
             "CASE WHEN Variable=0 THEN 'Harvest' WHEN Variable=1 THEN 'Mortality' ELSE 'Offspring' END AS VariableName, " &
             "CASE WHEN IsFiltered=0 THEN 'No' ELSE 'Yes' END AS IsFilteredName, " &
             "Value " &
-            "FROM(dgsim__OutputPosteriorDistributionValue) " &
-            "INNER JOIN system__Scenario ON dgsim__OutputPosteriorDistributionValue.ScenarioID = system__Scenario.ScenarioID " &
-            "LEFT JOIN dgsim__Stratum ON dgsim__OutputPosteriorDistributionValue.StratumID = dgsim__Stratum.StratumID " &
-            "LEFT JOIN dgsim__AgeClass ON dgsim__OutputPosteriorDistributionValue.AgeClassID = dgsim__AgeClass.AgeClassID " &
-            "WHERE dgsim__OutputPosteriorDistributionValue.ScenarioID IN ({0}) " &
-            "ORDER BY dgsim__OutputPosteriorDistributionValue.ScenarioID, dgsim__Stratum.Name, Iteration, Timestep, JulianDay, Sex, dgsim__AgeClass.Name, IsFiltered, Variable",
+            "FROM(dgsim_OutputPosteriorDistributionValue) " &
+            "INNER JOIN core_Scenario ON dgsim_OutputPosteriorDistributionValue.ScenarioID = core_Scenario.ScenarioID " &
+            "LEFT JOIN dgsim_Stratum ON dgsim_OutputPosteriorDistributionValue.StratumID = dgsim_Stratum.StratumID " &
+            "LEFT JOIN dgsim_AgeClass ON dgsim_OutputPosteriorDistributionValue.AgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputPosteriorDistributionValue.ScenarioID IN ({0}) " &
+            "ORDER BY dgsim_OutputPosteriorDistributionValue.ScenarioID, dgsim_Stratum.Name, Iteration, Timestep, JulianDay, Sex, dgsim_AgeClass.Name, IsFiltered, Variable",
             Me.CreateActiveResultScenarioFilter())
 
         Return Query

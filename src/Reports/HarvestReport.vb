@@ -51,21 +51,21 @@ Class HarvestReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "dgsim__OutputHarvest.ScenarioID, " &
-            "system__Scenario.Name AS ScenarioName, " &
-            "dgsim__OutputHarvest.Iteration, " &
-            "dgsim__OutputHarvest.Timestep, " &
-            "dgsim__Stratum.Name AS StratumName, " &
-            "CASE WHEN dgsim__OutputHarvest.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
-            "dgsim__AgeClass.Name AS AgeClassName, " &
-            "dgsim__OutputHarvest.Harvest " &
-            "FROM dgsim__OutputHarvest " &
-            "INNER JOIN system__Scenario ON system__Scenario.ScenarioID = dgsim__OutputHarvest.ScenarioID " &
-            "INNER JOIN dgsim__Stratum ON dgsim__OutputHarvest.StratumID = dgsim__Stratum.StratumID " &
-            "INNER JOIN dgsim__AgeClass ON dgsim__OutputHarvest.AgeClassID = dgsim__AgeClass.AgeClassID " &
-            "WHERE dgsim__OutputHarvest.ScenarioID IN ({0}) " &
+            "dgsim_OutputHarvest.ScenarioID, " &
+            "core_Scenario.Name AS ScenarioName, " &
+            "dgsim_OutputHarvest.Iteration, " &
+            "dgsim_OutputHarvest.Timestep, " &
+            "dgsim_Stratum.Name AS StratumName, " &
+            "CASE WHEN dgsim_OutputHarvest.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
+            "dgsim_AgeClass.Name AS AgeClassName, " &
+            "dgsim_OutputHarvest.Harvest " &
+            "FROM dgsim_OutputHarvest " &
+            "INNER JOIN core_Scenario ON core_Scenario.ScenarioID = dgsim_OutputHarvest.ScenarioID " &
+            "INNER JOIN dgsim_Stratum ON dgsim_OutputHarvest.StratumID = dgsim_Stratum.StratumID " &
+            "INNER JOIN dgsim_AgeClass ON dgsim_OutputHarvest.AgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputHarvest.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "dgsim__OutputHarvest.ScenarioID, " &
+            "dgsim_OutputHarvest.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &

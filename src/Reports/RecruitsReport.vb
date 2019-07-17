@@ -51,21 +51,21 @@ Class RecruitsReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "dgsim__OutputRecruits.ScenarioID, " &
-            "system__Scenario.Name AS ScenarioName, " &
-            "dgsim__OutputRecruits.Iteration, " &
-            "dgsim__OutputRecruits.Timestep, " &
-            "dgsim__Stratum.Name AS StratumName, " &
-            "CASE WHEN dgsim__OutputRecruits.OffspringSex=0 THEN 'Male' ELSE 'Female' END AS OffspringSex, " &
-            "dgsim__AgeClass.Name AS MotherAgeClassName, " &
-            "dgsim__OutputRecruits.Recruits " &
-            "FROM dgsim__OutputRecruits " &
-            "INNER JOIN system__Scenario ON system__Scenario.ScenarioID = dgsim__OutputRecruits.ScenarioID " &
-            "INNER JOIN dgsim__Stratum ON dgsim__OutputRecruits.StratumID = dgsim__Stratum.StratumID " &
-            "INNER JOIN dgsim__AgeClass ON dgsim__OutputRecruits.MotherAgeClassID = dgsim__AgeClass.AgeClassID " &
-            "WHERE dgsim__OutputRecruits.ScenarioID IN ({0}) " &
+            "dgsim_OutputRecruits.ScenarioID, " &
+            "core_Scenario.Name AS ScenarioName, " &
+            "dgsim_OutputRecruits.Iteration, " &
+            "dgsim_OutputRecruits.Timestep, " &
+            "dgsim_Stratum.Name AS StratumName, " &
+            "CASE WHEN dgsim_OutputRecruits.OffspringSex=0 THEN 'Male' ELSE 'Female' END AS OffspringSex, " &
+            "dgsim_AgeClass.Name AS MotherAgeClassName, " &
+            "dgsim_OutputRecruits.Recruits " &
+            "FROM dgsim_OutputRecruits " &
+            "INNER JOIN core_Scenario ON core_Scenario.ScenarioID = dgsim_OutputRecruits.ScenarioID " &
+            "INNER JOIN dgsim_Stratum ON dgsim_OutputRecruits.StratumID = dgsim_Stratum.StratumID " &
+            "INNER JOIN dgsim_AgeClass ON dgsim_OutputRecruits.MotherAgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputRecruits.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "dgsim__OutputRecruits.ScenarioID, " &
+            "dgsim_OutputRecruits.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &
