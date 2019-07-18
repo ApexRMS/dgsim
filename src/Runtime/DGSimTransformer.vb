@@ -156,7 +156,7 @@ Class DGSimTransformer
             Dim TimePeriodMortality As Double = Me.CalculateTimePeriodMortality(stratum, iteration, timestep, Cohort.Sex, AgeClassId, 0, (GetRelativeJulianDay(Me.m_OffspringPerFemaleBirthJDay, Me.m_RunControl.StartJulianDay) - 1))
             Dim NumIndRounded = Math.Round(Cohort.NumIndividuals)
             Dim TotalMortality As Double = Me.m_RandomGenerator.GetRandomBinomial(TimePeriodMortality, NumIndRounded)
-            Dim NumIndividuals As Double = Cohort.NumIndividuals - TotalMortality
+            Dim NumIndividuals As Double = NumIndRounded - TotalMortality
 
             'Update the annual harvest collection
             If (Cohort.AnnualHarvest <= NumIndividuals) Then
@@ -183,8 +183,12 @@ Class DGSimTransformer
             'Update the mortality collection
             Me.AddMortalityOutputToCollection(Cohort, stratum, TotalMortality)
 
-            NumIndividuals = NumIndividuals - AdditionalMortality
-            Debug.Assert(NumIndividuals >= 0.0)
+            NumIndividuals = NumIndRounded - AdditionalMortality
+
+            If (NumIndividuals < 0.0) Then
+                NumIndividuals = 0.0
+            End If
+
             Cohort.NumIndividuals = NumIndividuals
 
         Next
