@@ -1,20 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-  <package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.1" configVersion="2.0000" url="https://github.com/ApexRMS/dgsim">
+  <package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.2" configVersion="2.0000" url="https://github.com/ApexRMS/dgsim">
     <transformers>
-      <transformer name="dgsim" isPrimary="True">
-        <runtime>
-          <transformer name="dgsim:runtime"/>
-        </runtime>
+      <transformer name="Primary" displayName="Demographic Population" isPrimary="True" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="RunControl">
         <include>
-          <transformer name="stime:charts"/>
+          <transformer name="corestime_Runtime"/>
         </include>
-      </transformer>
-      <transformer name="dgsim:runtime" displayName="Demographic Population" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="DGSim_RunControl">
         <datafeeds>
-          <datafeed name="dgsim:ageclass-datafeed" displayName="Age Classes" dataScope="Project">
+          <datafeed name="AgeClass" displayName="Age Classes" dataScope="Project">
             <datasheets>
-              <datasheet name="DGSim_AgeClass" displayName="Age Classes" valueMember="AgeClassID" displayMember="Name">
+              <datasheet name="AgeClass" displayName="Age Classes" valueMember="AgeClassID" displayMember="Name">
                 <columns>
                   <column name="AgeClassID" dataType="Integer" isPrimary="True"/>
                   <column name="ProjectID" dataType="Integer"/>
@@ -24,9 +19,9 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:stratum-datafeed" displayName="Strata" dataScope="Project">
+          <datafeed name="Stratum" displayName="Strata" dataScope="Project">
             <datasheets>
-              <datasheet name="DGSim_Stratum" displayName="Strata" valueMember="StratumID" displayMember="Name">
+              <datasheet name="Stratum" displayName="Strata" valueMember="StratumID" displayMember="Name">
                 <columns>
                   <column name="StratumID" dataType="Integer" isPrimary="True"/>
                   <column name="ProjectID" dataType="Integer"/>
@@ -36,9 +31,9 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:run-control-datafeed" displayName="Kør Kontrol" dataScope="Scenario">
+          <datafeed name="RunControl" displayName="Kør Kontrol" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_RunControl" displayName="Kør Kontrol" isSingleRow="True">
+              <datasheet name="RunControl" displayName="Kør Kontrol" isSingleRow="True">
                 <columns>
                   <column name="RunControlID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
@@ -55,9 +50,9 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:initial-population-datafeed" displayName="Initial Population" dataScope="Scenario">
+          <datafeed name="InitialPopulation" displayName="Initial Population" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_InitialPopulationSize" displayName="Initial Population Size" isSingleRow="True">
+              <datasheet name="InitialPopulationSize" displayName="Initial Population Size" isSingleRow="True">
                 <columns>
                   <column name="InitialPopulationSizeID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
@@ -71,11 +66,11 @@
                   <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
                 </validations>
               </datasheet>
-              <datasheet name="DGSim_InitialPopulationDistribution" displayName="Initial Population Distribution">
+              <datasheet name="InitialPopulationDistribution" displayName="Initial Population Distribution">
                 <columns>
                   <column name="InitialPopulationDistributionID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Hankøn|1:Hunkøn" isOptional="True"/>
                   <column name="MinimumAge" displayName="MinimumAge" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
                   <column name="MaximumAge" displayName="MaximumAge" dataType="Integer" validationType="WholeNumber"/>
@@ -87,36 +82,36 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:ageclass-range-datafeed" displayName="Age Class Ranges" dataScope="Scenario">
+          <datafeed name="AgeClassRange" displayName="Age Class Ranges" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_AgeClassRange" displayName="Age Class Ranges">
+              <datasheet name="AgeClassRange" displayName="Age Class Ranges">
                 <columns>
                   <column name="AgeClassRangeID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass"/>
                   <column name="MaximumAge" displayName="Maximum Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
                 </columns>
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:offspring-per-female-datafeed" displayName="Offspring per Female" dataScope="Scenario">
+          <datafeed name="OffspringPerFemale" displayName="Offspring per Female" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_OffspringPerFemaleOption" displayName="Offspring per Female Options" isSingleRow="True">
+              <datasheet name="OffspringPerFemaleOption" displayName="Offspring per Female Options" isSingleRow="True">
                 <columns>
                   <column name="OffspringPerFemaleOptionID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
                   <column name="BirthJulianDay" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365"/>
                 </columns>
               </datasheet>
-              <datasheet name="DGSim_OffspringPerFemaleValue" displayName="Offspring per Female Values">
+              <datasheet name="OffspringPerFemaleValue" displayName="Offspring per Female Values">
                 <columns>
                   <column name="OffspringPerFemaleValueID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
                   <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
                   <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
                   <column name="CountJulianDay" displayName="Count Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isOptional="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
                   <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
                   <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
                   <column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
@@ -128,18 +123,18 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:annualized-mortality-rate-datafeed" displayName="Annualized Mortality Rate" dataScope="Scenario">
+          <datafeed name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_AnnualizedMortalityRate" displayName="Annualized Mortality Rate">
+              <datasheet name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate">
                 <columns>
                   <column name="AnnualizedMortalityRateID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
                   <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
                   <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
                   <column name="JulianDay" displayName="Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isOptional="True"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
                   <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
                   <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
                   <column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
@@ -151,9 +146,9 @@
               </datasheet>
             </datasheets>
           </datafeed>                            
-          <datafeed name="dgsim:annual-harvest-option-datafeed" displayName="Årlig Fangst Option" dataScope="Scenario">
+          <datafeed name="AnnualHarvestOption" displayName="Årlig Fangst Option" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_AnnualHarvestOption" displayName="Årlig Fangst Option" isSingleRow="True">
+              <datasheet name="AnnualHarvestOption" displayName="Årlig Fangst Option" isSingleRow="True">
                 <columns>
                   <column name="AnnualHarvestOptionID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
@@ -168,17 +163,17 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:annual-harvest-value-datafeed" displayName="Årlig Fangsttal" dataScope="Scenario">
+          <datafeed name="AnnualHarvestValue" displayName="Årlig Fangsttal" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_AnnualHarvestValue" displayName="Årlig Fangsttal">
+              <datasheet name="AnnualHarvestValue" displayName="Årlig Fangsttal">
                 <columns>
                   <column name="AnnualHarvestValueID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
                   <column name="Iteration" dataType="Integer" displayName="Gentagelse" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
                   <column name="Timestep" displayName="År" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isOptional="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
                   <column name="Sex" dataType="Integer" displayName="Køn" validationType="List" formula1="0:Hankøn|1:Hunkøn" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Aldersklasse" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isOptional="True"/>
+                  <column name="AgeClassID" displayName="Aldersklasse" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
                   <column name="Mean" dataType="Double" displayName="Middelværdi" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
                   <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
                   <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
@@ -191,15 +186,15 @@
               </datasheet>
             </datasheets>
           </datafeed>                    
-          <datafeed name="dgsim:demographic-rate-shift-datafeed" displayName="Demographic Rate Shifts" dataScope="Scenario">
+          <datafeed name="DemographicRateShift" displayName="Demographic Rate Shifts" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_DemographicRateShift" displayName="Demographic Rate Shifts">
+              <datasheet name="DemographicRateShift" displayName="Demographic Rate Shifts">
                 <columns>
                   <column name="DemographicRateShiftID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
                   <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
                   <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass"/>
                   <column name="Fecundity" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
                   <column name="Mortality" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
                 </columns>
@@ -209,14 +204,14 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:census-datafeed" displayName="Census Data" dataScope="Scenario">
+          <datafeed name="Census" displayName="Census Data" dataScope="Scenario">
             <datasheets>
-              <datasheet name="DGSim_Census" displayName="Census Data">
+              <datasheet name="Census" displayName="Census Data">
                 <columns>
                   <column name="CensusID" dataType="Integer" isPrimary="True"/>
                   <column name="ScenarioID" dataType="Integer"/>
                   <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum"/>
                   <column name="MinimumPopulation" displayName="Minimum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
                   <column name="MaximumPopulation" displayName="Maximum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
                   <column name="MinimumMToFRatio" displayName="Minimum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
@@ -228,78 +223,78 @@
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:output-population-size-datafeed" displayName="Population Size" dataScope="Scenario" isOutput="True">
+          <datafeed name="OutputPopulationSize" displayName="Population Size" dataScope="Scenario" isOutput="True">
             <datasheets>
-              <datasheet name="DGSim_OutputPopulationSize" displayName="Population Size">
+              <datasheet name="OutputPopulationSize" displayName="Population Size">
                 <columns>
                   <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
                   <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
                   <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Population" dataType="Double"/>
                 </columns>
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:output-harvest-datafeed" displayName="Harvest" dataScope="Scenario" isOutput="True">
+          <datafeed name="OutputHarvest" displayName="Harvest" dataScope="Scenario" isOutput="True">
             <datasheets>
-              <datasheet name="DGSim_OutputHarvest" displayName="Harvest">
+              <datasheet name="OutputHarvest" displayName="Harvest">
                 <columns>
                   <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
                   <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
                   <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Harvest" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
                 </columns>
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:output-recruits-datafeed" displayName="Recruits" dataScope="Scenario" isOutput="True">
+          <datafeed name="OutputRecruits" displayName="Recruits" dataScope="Scenario" isOutput="True">
             <datasheets>
-              <datasheet name="DGSim_OutputRecruits" displayName="Recruits">
+              <datasheet name="OutputRecruits" displayName="Recruits">
                 <columns>
                   <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
                   <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
                   <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="MotherAgeClassID" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="MotherAgeClassID" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="OffspringSex" displayName="Offspring Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Recruits" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
                 </columns>
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:output-mortality-datafeed" displayName="Mortality" dataScope="Scenario" isOutput="True">
+          <datafeed name="OutputMortality" displayName="Mortality" dataScope="Scenario" isOutput="True">
             <datasheets>
-              <datasheet name="DGSim_OutputMortality " displayName="Mortality">
+              <datasheet name="OutputMortality " displayName="Mortality">
                 <columns>
                   <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
                   <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
                   <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
                   <column name="Mortality" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
                 </columns>
               </datasheet>
             </datasheets>
           </datafeed>
-          <datafeed name="dgsim:output-posterior-distribution-value-datafeed" displayName="Sampled Inputs by Iteration" dataScope="Scenario" isOutput="True">
+          <datafeed name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration" dataScope="Scenario" isOutput="True">
             <datasheets>
-              <datasheet name="DGSim_OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration">
+              <datasheet name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration">
                 <columns>
                   <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
                   <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
                   <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
                   <column name="HasCensusData" dataType="Boolean"/>
                   <column name="JulianDay" dataType="Integer"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="DGSim_Stratum" isCompositeIndex="True"/>
+                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isCompositeIndex="True"/>
                   <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="DGSim_AgeClass" isCompositeIndex="True"/>
+                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isCompositeIndex="True"/>
                   <column name="Variable" dataType="Integer" validationType="List" formula1="0:Harvest|1:Mortality|2:Offspring"/>
                   <column name="IsFiltered" displayName="IsFiltered" dataType="Boolean"/>
                   <column name="Value" dataType="Double"/>
@@ -309,73 +304,72 @@
           </datafeed>
         </datafeeds>
       </transformer>
-      <transformer name="dgsim:population-size-report" displayName="Population Size Summary" className="SyncroSim.DGSim.PopulationSizeReport" classAssembly="SyncroSim.DGSim">
+      <transformer name="PopulationSizeReport" displayName="Population Size Summary" className="SyncroSim.DGSim.PopulationSizeReport" classAssembly="SyncroSim.DGSim">
       </transformer>
-      <transformer name="dgsim:harvest-report" displayName="Harvest Summary" className="SyncroSim.DGSim.HarvestReport" classAssembly="SyncroSim.DGSim">
+      <transformer name="HarvestReport" displayName="Harvest Summary" className="SyncroSim.DGSim.HarvestReport" classAssembly="SyncroSim.DGSim">
       </transformer>
-      <transformer name="dgsim:recruits-report" displayName="Recruits Summary" className="SyncroSim.DGSim.RecruitsReport" classAssembly="SyncroSim.DGSim">
+      <transformer name="RecruitsReport" displayName="Recruits Summary" className="SyncroSim.DGSim.RecruitsReport" classAssembly="SyncroSim.DGSim">
       </transformer>
-      <transformer name="dgsim:mortality-report" displayName="Mortality Summary" className="SyncroSim.DGSim.MortalityReport" classAssembly="SyncroSim.DGSim">
+      <transformer name="MortalityReport" displayName="Mortality Summary" className="SyncroSim.DGSim.MortalityReport" classAssembly="SyncroSim.DGSim">
       </transformer>
-      <transformer name="dgsim:posterior-distribution-report" displayName="Sampled Inputs by Iteration" className="SyncroSim.DGSim.PosteriorDistributionReport" classAssembly="SyncroSim.DGSim">
+      <transformer name="PosteriorDistributionReport" displayName="Sampled Inputs by Iteration" className="SyncroSim.DGSim.PosteriorDistributionReport" classAssembly="SyncroSim.DGSim">
       </transformer>
     </transformers>
-    <visualizers>
-      <visualizer name="dgsim:run-control-datafeed-visualizer" target="dgsim:run-control-datafeed" className="SyncroSim.DGSim.RunControlDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <visualizer name="dgsim:initial-population-datafeed-visualizer" target="dgsim:initial-population-datafeed" className="SyncroSim.DGSim.InitialPopulationDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <visualizer name="dgsim:offspring-per-female-datafeed-visualizer" target="dgsim:offspring-per-female-datafeed" className="SyncroSim.DGSim.OffspringPerFemaleDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <visualizer name="dgsim:annual-harvest-option-datafeed-visualizer" target="dgsim:annual-harvest-option-datafeed" className="SyncroSim.DGSim.AnnualHarvestOptionDataFeedView" classAssembly="SyncroSim.DGSim"/>
-    </visualizers>
+    <views>
+      <view name="RunControlView" target="RunControl" className="SyncroSim.DGSim.RunControlDataFeedView" classAssembly="SyncroSim.DGSim"/>
+      <view name="InitialPopulationView" target="InitialPopulation" className="SyncroSim.DGSim.InitialPopulationDataFeedView" classAssembly="SyncroSim.DGSim"/>
+      <view name="OffspringPerFemaleView" target="OffspringPerFemale" className="SyncroSim.DGSim.OffspringPerFemaleDataFeedView" classAssembly="SyncroSim.DGSim"/>
+      <view name="AnnualHarvestOptionView" target="AnnualHarvestOption" className="SyncroSim.DGSim.AnnualHarvestOptionDataFeedView" classAssembly="SyncroSim.DGSim"/>
+    </views>
     <layouts>
-      <layout name="system-forms:result-transformers" model="dgsim">
-        <item name="stime:charts"/>
+      <layout name="coreforms_ResultTransformers">
+        <item name="corestime_ChartTransformer"/>
         <group name="Reports">
           <group name="Summary">
-            <item name="dgsim:population-size-report"/>
-            <item name="dgsim:harvest-report"/>
-            <item name="dgsim:recruits-report"/>
-            <item name="dgsim:mortality-report"/>
-            <item name="dgsim:posterior-distribution-report"/>
+            <item name="PopulationSizeReport"/>
+            <item name="HarvestReport"/>
+            <item name="RecruitsReport"/>
+            <item name="MortalityReport"/>
+            <item name="PosteriorDistributionReport"/>
           </group>
         </group>
       </layout>
-      <layout name="system-forms:library-datafeeds" model="dgsim">
-        <item name="system:model-run-datafeed"/>
+      <layout name="coreforms_LibraryDatafeeds">
+        <item name="core_Multiprocessing"/>
       </layout>
-      <layout name="system-forms:project-datafeeds" model="dgsim">
-        <item name="dgsim:stratum-datafeed"/>
-        <item name="dgsim:ageclass-datafeed"/>
+      <layout name="coreforms_ProjectDatafeeds">
+        <item name="Stratum"/>
+        <item name="AgeClass"/>
       </layout>
-      <layout name="system-forms:scenario-datafeeds" model="dgsim">
-        <item name="dgsim:run-control-datafeed"/>
-        <item name="dgsim:initial-population-datafeed"/>
+      <layout name="coreforms_ScenarioDatafeeds">
+        <item name="RunControl"/>
+        <item name="InitialPopulation"/>
         <group name="Demographic Parameters">
-          <item name="dgsim:ageclass-range-datafeed"/>
-          <item name="dgsim:offspring-per-female-datafeed"/>
-          <item name="dgsim:annualized-mortality-rate-datafeed"/>
-          <item name="dgsim:demographic-rate-shift-datafeed"/>
+          <item name="AgeClassRange"/>
+          <item name="OffspringPerFemale"/>
+          <item name="AnnualizedMortalityRate"/>
+          <item name="DemographicRateShift"/>
         </group>
         <group name="Harvest">
-          <item name="dgsim:annual-harvest-value-datafeed" displayName="Årlig Fangst"/>
-          <item name="dgsim:annual-harvest-option-datafeed" displayName="Options"/>
+          <item name="AnnualHarvestValue" displayName="Årlig Fangst"/>
+          <item name="AnnualHarvestOption" displayName="Options"/>
         </group>
-        <item name="dgsim:census-datafeed"/>
+        <item name="census"/>
       </layout>
-      <layout name="system-forms:scenario-datafeeds-lite" model="dgsim">
-        <item name="dgsim:run-control-datafeed"/>
-        <item name="dgsim:annual-harvest-value-datafeed" displayName="Årlig Fangst"/>
+      <layout name="coreforms_ScenarioDatafeedsLite">
+        <item name="RunControl"/>
+        <item name="AnnualHarvestValue" displayName="Årlig Fangst"/>
       </layout>
-      <layout name="stime:charts" configurationSheet="DGSim_RunControl" model="dgsim">
-        <item name="Population" dataSheet="DGSim_OutputPopulationSize" column="Population" filter="AgeClassID|Sex|StratumID"/>
-        <item name="Harvest" dataSheet="DGSim_OutputHarvest" column="Harvest" filter="AgeClassID|Sex|StratumID"/>
-        <item name="Recruits" dataSheet="DGSim_OutputRecruits" column="Recruits" filter="MotherAgeClassID|OffspringSex|StratumID"/>
-        <item name="Mortality" dataSheet="DGSim_OutputMortality" column="Mortality" filter="AgeClassID|Sex|StratumID"/>
-      </layout>
+      <layout name="corestimeforms_Charts" configurationSheet="RunControl">
+        <item name="Population" displayName ="Population" dataSheet="OutputPopulationSize" column="Population" filter="AgeClassID|Sex|StratumID"/>
+        <item name="Harvest" displayName="Harvest" dataSheet="OutputHarvest" column="Harvest" filter="AgeClassID|Sex|StratumID"/>
+        <item name="Recruits" displayName="Recruits" dataSheet="OutputRecruits" column="Recruits" filter="MotherAgeClassID|OffspringSex|StratumID"/>
+        <item name="Mortality" displayName="Mortality" dataSheet="OutputMortality" column="Mortality" filter="AgeClassID|Sex|StratumID"/>
+      </layout>          
     </layouts>
     <updateProvider
-      tableName="DGSim_Version"
-      schemaVersion="100" 
-      packageVersion="2.2.0" 
+      schemaVersion="101" 
+      minPackageVersion="2.2.2" 
       className="SyncroSim.DGSim.DGSimUpdates"
       classAssembly="SyncroSim.DGSim"/>
   </package>

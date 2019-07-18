@@ -51,21 +51,21 @@ Class PopulationSizeReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "DGSim_OutputPopulationSize.ScenarioID, " &
-            "SSim_Scenario.Name AS ScenarioName, " &
-            "DGSim_OutputPopulationSize.Iteration, " &
-            "DGSim_OutputPopulationSize.Timestep, " &
-            "DGSim_Stratum.Name AS StratumName, " &
-            "CASE WHEN DGSim_OutputPopulationSize.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
-            "DGSim_AgeClass.Name AS AgeClassName, " &
-            "DGSim_OutputPopulationSize.Population " &
-            "FROM DGSim_OutputPopulationSize " &
-            "INNER JOIN SSim_Scenario ON SSim_Scenario.ScenarioID = DGSim_OutputPopulationSize.ScenarioID " &
-            "INNER JOIN DGSim_Stratum ON DGSim_OutputPopulationSize.StratumID = DGSim_Stratum.StratumID " &
-            "INNER JOIN DGSim_AgeClass ON DGSim_OutputPopulationSize.AgeClassID = DGSim_AgeClass.AgeClassID " &
-            "WHERE DGSim_OutputPopulationSize.ScenarioID IN ({0}) " &
+            "dgsim_OutputPopulationSize.ScenarioID, " &
+            "core_Scenario.Name AS ScenarioName, " &
+            "dgsim_OutputPopulationSize.Iteration, " &
+            "dgsim_OutputPopulationSize.Timestep, " &
+            "dgsim_Stratum.Name AS StratumName, " &
+            "CASE WHEN dgsim_OutputPopulationSize.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
+            "dgsim_AgeClass.Name AS AgeClassName, " &
+            "dgsim_OutputPopulationSize.Population " &
+            "FROM dgsim_OutputPopulationSize " &
+            "INNER JOIN core_Scenario ON core_Scenario.ScenarioID = dgsim_OutputPopulationSize.ScenarioID " &
+            "INNER JOIN dgsim_Stratum ON dgsim_OutputPopulationSize.StratumID = dgsim_Stratum.StratumID " &
+            "INNER JOIN dgsim_AgeClass ON dgsim_OutputPopulationSize.AgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputPopulationSize.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "DGSim_OutputPopulationSize.ScenarioID, " &
+            "dgsim_OutputPopulationSize.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &

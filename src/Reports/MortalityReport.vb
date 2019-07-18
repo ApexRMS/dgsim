@@ -51,21 +51,21 @@ Class MortalityReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "DGSim_OutputMortality.ScenarioID, " &
-            "SSim_Scenario.Name AS ScenarioName, " &
-            "DGSim_OutputMortality.Iteration, " &
-            "DGSim_OutputMortality.Timestep, " &
-            "DGSim_Stratum.Name AS StratumName, " &
-            "CASE WHEN DGSim_OutputMortality.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
-            "DGSim_AgeClass.Name AS AgeClassName, " &
-            "DGSim_OutputMortality.Mortality " &
-            "FROM DGSim_OutputMortality " &
-            "INNER JOIN SSim_Scenario ON SSim_Scenario.ScenarioID = DGSim_OutputMortality.ScenarioID " &
-            "INNER JOIN DGSim_Stratum ON DGSim_OutputMortality.StratumID = DGSim_Stratum.StratumID " &
-            "INNER JOIN DGSim_AgeClass ON DGSim_OutputMortality.AgeClassID = DGSim_AgeClass.AgeClassID " &
-            "WHERE DGSim_OutputMortality.ScenarioID IN ({0}) " &
+            "dgsim_OutputMortality.ScenarioID, " &
+            "core_Scenario.Name AS ScenarioName, " &
+            "dgsim_OutputMortality.Iteration, " &
+            "dgsim_OutputMortality.Timestep, " &
+            "dgsim_Stratum.Name AS StratumName, " &
+            "CASE WHEN dgsim_OutputMortality.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
+            "dgsim_AgeClass.Name AS AgeClassName, " &
+            "dgsim_OutputMortality.Mortality " &
+            "FROM dgsim_OutputMortality " &
+            "INNER JOIN core_Scenario ON core_Scenario.ScenarioID = dgsim_OutputMortality.ScenarioID " &
+            "INNER JOIN dgsim_Stratum ON dgsim_OutputMortality.StratumID = dgsim_Stratum.StratumID " &
+            "INNER JOIN dgsim_AgeClass ON dgsim_OutputMortality.AgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputMortality.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "DGSim_OutputMortality.ScenarioID, " &
+            "dgsim_OutputMortality.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &

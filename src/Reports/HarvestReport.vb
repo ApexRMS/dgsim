@@ -51,21 +51,21 @@ Class HarvestReport
 
         Dim Query As String = String.Format(CultureInfo.InvariantCulture,
             "SELECT " &
-            "DGSim_OutputHarvest.ScenarioID, " &
-            "SSim_Scenario.Name AS ScenarioName, " &
-            "DGSim_OutputHarvest.Iteration, " &
-            "DGSim_OutputHarvest.Timestep, " &
-            "DGSim_Stratum.Name AS StratumName, " &
-            "CASE WHEN DGSim_OutputHarvest.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
-            "DGSim_AgeClass.Name AS AgeClassName, " &
-            "DGSim_OutputHarvest.Harvest " &
-            "FROM DGSim_OutputHarvest " &
-            "INNER JOIN SSim_Scenario ON SSim_Scenario.ScenarioID = DGSim_OutputHarvest.ScenarioID " &
-            "INNER JOIN DGSim_Stratum ON DGSim_OutputHarvest.StratumID = DGSim_Stratum.StratumID " &
-            "INNER JOIN DGSim_AgeClass ON DGSim_OutputHarvest.AgeClassID = DGSim_AgeClass.AgeClassID " &
-            "WHERE DGSim_OutputHarvest.ScenarioID IN ({0}) " &
+            "dgsim_OutputHarvest.ScenarioID, " &
+            "core_Scenario.Name AS ScenarioName, " &
+            "dgsim_OutputHarvest.Iteration, " &
+            "dgsim_OutputHarvest.Timestep, " &
+            "dgsim_Stratum.Name AS StratumName, " &
+            "CASE WHEN dgsim_OutputHarvest.Sex=0 THEN 'Male' ELSE 'Female' END AS Sex, " &
+            "dgsim_AgeClass.Name AS AgeClassName, " &
+            "dgsim_OutputHarvest.Harvest " &
+            "FROM dgsim_OutputHarvest " &
+            "INNER JOIN core_Scenario ON core_Scenario.ScenarioID = dgsim_OutputHarvest.ScenarioID " &
+            "INNER JOIN dgsim_Stratum ON dgsim_OutputHarvest.StratumID = dgsim_Stratum.StratumID " &
+            "INNER JOIN dgsim_AgeClass ON dgsim_OutputHarvest.AgeClassID = dgsim_AgeClass.AgeClassID " &
+            "WHERE dgsim_OutputHarvest.ScenarioID IN ({0}) " &
             "ORDER BY " &
-            "DGSim_OutputHarvest.ScenarioID, " &
+            "dgsim_OutputHarvest.ScenarioID, " &
             "Iteration, " &
             "Timestep, " &
             "StratumName, " &
