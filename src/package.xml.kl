@@ -1,378 +1,376 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-  <package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.2" configVersion="2.0000" url="https://github.com/ApexRMS/dgsim">
-    <transformers>
-      <transformer name="primary" displayName="Demographic Population" isPrimary="True" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="RunControl">
-        <include>
-          <transformer name="corestime_Runtime"/>
-        </include>
-        <datafeeds>
-          <datafeed name="AgeClass" displayName="Age Classes" dataScope="Project">
-            <datasheets>
-              <datasheet name="AgeClass" displayName="Age Classes" valueMember="AgeClassID" displayMember="Name">
-                <columns>
-                  <column name="AgeClassID" dataType="Integer" isPrimary="True"/>
-                  <column name="ProjectID" dataType="Integer"/>
-                  <column name="Name" dataType="String"/>
-                  <column name="Description" dataType="String" isOptional="True"/>
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="Stratum" displayName="Strata" dataScope="Project">
-            <datasheets>
-              <datasheet name="Stratum" displayName="Strata" valueMember="StratumID" displayMember="Name">
-                <columns>
-                  <column name="StratumID" dataType="Integer" isPrimary="True"/>
-                  <column name="ProjectID" dataType="Integer"/>
-                  <column name="Name" dataType="String"/>
-                  <column name="Description" dataType="String" isOptional="True"/>
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="RunControl" displayName="Nakkutilliineq ingerlatiguk" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="RunControl" displayName="Nakkutilliineq ingerlatiguk" isSingleRow="True">
-                <columns>
-                  <column name="RunControlID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="MinimumIteration" dataType="Integer" defaultValue="1" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="1" format="d"/>
-                  <column name="MaximumIteration" dataType="Integer" defaultValue="1" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="1" format="d"/>
-                  <column name="MinimumTimestep" dataType="Integer" defaultValue="0" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
-                  <column name="MaximumTimestep" dataType="Integer" defaultValue="0" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
-                  <column name="StartJulianDay" dataType="Integer" defaultValue="1" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" format="d"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="MinimumIteration|MaximumIteration"/>
-                  <validation validationType="LessEqual" columns="MinimumTimestep|MaximumTimestep"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="InitialPopulation" displayName="Initial Population" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="InitialPopulationSize" displayName="Initial Population Size" isSingleRow="True">
-                <columns>
-                  <column name="InitialPopulationSizeID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Mean" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
-                  <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
-                  <column name="DistributionSD" displayName="Nalinginnasumik nikingassut" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
-                  <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" isOptional="True"/>
-                  <column name="DistributionMax" displayName="Annerpaaffik" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" isOptional="True"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
-                </validations>
-              </datasheet>
-              <datasheet name="InitialPopulationDistribution" displayName="Initial Population Distribution">
-                <columns>
-                  <column name="InitialPopulationDistributionID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
-                  <column name="Sex" dataType="Integer" validationType="List" formula1="0:Hankøn|1:Hunkøn" isOptional="True"/>
-                  <column name="MinimumAge" displayName="MinimumAge" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
-                  <column name="MaximumAge" displayName="MaximumAge" dataType="Integer" validationType="WholeNumber"/>
-                  <column name="RelativeAmount" displayName="Relative Amount" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="MinimumAge|MaximumAge"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="AgeClassRange" displayName="Age Class Ranges" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="AgeClassRange" displayName="Age Class Ranges">
-                <columns>
-                  <column name="AgeClassRangeID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass"/>
-                  <column name="MaximumAge" displayName="Maximum Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="OffspringPerFemale" displayName="Offspring per Female" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="OffspringPerFemaleOption" displayName="Offspring per Female Options" isSingleRow="True">
-                <columns>
-                  <column name="OffspringPerFemaleOptionID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="BirthJulianDay" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365"/>
-                </columns>
-              </datasheet>
-              <datasheet name="OffspringPerFemaleValue" displayName="Offspring per Female Values">
-                <columns>
-                  <column name="OffspringPerFemaleValueID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
-                  <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
-                  <column name="CountJulianDay" displayName="Count Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
-                  <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
-                  <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
-                  <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
-                  <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
-                  <column name="DistributionMax" displayName="Annerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate">
-                <columns>
-                  <column name="AnnualizedMortalityRateID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
-                  <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
-                  <column name="JulianDay" displayName="Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
-                  <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
-                  <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
-                  <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
-                  <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
-                  <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
-                  <column name="DistributionMax" displayName="Annerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>          
-          <datafeed name="AnnualHarvestOption" displayName="Ukiumut pisat Option" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="AnnualHarvestOption" displayName="Ukiumut pisat Option" isSingleRow="True">
-                <columns>
-                  <column name="AnnualHarvestOptionID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Specification" displayName="Specify Harvest As" dataType="Integer" validationType="List" formula1="0:Amerlassusiviusut|1:Ukioqatigiiaat ilaat|2:Peqassutsip ilaa"/>
-                  <column name="PopFilterGender" displayName="Pop Filter Sex" dataType="Integer" validationType="List" formula1="0:Angutiviaq|1:Arnaviaq"/>
-                  <column name="PopFilterMinAge" displayName="Pop Filter Min Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
-                  <column name="PopFilterMaxAge" displayName="Pop Filter Max Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="PopFilterMinAge|PopFilterMaxAge"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="AnnualHarvestValue" displayName="Pisat ukiumut amerlassusiat" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="AnnualHarvestValue" displayName="Pisat ukiumut amerlassusiat">
-                <columns>
-                  <column name="AnnualHarvestValueID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Iteration" dataType="Integer" displayName="Uteqqiineq" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
-                  <column name="Timestep" displayName="Ukioq" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
-                  <column name="Sex" dataType="Integer" displayName="Suiaassuseq" validationType="List" formula1="0:Hankøn|1:Hunkøn" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Ukioqatigiiaat" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
-                  <column name="Mean" dataType="Double" displayName="Agguaqatigiissitsinerup nalinga" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
-                  <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
-                  <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
-                  <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
-                  <column name="DistributionMax" displayName="Annerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>                              
-          <datafeed name="DemographicRateShift" displayName="Demographic Rate Shifts" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="DemographicRateShift" displayName="Demographic Rate Shifts">
-                <columns>
-                  <column name="DemographicRateShiftID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
-                  <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass"/>
-                  <column name="Fecundity" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
-                  <column name="Mortality" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
-                </columns>
-                <validations>
-                  <validation validationType="Unique" columns="Iteration|Timestep|AgeClassID"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="census" displayName="Census Data" dataScope="Scenario">
-            <datasheets>
-              <datasheet name="Census" displayName="Census Data">
-                <columns>
-                  <column name="CensusID" dataType="Integer" isPrimary="True"/>
-                  <column name="ScenarioID" dataType="Integer"/>
-                  <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum"/>
-                  <column name="MinimumPopulation" displayName="Minimum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
-                  <column name="MaximumPopulation" displayName="Maximum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
-                  <column name="MinimumMToFRatio" displayName="Minimum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
-                  <column name="MaximumMToFRatio" displayName="Maximum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
-                </columns>
-                <validations>
-                  <validation validationType="LessEqual" columns="MinimumMToFRatio|MaximumMToFRatio"/>
-                </validations>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="OutputPopulationSize" displayName="Population Size" dataScope="Scenario" isOutput="True">
-            <datasheets>
-              <datasheet name="OutputPopulationSize" displayName="Population Size">
-                <columns>
-                  <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
-                  <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Population" dataType="Double"/>
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="OutputHarvest" displayName="Harvest" dataScope="Scenario" isOutput="True">
-            <datasheets>
-              <datasheet name="OutputHarvest" displayName="Harvest">
-                <columns>
-                  <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
-                  <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Harvest" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="OutputRecruits" displayName="Recruits" dataScope="Scenario" isOutput="True">
-            <datasheets>
-              <datasheet name="OutputRecruits" displayName="Recruits">
-                <columns>
-                  <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
-                  <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="MotherAgeClassID" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="OffspringSex" displayName="Offspring Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Recruits" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="OutputMortality" displayName="Mortality" dataScope="Scenario" isOutput="True">
-            <datasheets>
-              <datasheet name="OutputMortality " displayName="Mortality">
-                <columns>
-                  <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
-                  <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-                  <column name="Mortality" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-          <datafeed name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration" dataScope="Scenario" isOutput="True">
-            <datasheets>
-              <datasheet name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration">
-                <columns>
-                  <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
-                  <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
-                  <column name="HasCensusData" dataType="Boolean"/>
-                  <column name="JulianDay" dataType="Integer"/>
-                  <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isCompositeIndex="True"/>
-                  <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isCompositeIndex="True"/>
-                  <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isCompositeIndex="True"/>
-                  <column name="Variable" dataType="Integer" validationType="List" formula1="0:Harvest|1:Mortality|2:Offspring"/>
-                  <column name="IsFiltered" displayName="IsFiltered" dataType="Boolean"/>
-                  <column name="Value" dataType="Double"/>
-                </columns>
-              </datasheet>
-            </datasheets>
-          </datafeed>
-        </datafeeds>
-      </transformer>
-      <transformer name="PopulationSizeReport" displayName="Population Size Summary" className="SyncroSim.DGSim.PopulationSizeReport" classAssembly="SyncroSim.DGSim">
-      </transformer>
-      <transformer name="HarvestReport" displayName="Harvest Summary" className="SyncroSim.DGSim.HarvestReport" classAssembly="SyncroSim.DGSim">
-      </transformer>
-      <transformer name="RecruitsReport" displayName="Recruits Summary" className="SyncroSim.DGSim.RecruitsReport" classAssembly="SyncroSim.DGSim">
-      </transformer>
-      <transformer name="MortalityReport" displayName="Mortality Summary" className="SyncroSim.DGSim.MortalityReport" classAssembly="SyncroSim.DGSim">
-      </transformer>
-      <transformer name="PosteriorDistributionReport" displayName="Sampled Inputs by Iteration" className="SyncroSim.DGSim.PosteriorDistributionReport" classAssembly="SyncroSim.DGSim">
-      </transformer>
-    </transformers>
-    <views>
-      <view name="RunControlView" target="RunControl" className="SyncroSim.DGSim.RunControlDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <view name="InitialPopulationView" target="InitialPopulation" className="SyncroSim.DGSim.InitialPopulationDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <view name="OffspringPerFemaleView" target="OffspringPerFemale" className="SyncroSim.DGSim.OffspringPerFemaleDataFeedView" classAssembly="SyncroSim.DGSim"/>
-      <view name="AnnualHarvestOptionView" target="AnnualHarvestOption" className="SyncroSim.DGSim.AnnualHarvestOptionDataFeedView" classAssembly="SyncroSim.DGSim"/>
-    </views>
-    <layouts>
-      <layout name="coreforms_ResultTransformers">
-        <item name="corestime_ChartTransformer"/>
-        <group name="Reports">
-          <group name="Summary">
-            <item name="PopulationSizeReport"/>
-            <item name="HarvestReport"/>
-            <item name="RecruitsReport"/>
-            <item name="MortalityReport"/>
-            <item name="PosteriorDistributionReport"/>
-          </group>
+<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.2" url="https://github.com/ApexRMS/dgsim">
+  <transformers>
+    <transformer name="primary" displayName="Demographic Population" isPrimary="True" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="RunControl">
+      <include>
+        <transformer name="corestime_Runtime"/>
+      </include>
+      <datafeeds>
+        <datafeed name="AgeClass" displayName="Age Classes" dataScope="Project">
+          <datasheets>
+            <datasheet name="AgeClass" displayName="Age Classes" valueMember="AgeClassID" displayMember="Name">
+              <columns>
+                <column name="AgeClassID" dataType="Integer" isPrimary="True"/>
+                <column name="ProjectID" dataType="Integer"/>
+                <column name="Name" dataType="String"/>
+                <column name="Description" dataType="String" isOptional="True"/>
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="Stratum" displayName="Strata" dataScope="Project">
+          <datasheets>
+            <datasheet name="Stratum" displayName="Strata" valueMember="StratumID" displayMember="Name">
+              <columns>
+                <column name="StratumID" dataType="Integer" isPrimary="True"/>
+                <column name="ProjectID" dataType="Integer"/>
+                <column name="Name" dataType="String"/>
+                <column name="Description" dataType="String" isOptional="True"/>
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="RunControl" displayName="Nakkutilliineq ingerlatiguk" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="RunControl" displayName="Nakkutilliineq ingerlatiguk" isSingleRow="True">
+              <columns>
+                <column name="RunControlID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="MinimumIteration" dataType="Integer" defaultValue="1" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="1" format="d"/>
+                <column name="MaximumIteration" dataType="Integer" defaultValue="1" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="1" format="d"/>
+                <column name="MinimumTimestep" dataType="Integer" defaultValue="0" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
+                <column name="MaximumTimestep" dataType="Integer" defaultValue="0" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
+                <column name="StartJulianDay" dataType="Integer" defaultValue="1" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" format="d"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="MinimumIteration|MaximumIteration"/>
+                <validation validationType="LessEqual" columns="MinimumTimestep|MaximumTimestep"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="InitialPopulation" displayName="Initial Population" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="InitialPopulationSize" displayName="Initial Population Size" isSingleRow="True">
+              <columns>
+                <column name="InitialPopulationSizeID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Mean" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
+                <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
+                <column name="DistributionSD" displayName="Nalinginnasumik nikingassut" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+                <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" isOptional="True"/>
+                <column name="DistributionMax" displayName="Annerpaaffik" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" isOptional="True"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
+              </validations>
+            </datasheet>
+            <datasheet name="InitialPopulationDistribution" displayName="Initial Population Distribution">
+              <columns>
+                <column name="InitialPopulationDistributionID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Hankøn|1:Hunkøn" isOptional="True"/>
+                <column name="MinimumAge" displayName="MinimumAge" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
+                <column name="MaximumAge" displayName="MaximumAge" dataType="Integer" validationType="WholeNumber"/>
+                <column name="RelativeAmount" displayName="Relative Amount" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="MinimumAge|MaximumAge"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="AgeClassRange" displayName="Age Class Ranges" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="AgeClassRange" displayName="Age Class Ranges">
+              <columns>
+                <column name="AgeClassRangeID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass"/>
+                <column name="MaximumAge" displayName="Maximum Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="OffspringPerFemale" displayName="Offspring per Female" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="OffspringPerFemaleOption" displayName="Offspring per Female Options" isSingleRow="True">
+              <columns>
+                <column name="OffspringPerFemaleOptionID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="BirthJulianDay" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365"/>
+              </columns>
+            </datasheet>
+            <datasheet name="OffspringPerFemaleValue" displayName="Offspring per Female Values">
+              <columns>
+                <column name="OffspringPerFemaleValueID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
+                <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
+                <column name="CountJulianDay" displayName="Count Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+                <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+                <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
+                <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+                <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                <column name="DistributionMax" displayName="Annerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate">
+              <columns>
+                <column name="AnnualizedMortalityRateID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
+                <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
+                <column name="JulianDay" displayName="Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+                <column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+                <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
+                <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+                <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                <column name="DistributionMax" displayName="Annerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="AnnualHarvestOption" displayName="Ukiumut pisat Option" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="AnnualHarvestOption" displayName="Ukiumut pisat Option" isSingleRow="True">
+              <columns>
+                <column name="AnnualHarvestOptionID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Specification" displayName="Specify Harvest As" dataType="Integer" validationType="List" formula1="0:Amerlassusiviusut|1:Ukioqatigiiaat ilaat|2:Peqassutsip ilaa"/>
+                <column name="PopFilterGender" displayName="Pop Filter Sex" dataType="Integer" validationType="List" formula1="0:Angutiviaq|1:Arnaviaq"/>
+                <column name="PopFilterMinAge" displayName="Pop Filter Min Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
+                <column name="PopFilterMaxAge" displayName="Pop Filter Max Age" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="PopFilterMinAge|PopFilterMaxAge"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="AnnualHarvestValue" displayName="Pisat ukiumut amerlassusiat" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="AnnualHarvestValue" displayName="Pisat ukiumut amerlassusiat">
+              <columns>
+                <column name="AnnualHarvestValueID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Iteration" dataType="Integer" displayName="Uteqqiineq" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
+                <column name="Timestep" displayName="Ukioq" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
+                <column name="Sex" dataType="Integer" displayName="Suiaassuseq" validationType="List" formula1="0:Hankøn|1:Hunkøn" isOptional="True"/>
+                <column name="AgeClassID" displayName="Ukioqatigiiaat" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+                <column name="Mean" dataType="Double" displayName="Agguaqatigiissitsinerup nalinga" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+                <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="STime_DistributionType" isOptional="True"/>
+                <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+                <column name="DistributionMin" displayName="Minnerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                <column name="DistributionMax" displayName="Annerpaaffik" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="DemographicRateShift" displayName="Demographic Rate Shifts" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="DemographicRateShift" displayName="Demographic Rate Shifts">
+              <columns>
+                <column name="DemographicRateShiftID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
+                <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass"/>
+                <column name="Fecundity" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
+                <column name="Mortality" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="-1"  formula2="1"/>
+              </columns>
+              <validations>
+                <validation validationType="Unique" columns="Iteration|Timestep|AgeClassID"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="census" displayName="Census Data" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="Census" displayName="Census Data">
+              <columns>
+                <column name="CensusID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum"/>
+                <column name="MinimumPopulation" displayName="Minimum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
+                <column name="MaximumPopulation" displayName="Maximum Population" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0"/>
+                <column name="MinimumMToFRatio" displayName="Minimum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
+                <column name="MaximumMToFRatio" displayName="Maximum M:F Ratio" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0"  formula2="1" isOptional="True"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="MinimumMToFRatio|MaximumMToFRatio"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="OutputPopulationSize" displayName="Population Size" dataScope="Scenario" isOutput="True">
+          <datasheets>
+            <datasheet name="OutputPopulationSize" displayName="Population Size">
+              <columns>
+                <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
+                <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Population" dataType="Double"/>
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="OutputHarvest" displayName="Harvest" dataScope="Scenario" isOutput="True">
+          <datasheets>
+            <datasheet name="OutputHarvest" displayName="Harvest">
+              <columns>
+                <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
+                <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Harvest" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="OutputRecruits" displayName="Recruits" dataScope="Scenario" isOutput="True">
+          <datasheets>
+            <datasheet name="OutputRecruits" displayName="Recruits">
+              <columns>
+                <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
+                <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="MotherAgeClassID" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="OffspringSex" displayName="Offspring Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Recruits" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="OutputMortality" displayName="Mortality" dataScope="Scenario" isOutput="True">
+          <datasheets>
+            <datasheet name="OutputMortality " displayName="Mortality">
+              <columns>
+                <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
+                <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+                <column name="Mortality" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+        <datafeed name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration" dataScope="Scenario" isOutput="True">
+          <datasheets>
+            <datasheet name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration">
+              <columns>
+                <column name="ScenarioID" dataType="Integer" isCompositeIndex="True"/>
+                <column name="Iteration" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="Timestep" dataType="Integer" isCompositeIndex="True" format="d"/>
+                <column name="HasCensusData" dataType="Boolean"/>
+                <column name="JulianDay" dataType="Integer"/>
+                <column name="StratumID" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isCompositeIndex="True"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isCompositeIndex="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isCompositeIndex="True"/>
+                <column name="Variable" dataType="Integer" validationType="List" formula1="0:Harvest|1:Mortality|2:Offspring"/>
+                <column name="IsFiltered" displayName="IsFiltered" dataType="Boolean"/>
+                <column name="Value" dataType="Double"/>
+              </columns>
+            </datasheet>
+          </datasheets>
+        </datafeed>
+      </datafeeds>
+    </transformer>
+    <transformer name="PopulationSizeReport" displayName="Population Size Summary" className="SyncroSim.DGSim.PopulationSizeReport" classAssembly="SyncroSim.DGSim">
+    </transformer>
+    <transformer name="HarvestReport" displayName="Harvest Summary" className="SyncroSim.DGSim.HarvestReport" classAssembly="SyncroSim.DGSim">
+    </transformer>
+    <transformer name="RecruitsReport" displayName="Recruits Summary" className="SyncroSim.DGSim.RecruitsReport" classAssembly="SyncroSim.DGSim">
+    </transformer>
+    <transformer name="MortalityReport" displayName="Mortality Summary" className="SyncroSim.DGSim.MortalityReport" classAssembly="SyncroSim.DGSim">
+    </transformer>
+    <transformer name="PosteriorDistributionReport" displayName="Sampled Inputs by Iteration" className="SyncroSim.DGSim.PosteriorDistributionReport" classAssembly="SyncroSim.DGSim">
+    </transformer>
+  </transformers>
+  <views>
+    <view name="RunControlView" target="RunControl" className="SyncroSim.DGSim.RunControlDataFeedView" classAssembly="SyncroSim.DGSim"/>
+    <view name="InitialPopulationView" target="InitialPopulation" className="SyncroSim.DGSim.InitialPopulationDataFeedView" classAssembly="SyncroSim.DGSim"/>
+    <view name="OffspringPerFemaleView" target="OffspringPerFemale" className="SyncroSim.DGSim.OffspringPerFemaleDataFeedView" classAssembly="SyncroSim.DGSim"/>
+    <view name="AnnualHarvestOptionView" target="AnnualHarvestOption" className="SyncroSim.DGSim.AnnualHarvestOptionDataFeedView" classAssembly="SyncroSim.DGSim"/>
+  </views>
+  <layouts>
+    <layout name="coreforms_ResultTransformers">
+      <item name="corestime_ChartTransformer"/>
+      <group name="Reports">
+        <group name="Summary">
+          <item name="PopulationSizeReport"/>
+          <item name="HarvestReport"/>
+          <item name="RecruitsReport"/>
+          <item name="MortalityReport"/>
+          <item name="PosteriorDistributionReport"/>
         </group>
-      </layout>
-      <layout name="coreforms_LibraryDatafeeds">
-        <item name="core_Multiprocessing"/>
-      </layout>
-      <layout name="coreforms_ProjectDatafeeds">
-        <item name="Stratum"/>
-        <item name="AgeClass"/>
-      </layout>
-      <layout name="coreforms_ScenarioDatafeeds">
-        <item name="RunControl"/>
-        <item name="InitialPopulation"/>
-        <group name="Demographic Parameters">
-          <item name="AgeClassRange"/>
-          <item name="OffspringPerFemale"/>
-          <item name="AnnualizedMortalityRate"/>
-          <item name="DemographicRateShift"/>
-        </group>
-        <group name="Harvest">
-          <item name="AnnualHarvestValue" displayName="Ukiumut pisat"/>
-          <item name="AnnualHarvestOption" displayName="Periarfissat"/>
-        </group>
-        <item name="Census"/>
-      </layout>
-      <layout name="coreforms_ScenarioDatafeedsLite">
-        <item name="RunControl"/>
-        <item name="AnnualHarvestValue" displayName="Periarfissat"/>
-      </layout>
-      <layout name="corestimeforms_Charts" configurationSheet="RunControl">
-        <item name="Population" displayName ="Population" dataSheet="OutputPopulationSize" column="Population" filter="AgeClassID|Sex|StratumID"/>
-        <item name="Harvest" displayName="Harvest" dataSheet="OutputHarvest" column="Harvest" filter="AgeClassID|Sex|StratumID"/>
-        <item name="Recruits" displayName="Recruits" dataSheet="OutputRecruits" column="Recruits" filter="MotherAgeClassID|OffspringSex|StratumID"/>
-        <item name="Mortality" displayName="Mortality" dataSheet="OutputMortality" column="Mortality" filter="AgeClassID|Sex|StratumID"/>
-      </layout>
-    </layouts>
-    <updateProvider
-      schemaVersion="101" 
-      minPackageVersion="2.2.2" 
-      className="SyncroSim.DGSim.DGSimUpdates"
-      classAssembly="SyncroSim.DGSim"/>
-  </package>
-</configuration>
+      </group>
+    </layout>
+    <layout name="coreforms_LibraryDatafeeds">
+      <item name="core_Multiprocessing"/>
+    </layout>
+    <layout name="coreforms_ProjectDatafeeds">
+      <item name="Stratum"/>
+      <item name="AgeClass"/>
+    </layout>
+    <layout name="coreforms_ScenarioDatafeeds">
+      <item name="RunControl"/>
+      <item name="InitialPopulation"/>
+      <group name="Demographic Parameters">
+        <item name="AgeClassRange"/>
+        <item name="OffspringPerFemale"/>
+        <item name="AnnualizedMortalityRate"/>
+        <item name="DemographicRateShift"/>
+      </group>
+      <group name="Harvest">
+        <item name="AnnualHarvestValue" displayName="Ukiumut pisat"/>
+        <item name="AnnualHarvestOption" displayName="Periarfissat"/>
+      </group>
+      <item name="Census"/>
+    </layout>
+    <layout name="coreforms_ScenarioDatafeedsLite">
+      <item name="RunControl"/>
+      <item name="AnnualHarvestValue" displayName="Periarfissat"/>
+    </layout>
+    <layout name="corestimeforms_Charts" configurationSheet="RunControl">
+      <item name="Population" displayName ="Population" dataSheet="OutputPopulationSize" column="Population" filter="AgeClassID|Sex|StratumID"/>
+      <item name="Harvest" displayName="Harvest" dataSheet="OutputHarvest" column="Harvest" filter="AgeClassID|Sex|StratumID"/>
+      <item name="Recruits" displayName="Recruits" dataSheet="OutputRecruits" column="Recruits" filter="MotherAgeClassID|OffspringSex|StratumID"/>
+      <item name="Mortality" displayName="Mortality" dataSheet="OutputMortality" column="Mortality" filter="AgeClassID|Sex|StratumID"/>
+    </layout>
+  </layouts>
+  <updateProvider
+    schemaVersion="101"
+    minPackageVersion="2.2.2"
+    className="SyncroSim.DGSim.DGSimUpdates"
+    classAssembly="SyncroSim.DGSim"/>
+</package>
