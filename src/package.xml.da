@@ -343,7 +343,7 @@
     <layout name="coreforms_ScenarioDatafeeds">
       <item name="RunControl"/>
       <item name="InitialPopulation"/>
-      <group name="Demographic Parameters">
+      <group name="DemographicParameters" displayName="Demographic Parameters">
         <item name="AgeClassRange"/>
         <item name="OffspringPerFemale"/>
         <item name="AnnualizedMortalityRate"/>
