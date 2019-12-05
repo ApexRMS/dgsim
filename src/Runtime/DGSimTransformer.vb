@@ -79,8 +79,40 @@ Class DGSimTransformer
 
     Private Sub SimulateTimestep(ByVal iteration As Integer, ByVal timestep As Integer)
 
+        'SimulateMigration
+
         For Each Stratum As Stratum In Me.m_Strata
+            'Rename this function below to SimulateDemographics
             Me.SimulateTimestep(Stratum, iteration, timestep)
+        Next
+
+    End Sub
+
+    Private Sub SimulateMigration(ByVal iteration As Integer, ByVal timestep As Integer)
+
+        'First set of for loops to calculate number of migrants (assume migration decisions are simultaneous across all strata, not sequential)
+        For Each FromStratum As Stratum In Me.m_Strata
+            For Each Cohort As AgeSexCohort In FromStratum.AgeSexCohorts
+                'Check that the sum of migration rates for this FromStratum and Cohort do not exceed 1.0, if they do normalize them.
+                'If normalizing may want to provide info message that migration rates for at least one Age/sex/stratum combo exceed 1 and were normalized
+                For Each ToStratum As Stratum In Me.m_Strata
+                    'Check to see if there is a migration rate if yes, determine the number of individuals migrating
+                    'Use binomial probability based on N individuals in cohort and migration rate
+                    'Keep track of number of individuals migrating by cohort based on From Stratum and To Stratum
+                Next
+            Next
+        Next
+
+        'Second actually remove and add individuals from and to cohorts.
+        For Each FromStratum As Stratum In Me.m_Strata
+            For Each Cohort As AgeSexCohort In FromStratum.AgeSexCohorts
+                For Each ToStratum As Stratum In Me.m_Strata
+                    'based on the previous loop remove the # of individuals leaving from cohort and
+                    'Debug Assert that cohort num individuals >=0. if not, set to 0.
+                    'add a new cohort with that number of individuals and same sex and age to the ToStratum
+                    'except for m_NumIndividuals keep the same values for cohort attributes as the source cohort
+                Next
+            Next
         Next
 
     End Sub
