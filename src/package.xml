@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.5" url="https://github.com/ApexRMS/dgsim">
+<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.6" url="https://github.com/ApexRMS/dgsim">
   <transformers>
     <transformer name="Primary" displayName="Demographic Population" isPrimary="True" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="RunControl">
       <include>
@@ -351,7 +351,7 @@
     <layout name="coreforms_ScenarioDatafeeds">
       <item name="RunControl"/>
       <item name="InitialPopulation"/>
-      <group name="Demographic Parameters">
+      <group name="DemographicParameters" displayName="Demographic Parameters">
         <item name="AgeClassRange"/>
         <item name="OffspringPerFemale"/>
         <item name="AnnualizedMortalityRate"/>
