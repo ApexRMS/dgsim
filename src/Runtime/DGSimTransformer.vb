@@ -79,45 +79,15 @@ Class DGSimTransformer
 
     Private Sub SimulateTimestep(ByVal iteration As Integer, ByVal timestep As Integer)
 
-        'SimulateMigration
-
         For Each Stratum As Stratum In Me.m_Strata
-            'Rename this function below to SimulateDemographics
-            Me.SimulateTimestep(Stratum, iteration, timestep)
+            Me.SimulateDemographics(Stratum, iteration, timestep)
         Next
+
+        Me.SimulateMigration(iteration, timestep)
 
     End Sub
 
-    Private Sub SimulateMigration(ByVal iteration As Integer, ByVal timestep As Integer)
-
-        'First set of for loops to calculate number of migrants (assume migration decisions are simultaneous across all strata, not sequential)
-        For Each FromStratum As Stratum In Me.m_Strata
-            For Each Cohort As AgeSexCohort In FromStratum.AgeSexCohorts
-                'Check that the sum of migration rates for this FromStratum and Cohort do not exceed 1.0, if they do normalize them.
-                'If normalizing may want to provide info message that migration rates for at least one Age/sex/stratum combo exceed 1 and were normalized
-                For Each ToStratum As Stratum In Me.m_Strata
-                    'Check to see if there is a migration rate if yes, determine the number of individuals migrating
-                    'Use binomial probability based on N individuals in cohort and migration rate
-                    'Keep track of number of individuals migrating by cohort based on From Stratum and To Stratum
-                Next
-            Next
-        Next
-
-        'Second actually remove and add individuals from and to cohorts.
-        For Each FromStratum As Stratum In Me.m_Strata
-            For Each Cohort As AgeSexCohort In FromStratum.AgeSexCohorts
-                For Each ToStratum As Stratum In Me.m_Strata
-                    'based on the previous loop remove the # of individuals leaving from cohort and
-                    'Debug Assert that cohort num individuals >=0. if not, set to 0.
-                    'add a new cohort with that number of individuals and same sex and age to the ToStratum
-                    'except for m_NumIndividuals keep the same values for cohort attributes as the source cohort
-                Next
-            Next
-        Next
-
-    End Sub
-
-    Private Sub SimulateTimestep(ByVal stratum As Stratum, ByVal iteration As Integer, ByVal timestep As Integer)
+    Private Sub SimulateDemographics(ByVal stratum As Stratum, ByVal iteration As Integer, ByVal timestep As Integer)
 
         Dim NumMaleOffspring As Double = 0
         Dim NumFemaleOffspring As Double = 0
@@ -249,6 +219,97 @@ Class DGSimTransformer
             stratum.AgeSexCohorts.Add(c)
 
         End If
+
+    End Sub
+
+    Private Sub SimulateMigration(ByVal iteration As Integer, ByVal timestep As Integer)
+
+        'First, calculate number of migrants assuming that migration decisions are 
+        'simultaneous across all strata instead of sequential.
+
+        For Each FromStratum As Stratum In Me.m_Strata
+
+            For Each Cohort As AgeSexCohort In FromStratum.AgeSexCohorts
+
+                Debug.Assert(Cohort.MigrationEvents.Count = 0)
+
+                Dim Migrations As List(Of Migration) = Me.m_MigrationMap.GetMigrations(
+                    FromStratum.Id, Cohort.Age, Cohort.Sex, iteration, timestep)
+
+                If (Migrations Is Nothing) Then
+                    Continue For
+                End If
+
+                ShuffleUtilities.ShuffleList(Of Migration)(Migrations, Me.m_RandomGenerator.Random)
+
+                Dim TotalMigrants As Integer = 0
+
+                For Each Mig As Migration In Migrations
+
+                    Dim NumMigrants As Integer = Me.m_RandomGenerator.GetRandomBinomial(Mig.CurrentValue, Cohort.NumIndividuals)
+
+                    TotalMigrants += NumMigrants
+
+                    If (TotalMigrants > Cohort.NumIndividuals) Then
+                        NumMigrants -= (TotalMigrants - Cohort.NumIndividuals)
+                        TotalMigrants = Cohort.NumIndividuals
+                    End If
+
+                    If (NumMigrants > 0) Then
+                        Cohort.MigrationEvents.Add(New MigrationEvent(NumMigrants, Me.m_Strata(Mig.ToStratumId)))
+                    End If
+
+                    If (TotalMigrants >= Cohort.NumIndividuals) Then
+                        Exit For
+                    End If
+
+                Next
+
+            Next
+
+        Next
+
+        'Second, remove and add individuals from and to cohorts.
+
+        For Each FromStratum As Stratum In Me.m_Strata
+
+            For Each Cohort As AgeSexCohort In FromStratum.AgeSexCohorts
+
+                If (Cohort.MigrationEvents.Count = 0) Then
+                    Continue For
+                End If
+
+                For Each MigEvent As MigrationEvent In Cohort.MigrationEvents
+
+                    Dim ToStratum As Stratum = MigEvent.ToStratum
+
+                    If (MigEvent.ToStratum Is FromStratum) Then
+                        Continue For
+                    End If
+
+                    Cohort.NumIndividuals -= MigEvent.NumIndividuals
+                    Debug.Assert(Cohort.NumIndividuals >= 0)
+
+                    If (Cohort.NumIndividuals < 0) Then
+                        Cohort.NumIndividuals = 0
+                    End If
+
+                    Dim k As New TwoIntegerLookupKey(Cohort.InitialAge, Cohort.Sex)
+
+                    If (ToStratum.AgeSexCohorts.Contains(k)) Then
+                        ToStratum.AgeSexCohorts(k).NumIndividuals += MigEvent.NumIndividuals
+                    Else
+                        Dim NewCohort As New AgeSexCohort(Cohort.Age, Cohort.InitialAge, Cohort.Sex, MigEvent.NumIndividuals)
+                        ToStratum.AgeSexCohorts.Add(NewCohort)
+                    End If
+
+                Next
+
+                Cohort.MigrationEvents.Clear()
+
+            Next
+
+        Next
 
     End Sub
 

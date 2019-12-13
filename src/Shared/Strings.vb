@@ -67,6 +67,12 @@ Module Strings
     Public Const ANNUAL_HARVEST_POP_FILTER_MIN_AGE_COLUMN_NAME As String = "PopFilterMinAge"
     Public Const ANNUAL_HARVEST_POP_FILTER_MAX_AGE_COLUMN_NAME As String = "PopFilterMaxAge"
 
+    'Migration data sheet
+    Public Const MIGRATION_DATASHEET_NAME As String = "dgsim_Migration"
+    Public Const MIGRATION_FROM_STRATUM_COLUMN_NAME As String = "FromStratumID"
+    Public Const MIGRATION_TO_STRATUM_COLUMN_NAME As String = "ToStratumID"
+    Public Const MIGRATION_RATE_COLUMN_NAME As String = "MigrationRate"
+
     'Demographic Rate Shift Data Sheet
     Public Const DEMOGRAPHIC_RATE_SHIFT_DATASHEET_NAME As String = "dgsim_DemographicRateShift"
     Public Const DEMOGRAPHIC_RATE_SHIFT_FECUNDITY_COLUMN_NAME As String = "Fecundity"

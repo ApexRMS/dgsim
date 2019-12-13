@@ -143,4 +143,33 @@ Module Utilities
 
     End Function
 
+    Public Function GetCommonFormattedExceptionData(
+        ByVal ex As Exception,
+        ByVal dataSheet As DataSheet,
+        ByVal fromStratumId As Integer,
+        ByVal toStratumId As Integer,
+        ByVal iteration As Nullable(Of Integer),
+        ByVal timestep As Nullable(Of Integer),
+        ByVal ageClassId As Nullable(Of Integer))
+
+        Dim fst As String = GetDatasheetValue(dataSheet.Project, MIGRATION_FROM_STRATUM_COLUMN_NAME, fromStratumId)
+        Dim tst As String = GetDatasheetValue(dataSheet.Project, MIGRATION_TO_STRATUM_COLUMN_NAME, toStratumId)
+        Dim it As String = FormatNullableInt(iteration)
+        Dim ts As String = FormatNullableInt(timestep)
+        Dim ac As String = GetDatasheetValue(dataSheet.Project, AGE_CLASS_DATASHEET_NAME, ageClassId)
+
+        Dim m As String = Nothing
+
+        m = m & dataSheet.DisplayName & vbCrLf
+        m = m & ex.Message & vbCrLf
+        m = m & "From Stratum: " & fst & vbCrLf
+        m = m & "To Stratum: " & fst & vbCrLf
+        m = m & "Iteration: " & it & vbCrLf
+        m = m & "Timestep: " & ts & vbCrLf
+        m = m & "Age Class: " & ac
+
+        Return m
+
+    End Function
+
 End Module

@@ -187,6 +187,30 @@
             </datasheet>
           </datasheets>
         </datafeed>
+        <datafeed name="Migration" dataScope="Scenario">
+          <datasheets>
+            <datasheet name="Migration">
+              <columns>
+                <column name="MigrationID" dataType="Integer" isPrimary="True"/>
+                <column name="ScenarioID" dataType="Integer"/>
+                <column name="Iteration" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" format="d" isOptional="True"/>
+                <column name="Timestep" displayName="Year" dataType="Integer" validationType="WholeNumber" validationCondition="GreaterEqual" formula1="0" format="d" isOptional="True"/>
+                <column name="FromStratumID" displayName="From Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum"/>
+                <column name="ToStratumID" displayName="To Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum"/>
+                <column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
+                <column name="AgeClassID" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+                <column name="MigrationRate" displayName="Migration Rate" dataType="Double" validationType="Decimal" validationCondition="Between" formula1="0" formula2="1" initOptionalVisible="True"/>
+                <column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="corestime_DistributionType" isOptional="True"/>
+                <column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+                <column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+                <column name="DistributionMax" displayName="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+              </columns>
+              <validations>
+                <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
+              </validations>
+            </datasheet>
+          </datasheets>
+        </datafeed>
         <datafeed name="DemographicRateShift" displayName="Demographic Rate Shifts" dataScope="Scenario">
           <datasheets>
             <datasheet name="DemographicRateShift" displayName="Demographic Rate Shifts">

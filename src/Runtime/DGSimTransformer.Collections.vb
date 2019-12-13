@@ -19,6 +19,7 @@ Partial Class DGSimTransformer
     Private m_AnnualizedMortalityRates As New AnnualizedMortalityRateCollection
     Private m_AnnualHarvestValues As New AnnualHarvestValueCollection
     Private m_DemographicRateShifts As New DemographicRateShiftCollection
+    Private m_Migrations = New MigrationCollection
     Private m_CensusData As New CensusDataCollection
     Private m_SummaryPopSizeOutput As New SummaryOutputPopulationSizeCollection()
     Private m_SummaryHarvestOutput As New SummaryOutputHarvestCollection()
@@ -35,6 +36,7 @@ Partial Class DGSimTransformer
         Me.InitializeOffspringPerFemaleValues()
         Me.InitializeAnnualizedMortalityRate()
         Me.InitializeAnnualHarvestValues()
+        Me.InitializeMigrations()
         Me.InitializeDemographicRateShifts()
         Me.InitializeCensusData()
 
@@ -300,6 +302,51 @@ Partial Class DGSimTransformer
 
                 Throw New ArgumentException(
                     GetCommonFormattedExceptionData(ex, ds, Item.StratumId, Item.Iteration, Item.Timestep, Item.AgeClassId) & vbCrLf &
+                    "Sex: " & FormatNullableSexAsString(Item.Sex))
+
+            End Try
+
+        Next
+
+    End Sub
+
+    Private Sub InitializeMigrations()
+
+        Debug.Assert(Me.m_Migrations.Count = 0)
+        Dim ds As DataSheet = Me.ResultScenario.GetDataSheet(MIGRATION_DATASHEET_NAME)
+
+        For Each dr As DataRow In ds.GetData.Rows
+
+            Dim Item As Migration = Nothing
+
+            Try
+
+                Item = New Migration(
+                    Me.Project,
+                    CInt(dr(MIGRATION_FROM_STRATUM_COLUMN_NAME)),
+                    CInt(dr(MIGRATION_TO_STRATUM_COLUMN_NAME)),
+                    GetNullableInt(dr, DATASHEET_ITERATION_COLUMN_NAME),
+                    GetNullableInt(dr, DATASHEET_TIMESTEP_COLUMN_NAME),
+                    GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
+                    CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)),
+                    GetNullableDouble(dr, MIGRATION_RATE_COLUMN_NAME),
+                    GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MAX_COLUMN_NAME),
+                    Me.m_DistributionProvider)
+
+                Item.Initialize()
+                Me.m_Migrations.Add(Item)
+
+            Catch ex As ArgumentException
+
+                If (Item Is Nothing) Then
+                    Throw
+                End If
+
+                Throw New ArgumentException(
+                    GetCommonFormattedExceptionData(ex, ds, Item.FromStratumId, Item.ToStratumId, Item.Iteration, Item.Timestep, Item.AgeClassId) & vbCrLf &
                     "Sex: " & FormatNullableSexAsString(Item.Sex))
 
             End Try

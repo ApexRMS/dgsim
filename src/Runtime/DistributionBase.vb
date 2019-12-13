@@ -99,4 +99,8 @@ Class DistributionBase
 
     End Function
 
+    Public Sub SetCurrentValue(ByVal value As Double)
+        Me.m_CurrentValue = value
+    End Sub
+
 End Class

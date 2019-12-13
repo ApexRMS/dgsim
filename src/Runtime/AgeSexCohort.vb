@@ -12,6 +12,7 @@ Class AgeSexCohort
     Private m_Sex As Sex
     Private m_NumIndividuals As Double
     Private m_AnnualHarvest As Double
+    Private m_MigrationEvents As New List(Of MigrationEvent)
 
     Public Sub New(
         ByVal age As Integer,
@@ -67,6 +68,12 @@ Class AgeSexCohort
         Set(value As Double)
             Me.m_AnnualHarvest = value
         End Set
+    End Property
+
+    Friend ReadOnly Property MigrationEvents As List(Of MigrationEvent)
+        Get
+            Return m_MigrationEvents
+        End Get
     End Property
 
 End Class
