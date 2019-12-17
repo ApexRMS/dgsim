@@ -343,8 +343,19 @@ Class DGSimTransformer
 
         Dim TotalMales As Integer = CalculatePopulationBySex(stratum.AgeSexCohorts, Sex.Male)
         Dim TotalFemales As Integer = CalculatePopulationBySex(stratum.AgeSexCohorts, Sex.Female)
-        Dim MaleMultiplier As Double = TargetM2FRatio * (1 / CurrentM2FRatio) * (TargetPopulation / (TotalMales * TargetM2FRatio * (1 / CurrentM2FRatio) + TotalFemales))
-        Dim FemaleMultiplier As Double = (TargetPopulation / (TotalMales * TargetM2FRatio * (1 / CurrentM2FRatio) + TotalFemales))
+
+        Dim MaleMultiplier As Double = 1.0
+        Dim FemaleMultiplier As Double = 1.0
+
+        If (TargetM2FRatio = 0.0 Or CurrentM2FRatio = 0.0) Then
+            FemaleMultiplier = TargetPopulation / TotalFemales
+            MaleMultiplier = 0.0
+        Else
+            MaleMultiplier = TargetM2FRatio * (1 / CurrentM2FRatio) * (TargetPopulation / (TotalMales * TargetM2FRatio * (1 / CurrentM2FRatio) + TotalFemales))
+            FemaleMultiplier = (TargetPopulation / (TotalMales * TargetM2FRatio * (1 / CurrentM2FRatio) + TotalFemales))
+        End If
+
+
 
         For Each c As AgeSexCohort In stratum.AgeSexCohorts
 
