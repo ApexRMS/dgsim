@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.6" url="https://github.com/ApexRMS/dgsim">
+<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.2.7" url="https://github.com/ApexRMS/dgsim">
   <transformers>
     <transformer name="primary" displayName="Demographic Population" isPrimary="True" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="RunControl">
       <include>
@@ -394,7 +394,7 @@
   </layouts>
   <updateProvider
     schemaVersion="101"
-    minPackageVersion="2.2.2"
+    minPackageVersion="2.2.7"
     className="SyncroSim.DGSim.DGSimUpdates"
     classAssembly="SyncroSim.DGSim"/>
 </package>
