@@ -6,7 +6,7 @@ description: "Landing page for the Package"
 permalink: /
 ---
 
-# *DG-Sim* Syncrosim Package
+# **DG-Sim** Syncrosim Package
 [![GitHub release](https://img.shields.io/github/v/release/ApexRMS/Package_Name.svg?style=for-the-badge&color=d68a06)](https://GitHub.com/ApexRMS/Package_Name/releases/)
 #### [Github Repository](https://github.com/ApexRMS/Package_Name)
 ## A one-liner description of the package.
