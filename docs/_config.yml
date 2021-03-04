@@ -1,5 +1,5 @@
-title: "Package_Name Syncrosim Package Details"
-remote_theme: pmarsceill/just-the-docs
+title: "DG-Sim Syncrosim Package Details"
+remote_theme: jekyll/minima
 color_scheme: "light"
 search_enabled: true
 logo: "assets/images/logo/cropped-SyncroSim-Logo.png"
