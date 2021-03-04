@@ -9,25 +9,6 @@ a {
   color: var(--apexOrange);
 }
 
-/* Little Arrow + navbars */
-.nav-list .nav-list-item .nav-list-expander{
-  color: var(--apexOrange);
-}
-
-.icon {
-  color: var(--apexOrange);
-}
-
-.main-content .anchor-heading svg {
-  color: var(--apexOrange);
-}
-
-/* Selection of elements */
-::selection {
-  color: #fff;
-  background: var(--apexOrange);
-}
-
 /* Active search */
 .search-input:focus+.search-label .search-icon {
   color: var(--apexOrange);
