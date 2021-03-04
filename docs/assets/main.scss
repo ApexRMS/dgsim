@@ -1,0 +1,42 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+/* Color of links and other bits an bolts of the website set as the same than on SyncroSim website */
+:root {
+  --apexOrange: #d68a06;
+}
+
+/* Links */
+a {
+  color: var(--apexOrange);
+}
+
+/* Little Arrow + navbars */
+.nav-list .nav-list-item .nav-list-expander{
+  color: var(--apexOrange);
+}
+
+.icon {
+  color: var(--apexOrange);
+}
+
+.main-content .anchor-heading svg {
+  color: var(--apexOrange);
+}
+
+/* Selection of elements */
+::selection {
+  color: #fff;
+  background: var(--apexOrange);
+}
+
+/* Active search */
+.search-input:focus+.search-label .search-icon {
+  color: var(--apexOrange);
+}
+
+.search-result-doc .search-result-icon {
+  color: var(--apexOrange);
+}
