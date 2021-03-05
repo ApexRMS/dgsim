@@ -1,6 +1,6 @@
 ---
-has_children: false
-nav_order: 2
+layout: default
+title: Getting started
 ---
 
 ## Getting started with DG-Sim

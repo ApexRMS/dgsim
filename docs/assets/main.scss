@@ -1,0 +1,42 @@
+---
+---
+
+@import "minima";
+
+/* Color of links and other bits an bolts of the website set as the same than on SyncroSim website */
+:root {
+    --apexOrange: #d68a06;
+}
+
+/* Links */
+a {
+    color: var(--apexOrange);
+}
+
+// Add logo to masthead
+.site-title::before {
+    content: url("images/logo/logo-test.png");
+    display: inline-block;
+    position: relative;
+    padding-right: 10px;
+    padding-top: 17px;
+}
+
+// Background pf site header
+.site-header {
+    background-color: #F0F0F0;
+}
+
+// Nav buttons
+.site-nav {
+    padding-top: 12px;
+}
+
+// Button text
+.site-nav .page-link {
+    color: --apexOrange;
+    font-size: larger;
+}
+
+// Avoid wrapping of email address
+.contact-list .u-email { font-size: 95%; }
