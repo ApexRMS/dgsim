@@ -8,8 +8,8 @@ permalink: /
 # **DG-Sim** Syncrosim Package
 [![GitHub release](https://img.shields.io/github/v/release/ApexRMS/dgsim.svg?style=for-the-badge&color=d68a06)](https://GitHub.com/ApexRMS/dgsim/releases/)
 #### [Github Repository](https://github.com/ApexRMS/dgsim)
-## Simulate demographics of wildlife populations
 <img align="right" style="padding: 15px" width="200" src="assets/images/logo/badge-dgsim-v1.png">
+## Simulate demographics of wildlife populations
 ### DG-Sim is an open-source SyncroSim Base Package that provides a general framework for developing...etc.
 
 
