@@ -13,7 +13,7 @@ permalink: /
 ## Simulate demographics of wildlife populations
 ### DG-Sim is an open-source SyncroSim Base Package that provides a general framework for developing...etc.
 
-<img align="right" style="padding: 15px" width="400">
+<img align="right" style="padding: 13px" width="400">
 <br>
 <br>
 Example of body paragraph text here. A key focus area of ours is supporting management decisions regarding wildlife harvest. Through ongoing collaborations over the past decade with several resource management agencies, including the Yukon Government, Government of Northwest Territories, Government of Alberta, Environment Canada, and the Government of Greenland, we have developed DG-Sim, an open-source model for forecasting wildlife population size and harvest. DG-Sim has been used to support harvest management decisions for several herds of barren-ground caribou, reindeer.......
