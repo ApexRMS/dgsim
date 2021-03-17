@@ -3,7 +3,7 @@ layout: default
 title: Getting started
 ---
 
-# Getting started with **DG-Sim**:
+# Getting started with **DG-Sim**
 
 ## How to Install
 
