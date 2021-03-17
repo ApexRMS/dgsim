@@ -15,10 +15,6 @@ permalink: /
 
 Body text: Description of package to go here. Approximately 1 to 2 paragraphs.
 
-An image can be inserted within the body text with the following code below
-< img align="right" style="padding: 15px" width="400" src="assets/images/name_of_image.png" >
-
-
 ## Requirements
 
 This package requires Syncrosim [Insert_version_here](https://syncrosim.com/download/).
