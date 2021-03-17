@@ -1,29 +1,42 @@
 ---
 layout: default
 title: Home
-description: "Landing page for DG-Sim Package"
+description: "Landing page for the Package"
 permalink: /
 ---
 
-# **DG-Sim** Syncrosim Package
-[![GitHub release](https://img.shields.io/github/v/release/ApexRMS/dgsim.svg?style=for-the-badge&color=d68a06)](https://GitHub.com/ApexRMS/dgsim/releases/)
-<img align="right" style="padding: 13px" width="180" src="assets/images/logo/dgsim-badge-hex.png">
-#### [Github Repository](https://github.com/ApexRMS/dgsim)
-
+# **DG-Sim** SyncroSim Package
+<img align="right" style="padding: 13px" width="180" src="assets/images/logo/dgsim-sticker.png">
+[![GitHub release](https://img.shields.io/github/v/release/ApexRMS/dgsim.svg?style=for-the-badge&color=d68a06)](https://GitHub.com/ApexRMS/dgsim/releases/)    <a href="https://github.com/ApexRMS/dgsim"><img align="middle" style="padding: 1px" width="30" src="assets/images/logo/github-trans2.png">
+<br>
 ## Simulate demographics of wildlife populations
-### DG-Sim is an open-source SyncroSim Base Package that provides a general framework for developing...etc.
+### A two-line introduction to the gist of the package
 
-<img align="right" style="padding: 13px" width="420">
+
+Body text: Description of package to go here. Approximately 1 to 2 paragraphs.
+
+An image can be inserted within the body text with the following code below
+< img align="right" style="padding: 15px" width="400" src="assets/images/name_of_image.png" >
+
+
+## Requirements
+
+This package requires Syncrosim [Insert_version_here](https://syncrosim.com/download/).
+
+## Links
+
+For information on How to Install, see [Getting Started](https://apexrms.github.io/dgsim/getting_started.html).
 <br>
+Browse source code at
+[http://github.com/ApexRMS/dgsim/](http://github.com/ApexRMS/dgsim/)
 <br>
-Example of body paragraph text here. A key focus area of ours is supporting management decisions regarding wildlife harvest. Through ongoing collaborations over the past decade with several resource management agencies, including the Yukon Government, Government of Northwest Territories, Government of Alberta, Environment Canada, and the Government of Greenland, we have developed DG-Sim, an open-source model for forecasting wildlife population size and harvest. DG-Sim has been used to support harvest management decisions for several herds of barren-ground caribou, reindeer.......
+Report a bug at
+[http://github.com/ApexRMS/dgsim/issues](http://github.com/ApexRMS/dgsim/issues)
 
-### Requirements
+## Developers
 
-This package requires Syncrosim [version ?????](https://syncrosim.com/download/).
-
-### How to install
-
-Open SyncroSim and select **File -> Packages… -> Install…**, then select the DG-Sim package and click OK.
-
-Alternatively, download [the latest release from Github](https://github.com/ApexRMS/dgsim/). Open Syncrosim and navigate to packages, then install from file.
+Developer_Name (Author, maintainer)
+<br>
+Developer_Name (Author) <a href="https://orcid.org/Enter_Your_Link_Here"><img align="middle" style="padding: 0.5px" width="17" src="assets/images/ORCID.png"></a>
+<br>
+Developer_Name (Author)

@@ -3,6 +3,10 @@ layout: default
 title: Getting started
 ---
 
-## Getting started with DG-Sim
+# Getting started with **DG-Sim**:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## How to Install
+
+Open SyncroSim and select **File -> Packages… -> Install…**, then select the **DG-Sim** package and click OK.
+
+Alternatively, download [the latest release from Github](https://github.com/ApexRMS/dgsim/releases/). Open Syncrosim and navigate to packages, then install from file.
