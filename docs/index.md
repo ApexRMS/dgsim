@@ -17,7 +17,7 @@ Body text: Description of package to go here. Approximately 1 to 2 paragraphs.
 
 ## Requirements
 
-This package requires Syncrosim [Insert_version_here](https://syncrosim.com/download/).
+This package requires Syncrosim [2.2.27](https://syncrosim.com/download/).
 
 ## Links
 
