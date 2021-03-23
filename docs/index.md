@@ -18,17 +18,20 @@ Body text: Description of package to go here. Approximately 1 to 2 paragraphs.
 ## Requirements
 
 This package requires SyncroSim [version 2.2.27](https://syncrosim.com/download/).
-
+<br>
+<br>
 ## How to Install
 
 Open SyncroSim and select **File -> Packages… -> Install…**, then select the **DG-Sim** package and click OK.
 
 Alternatively, download [the latest release from Github](https://github.com/ApexRMS/dgsim/releases/). Open SyncroSim and navigate to packages, then install from file.
-
+<br>
+<br>
 ## Getting Started
 
 For more information on **DG-Sim**, including a Quickstart Tutorial, see the [Getting Started](https://apexrms.github.io/dgsim/getting_started.html) page.
-
+<br>
+<br>
 ## Links
 
 Browse source code at
@@ -36,7 +39,8 @@ Browse source code at
 <br>
 Report a bug at
 [http://github.com/ApexRMS/dgsim/issues](http://github.com/ApexRMS/dgsim/issues)
-
+<br>
+<br>
 ## Developers
 
 Leonardo Frid (Author, maintainer) <a href="https://orcid.org/0000-0002-5489-2337"><img align="middle" style="padding: 0.5px" width="17" src="assets/images/ORCID.png"></a>
