@@ -10,10 +10,12 @@ permalink: /
 [![GitHub release](https://img.shields.io/github/v/release/ApexRMS/dgsim.svg?style=for-the-badge&color=d68a06)](https://GitHub.com/ApexRMS/dgsim/releases/)    <a href="https://github.com/ApexRMS/dgsim"><img align="middle" style="padding: 1px" width="30" src="assets/images/logo/github-trans2.png">
 <br>
 ## Simulate demographics of wildlife populations
-### A two-line introduction to the gist of the package
+### *DG-Sim* is an open-source [SyncroSim](https://syncrosim.com/) Base Package for forecasting wildlife population size and harvest.
 
 
-Body text: Description of package to go here. Approximately 1 to 2 paragraphs.
+The **DG-Sim** package consists of a general population-modeling framework which uses a stochastic, stage-structured matrix approach to project wildlife abundance over time. Built upon the [SyncroSim](https://syncrosim.com/) software platform, **DG-Sim** is a wildlife harvest management tool capable of exploring the effects of alternative future harvest quotas and scenarios. Users of **DG-Sim** can choose to incorporate model inputs for their population of interest including, but not limited to: birth rate estimates, natural mortality rates, target harvest levels, and initial sub‐population size. The stochastic nature of **DG‐Sim** allows model projections to incorporate uncertainty in model inputs.
+
+**DG-Sim** has been continuously developed with a user-friendly interface in mind. As such, users of the package are given the flexibility and control to interactively undertake “what‐if” analyses of model projections. **DG-Sim**'s accessible framework has helped support natural resource governance projects as a community-led harvest calculator, allowing for collaborative harvest management planning between community, industry, and government [Cuyler, Daniel, Enghoff et al., 2020](https://conbio.onlinelibrary.wiley.com/doi/full/10.1111/csp2.159). **DG-Sim** currently offers multi-language support in English, Greenlandic, and Danish).
 
 ## Requirements
 
