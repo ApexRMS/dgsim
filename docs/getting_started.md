@@ -15,8 +15,7 @@ This quickstart tutorial will introduce you to basics of working with DG-Sim. Th
 * Running a Model
 * Analyzing the Results
 
-<br>
-## Step 1: Install DG-Sim
+## **Step 1: Install DG-Sim**
 **DG-Sim** is a module within the [SyncroSim](https://syncrosim.com/) simulation modeling framework; as such, running **DG-Sim** requires that the **SyncroSim** software be installed on your computer.
 1. To install **DG-Sim**, follow the instructions under [How to Install](https://apexrms.github.io/dgsim/)
 2. Once installed, open the **SyncroSim** Windows application.
