@@ -75,7 +75,7 @@ Run the ***4x Harvest Scenario*** next by repeating the steps above.
 ## **Step 5: Analyze the results**
 To view results for your run, move to the **Charts** tab at the bottom left of the **Scenario Manager** screen and double-click on the **Summary Chart** to open it.
 <br>
-<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-8.PNG">
+<img align="middle" style="padding: 3px" width="500" src="assets/images/screencap-8.PNG">
 <br>
 You can now view and compare the results of running your two Scenarios through the Model from the **DG-Sim** Package.
 <br>
@@ -85,5 +85,5 @@ Note that, due to the uncertainty in **Mortality** rates, there is a lot of vari
 
 Next, select the **Reports** tab from the bottom of the **Scenario Manager** window (i.e. beside the **Charts** tab). Double click on **Population Size Summary** to generate a file with the model population projections (in either Excel or CSV format). By default an Excel file should open automatically (look for it on your Windows Task Bar) showing the projected number of individuals in each age/sex class by iteration and timestep.
 
-> [!NOTE]
+> **Note:**
 > When you are analyzing the results of a Run, you are actually analyzing one or more Result Scenarios. You can add and remove Results Scenarios from the list of scenarios being analyzed by selecting a Scenario in the Library Explorer and then choosing either **Add to Results** or **Remove from Results** from the **Scenario** menu. Scenarios currently selected for analysis are highlighted in **bold** in the Library Explorer.
