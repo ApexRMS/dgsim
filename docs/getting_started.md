@@ -46,7 +46,7 @@ To view the details of the first of these Scenarios:
 <br>
 * Select the scenario named **Baseline Scenario** in the Library Explorer.
 * Right-click and choose **Properties** from the context menu to view the details of the Scenario.
-<br>
+
 This opens the Scenario Properties window.
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-3.PNG">
