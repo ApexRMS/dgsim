@@ -38,7 +38,7 @@ The contents of your newly created Library are now displayed in the Library Expl
 
 **Note:** Because you chose the **Simple Pop. Model** Template when you created your Library, your Library already contains two pre-configured Scenarios with model inputs. These inputs were filled in and distributed as a sample with the package to help you get started quickly, and represent hypothetical management Scenarios: one a Baseline, and another at 4x Harvest.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-2.PNG">
+<img align="middle" style="padding: 3px" width="550" src="assets/images/screencap-2.PNG">
 <br>
 As shown in the image above, the Library you have just opened contains two Scenarios, each with a unique ID. The first of these scenarios (with ID=1, as shown above in square brackets) is named **Baseline Scenario**; this scenario contains a suite of model inputs corresponding to a hypothetical baseline harvest plan. The second scenario (with ID=10 and named **4x Harvest Scenario**) contains model inputs corresponding to an alternative plan where harvest targets are 4 times greater than those of the Baseline Scenario.
 <br>
@@ -55,3 +55,14 @@ The first tab in this window, called **Summary**, displays some generic informat
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-4.png">
 <br>
+Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs.
+<br>
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-5.png">
+<br>
+Next, open the Scenario Properties window for the **4x Harvest Scenario**. Review the Properties tabs for this Scenario; you will notice that the model inputs within the **Harvest** tab contains Mean values that are 4 times greater than those of the **Baseline Scenario**.
+<br>
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-6.png">
+<br>
+SyncroSim provides you with several alternatives for moving tabular and raster data in to and out of your Library, including built-in support for import/export using Microsoft Excel.
+
+## Step 4: Run the model
