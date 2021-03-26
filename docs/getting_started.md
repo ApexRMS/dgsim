@@ -55,7 +55,7 @@ The first tab in this window, called **Summary**, displays some generic informat
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-4.png">
 <br>
-Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs.
+Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs. By default, the harvest is specified as a number of individuals harvested per year (although it can also be specified as a rate using the Options menu on the left). Between 2018 and 2025 we set the harvest at 100 females and 100 males per year; from 2026 onwards we set it to 50 females and 200 males per year.
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-5.PNG">
 <br>
@@ -63,6 +63,6 @@ Next, open the Scenario Properties window for the **4x Harvest Scenario**. Revie
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-6.PNG">
 <br>
-SyncroSim provides you with several alternatives for moving tabular and raster data in to and out of your Library, including built-in support for import/export using Microsoft Excel.
+**Note:** SyncroSim provides you with several alternatives for moving tabular and raster data in to and out of your Library, including built-in support for import/export using Microsoft Excel.
 
-## Step 4: Run the model
+## **Step 4: Run the model**
