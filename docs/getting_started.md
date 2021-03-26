@@ -51,7 +51,7 @@ This opens the Scenario Properties window.
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-3.PNG">
 <br>
-The first tab in this window, called **Summary**, displays some generic information for the Scenario. The second tab, **Run Control**, contains parameters for running a model simulations. In this example, the Scenario will run for 20 years, starting in the year 2018 on Julian day 152 (June 1st), and repeated for 100 Monte Carlo iterations. The Start Julian day represents the date at which the simulation begins each year, as well as the parturition (i.e. birth) date for females, and the date at which model output is reported.
+The first tab in this window, called **Summary**, displays some generic information for the Scenario. The second tab, **Run Control**, contains parameters for running a model simulation. In this example, the Scenario will run for 20 years, starting in the year 2018 on Julian day 152 (June 1st), and repeated for 100 Monte Carlo iterations. The Start Julian day represents the date at which the simulation begins each year, as well as the parturition (i.e. birth) date for females, and the date at which model output is reported.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-4.PNG">
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-4.png">
 <br>
