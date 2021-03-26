@@ -20,7 +20,7 @@ This quickstart tutorial will introduce you to basics of working with DG-Sim. Th
 1. To install **DG-Sim**, follow the instructions under [How to Install](https://apexrms.github.io/dgsim/)
 2. Once installed, open the **SyncroSim** Windows application.
 
-## Step 2: Create a new DG-Sim library
+## **Step 2: Create a new DG-Sim library**
 Having installed the **DG-Sim** package, you are now ready to create your first SyncroSim Library. A Library is a file (with extension *.ssim*) that contains all of your model inputs and outputs. Note that the format of each Library is specific to the Package for which it was initially created. To create a new Library, choose **New Library...** from the **File** menu.
 <br>
 <img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-1.PNG">
@@ -34,4 +34,7 @@ In this window:
 When you are ready to create the Library file, click **OK**. A new Library will be created and loaded into the Library Explorer.
 
 <br>
-## Step 3:
+## **Step 3: Review the model inputs**
+The contents of your newly created Library are now displayed in the Library Explorer. Model inputs in SyncroSim are organized into Scenarios, where each Scenario consists of a suite of values, one for each of the Model's required inputs.
+
+**Note:** Because you chose the **Simple Pop. Model** Template when you created your Library, your Library already contains two pre-configured Scenarios with model inputs. These inputs were filled in and distributed as a sample with the package to help you get started quickly, and represent hypothetical management Scenarios: one at a Baseline, and another at 4x Harvest.
