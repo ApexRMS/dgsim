@@ -49,26 +49,26 @@ To view the details of the first of these Scenarios:
 
 This opens the Scenario Properties window.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-3.PNG">
+<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-3.PNG">
 <br>
 The first tab in this window, called **Summary**, displays some generic information for the Scenario. The second tab, **Run Control**, contains parameters for running a model simulation. In this example, the Scenario will run for 20 years, starting in the year 2018 on Julian day 152 (June 1st), and repeated for 100 Monte Carlo iterations. The Start Julian day represents the date at which the simulation begins each year, as well as the parturition (i.e. birth) date for females, and the date at which model output is reported.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-4.png">
+<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-4.png">
 <br>
 Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs. By default, the harvest is specified as a number of individuals harvested per year (although it can also be specified as a rate using the **Options** menu on the left). Between 2018 and 2025 we set the harvest at 100 females and 100 males per year; from 2026 onwards we set it to 50 females and 200 males per year.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-5.PNG">
+<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-5.PNG">
 <br>
 Next, open the Scenario Properties window for the ***4x Harvest Scenario***. Review the Properties tabs for this Scenario; you will notice that the model inputs within the **Harvest** tab contains Mean havest values per year that are 4 times greater than those of the ***Baseline Scenario***.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-6.PNG">
+<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-6.PNG">
 <br>
 Close the Scenarios you have open, then select the **File | Save** menu. You are now ready to do your first run of the model.
 
 ## **Step 4: Run the model**
 Right-click on the ***Baseline Scenario*** in the **Scenario Manager** window and select **Run** from the context menu.  If prompted to save your project click **Yes**. The run should complete quickly. If the run is successful you will see a Status of **Done** in the **Run Monitor** window, at which point you can close the **Run Monitor** window; otherwise click on the **Run Log** link to see a report of any problems, make any necessary changes to your Scenario, and then re-run the Scenario.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-7.PNG">
+<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-7.PNG">
 <br>
 Run the ***4x Harvest Scenario*** next by repeating the steps above.
 
