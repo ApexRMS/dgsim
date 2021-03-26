@@ -21,7 +21,6 @@ This quickstart tutorial will introduce you to basics of working with DG-Sim. Th
 1. To install **DG-Sim**, follow the instructions under [How to Install](https://apexrms.github.io/dgsim/)
 2. Once installed, open the **SyncroSim** Windows application.
 
-<br>
 ## Step 2: Create a new DG-Sim library
 Having installed the **DG-Sim** package, you are now ready to create your first SyncroSim Library. A Library is a file (with extension *.ssim*) that contains all of your model inputs and outputs. Note that the format of each Library is specific to the Package for which it was initially created. To create a new Library, choose **New Library...** from the **File** menu.
 <br>
