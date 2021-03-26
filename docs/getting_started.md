@@ -57,11 +57,11 @@ The first tab in this window, called **Summary**, displays some generic informat
 <br>
 Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-5.png">
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-5.PNG">
 <br>
 Next, open the Scenario Properties window for the **4x Harvest Scenario**. Review the Properties tabs for this Scenario; you will notice that the model inputs within the **Harvest** tab contains Mean values that are 4 times greater than those of the **Baseline Scenario**.
 <br>
-<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-6.png">
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-6.PNG">
 <br>
 SyncroSim provides you with several alternatives for moving tabular and raster data in to and out of your Library, including built-in support for import/export using Microsoft Excel.
 
