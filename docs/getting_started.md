@@ -69,7 +69,7 @@ Close the Scenarios you have open, then select the **File | Save** menu. You are
 ## **Step 4: Run the model**
 Right-click on the ***Baseline Scenario*** in the **Scenario Manager** window and select **Run** from the context menu.  If prompted to save your project click **Yes**. The run should complete quickly. If the run is successful you will see a Status of **Done** in the **Run Monitor** window, at which point you can close the **Run Monitor** window; otherwise click on the **Run Log** link to see a report of any problems, make any necessary changes to your Scenario, and then re-run the Scenario.
 <br>
-<img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-7.PNG">
+<img align="middle" style="padding: 3px" width="550" src="assets/images/screencap-7.PNG">
 <br>
 Run the ***4x Harvest Scenario*** next by repeating the steps above.
 
