@@ -40,3 +40,18 @@ The contents of your newly created Library are now displayed in the Library Expl
 <br>
 <img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-2.PNG">
 <br>
+As shown in the image above, the Library you have just opened contains two Scenarios, each with a unique ID. The first of these scenarios (with ID=1, as shown above in square brackets) is named **Baseline Scenario**; this scenario contains a suite of model inputs corresponding to a hypothetical baseline harvest plan. The second scenario (with ID=10 and named **4x Harvest Scenario**) contains model inputs corresponding to an alternative plan where harvest targets are 4 times greater than those of the Baseline Scenario.
+<br>
+To view the details of the first of these Scenarios:
+<br>
+* Select the scenario named **Baseline Scenario** in the Library Explorer.
+* Right-click and choose **Properties** from the context menu to view the details of the Scenario.
+<br>
+This opens the Scenario Properties window.
+<br>
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-3.PNG">
+<br>
+The first tab in this window, called **Summary**, displays some generic information for the Scenario. The second tab, **Run Control**, contains parameters for running a model simulations. In this example, the Scenario will run for 20 years, starting in the year 2018 on Julian day 152 (June 1st), and repeated for 100 Monte Carlo iterations. The Start Julian day represents the date at which the simulation begins each year, as well as the parturition (i.e. birth) date for females, and the date at which model output is reported.
+<br>
+<img align="middle" style="padding: 3px" width="600" src="assets/images/screencap-4.PNG">
+<br>
