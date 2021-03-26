@@ -14,6 +14,7 @@ This quickstart tutorial will introduce you to basics of working with DG-Sim. Th
 * Viewing and editing model Datafeeds
 * Running a Model
 * Analyzing the Results
+</*> 
 <br>
 <br>
 ## Step 1: Install DG-Sim
