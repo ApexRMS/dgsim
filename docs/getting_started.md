@@ -19,7 +19,7 @@ This quickstart tutorial will introduce you to basics of working with DG-Sim. Th
 **DG-Sim** is a Package within the [SyncroSim](https://syncrosim.com/) simulation modeling framework; as such, running **DG-Sim** requires that the **SyncroSim** software be installed on your computer. To install **DG-Sim**, follow the instructions under [How to Install](https://apexrms.github.io/dgsim/)
 
 
-## **Step 2: Create a new DG-Sim library**
+## **Step 2: Create a new DG-Sim Library**
 Having installed the **DG-Sim** Package, you are now ready to create your first SyncroSim Library. A Library is a file (with extension *.ssim*) that contains all of your model inputs and outputs. Note that the format of each Library is specific to the Package for which it was initially created. To create a new Library, choose **New Library...** from the **File** menu.
 <br>
 <img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-1.PNG">
@@ -38,7 +38,7 @@ The contents of your newly created Library are now displayed in the Library Expl
 > **Note:**
 > Because you chose the ***Simple Pop. Model*** Template when you created your Library, your Library already contains two pre-configured Scenarios with model inputs. These inputs were filled in and distributed as a sample with the package to help you get started quickly, and represent hypothetical management Scenarios: one a Baseline, and another at 4x Harvest.
 
-<img align="middle" style="padding: 3px" width="550" src="assets/images/screencap-2.PNG">
+<img align="middle" style="padding: 3px" width="350" src="assets/images/screencap-2.PNG">
 <br>
 As shown in the image above, the Library you have just opened contains two Scenarios, each with a unique ID. The first of these scenarios (with ID=1, as shown above in square brackets) is named ***Baseline Scenario***; this scenario contains a suite of model inputs corresponding to a hypothetical baseline harvest plan. The second scenario (with ID=10 and named ***4x Harvest Scenario***) contains model inputs corresponding to an alternative plan where harvest targets are 4 times greater than those of the Baseline Scenario.
 <br>
