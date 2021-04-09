@@ -26,7 +26,7 @@ This package requires SyncroSim [version 2.2.27](https://syncrosim.com/download/
 
 Open SyncroSim and select **File -> Packages… -> Install…**, then select the **DG-Sim** package and click OK.
 
-Alternatively, download [the latest release from Github](https://github.com/ApexRMS/dgsim/releases/). Open SyncroSim and select File -> Packages… -> Install From File….
+Alternatively, download [the latest release from Github](https://github.com/ApexRMS/dgsim/releases/). Open SyncroSim and select File -> Packages… -> Install From File…, then navigate to the downloaded package file with the extension *.ssimpkg*.
 <br>
 <br>
 ## Getting Started
