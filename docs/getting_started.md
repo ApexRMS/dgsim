@@ -11,8 +11,8 @@ This quickstart tutorial will introduce you to basics of working with DG-Sim. Th
 <br>
 * Installing DG-Sim
 * Creating a new DG-Sim Library
-* Viewing and editing model inputs
-* Running a DG-Sim scenario
+* Viewing model inputs
+* Running the model
 * Analyzing the results
 
 ## **Step 1: Install DG-Sim**
@@ -38,7 +38,7 @@ The contents of your newly created Library are now displayed in the Library Expl
 > **Note:**
 > Because you chose the ***Simple Pop. Model*** Template when you created your Library, your Library already contains two pre-configured Scenarios with model inputs. These inputs were filled in and distributed as a sample with the package to help you get started quickly, and represent hypothetical management Scenarios: one a Baseline, and another at 4x Harvest.
 
-<img align="middle" style="padding: 3px" width="350" src="assets/images/screencap-2.PNG">
+<img align="middle" style="padding: 3px" width="400" src="assets/images/screencap-2.PNG">
 <br>
 As shown in the image above, the Library you have just opened contains two Scenarios, each with a unique ID. The first of these scenarios (with ID=1, as shown above in square brackets) is named ***Baseline Scenario***; this scenario contains a suite of model inputs corresponding to a hypothetical baseline harvest plan. The second scenario (with ID=10 and named ***4x Harvest Scenario***) contains model inputs corresponding to an alternative plan where harvest targets are 4 times greater than those of the Baseline Scenario.
 <br>
@@ -55,29 +55,29 @@ The first tab in this window, called **Summary**, displays some generic informat
 <br>
 <img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-4.png">
 <br>
-Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs. By default, the harvest is specified as a number of individuals harvested per year (although it can also be specified as a rate using the **Options** menu on the left). Between 2018 and 2022 we set the harvest at 100 females and 100 males per year; from 2023 onwards we set it to 50 females and 200 males per year.
+Click on the **Initial Population**, **Demographic Parameters**, and **Harvest** tabs to familiarize yourself with this Scenario's inputs. By default, the harvest is specified as a number of individuals harvested per year (although it can also be specified as a rate using the **Options** menu on the left). Between 2018 and 2022 the harvest is at 100 females and 100 males per year; from 2023 onwards the harvest is set at 50 females and 200 males per year.
 <br>
 <img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-5.PNG">
 <br>
-Next, open the Scenario Properties window for the ***4x Harvest Scenario***. Review the Properties tabs for this Scenario; you will notice that the model inputs within the **Harvest** tab contains Mean havest values per year that are 4 times greater than those of the ***Baseline Scenario***.
+Next, open the Scenario Properties window for the ***4x Harvest Scenario***. Review the Properties tabs for this Scenario; you will notice that the model inputs within the **Harvest** tab contains Annual Harvest values per year that are 4 times greater than those of the ***Baseline Scenario***.
 <br>
 <img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-6.PNG">
 <br>
-Close the Scenarios you have open, then select the **File | Save** menu. You are now ready to do your first run of the model.
+Close the Scenario Properties windows you have open. You are now ready to do your first run of the model.
 
 ## **Step 4: Run the model**
-Right-click on the ***Baseline Scenario*** in the **Scenario Manager** window and select **Run** from the context menu.  If prompted to save your project click **Yes**. The run should complete quickly. If the run is successful you will see a Status of **Done** in the **Run Monitor** window, at which point you can close the **Run Monitor** window; otherwise click on the **Run Log** link to see a report of any problems, make any necessary changes to your Scenario, and then re-run the Scenario.
+Right-click on the ***Baseline Scenario*** in the **Scenario Manager** window and select **Run** from the context menu. If prompted to save your project click **Yes**. The run should complete quickly. If the run is successful you will see a Status of **Done** in the **Run Monitor** window, at which point you can close the **Run Monitor** window; otherwise click on the **Run Log** link to see a report of any problems, make any necessary changes to your Scenario, and then re-run the Scenario.
 <br>
-<img align="middle" style="padding: 3px" width="550" src="assets/images/screencap-7.PNG">
+<img align="middle" style="padding: 3px" width="400" src="assets/images/screencap-7.PNG">
 <br>
 Run the ***4x Harvest Scenario*** next by repeating the steps above.
 
 ## **Step 5: Analyze the results**
 To view results for your run, move to the **Charts** tab at the bottom left of the **Scenario Manager** screen and double-click on the **Summary Chart** to open it.
 <br>
-<img align="middle" style="padding: 3px" width="500" src="assets/images/screencap-8.PNG">
+<img align="middle" style="padding: 3px" width="400" src="assets/images/screencap-8.PNG">
 <br>
-You can now view and compare the results of running your two Scenarios through the Model from the **DG-Sim** Package.
+You can now view and compare the results of running your two Scenarios through the model from the **DG-Sim** Package.
 <br>
 <img align="middle" style="padding: 3px" width="700" src="assets/images/screencap-9.PNG">
 <br>
@@ -86,4 +86,4 @@ Note that, due to the uncertainty in **Mortality** rates, there is a lot of vari
 Next, select the **Reports** tab from the bottom of the **Scenario Manager** window (i.e. beside the **Charts** tab). Double click on **Population Size Summary** to generate a file with the model population projections (in either Excel or CSV format). By default an Excel file should open automatically (look for it on your Windows Task Bar) showing the projected number of individuals in each age/sex class by iteration and timestep.
 
 > **Note:**
-> When you are analyzing the results of a Run, you are actually analyzing one or more Result Scenarios. You can add and remove Results Scenarios from the list of scenarios being analyzed by selecting a Scenario in the Library Explorer and then choosing either **Add to Results** or **Remove from Results** from the **Scenario** menu. Scenarios currently selected for analysis are highlighted in **bold** in the Library Explorer.
+> You can add and remove Results Scenarios from the list of scenarios being analyzed by selecting a Scenario in the Library Explorer and then choosing either **Add to Results** or **Remove from Results** from the **Scenario** menu. Scenarios currently selected for analysis are highlighted in **bold** in the Library Explorer.
