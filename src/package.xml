@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.3.0" url="https://github.com/ApexRMS/dgsim">
+<package name="dgsim" displayName="Simulates demographics of wildlife populations" version="2.3.0" url="https://apexrms.github.io/dgsim/">
   <transformers>
     <transformer name="Primary" displayName="Demographic Population" isPrimary="True" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim" configurationSheet="RunControl">
       <include>
