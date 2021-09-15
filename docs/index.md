@@ -19,7 +19,7 @@ The **DG-Sim** package consists of a general population-modeling framework which
 
 ## Requirements
 
-This package requires SyncroSim [version 2.2.27](https://syncrosim.com/download/).
+This package requires [the latest release of SyncroSim](https://syncrosim.com/download/).
 <br>
 <br>
 ## How to Install
