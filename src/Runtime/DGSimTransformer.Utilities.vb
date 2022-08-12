@@ -197,6 +197,11 @@ Partial Class DGSimTransformer
 
             For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 
+                ' Do not harvest calves
+                If (cohort.Age = 0) Then
+                    Continue For
+                End If
+
                 Dim id As Integer = GetAgeClassIdFromAge(cohort.Age)
 
                 If ((Not ah.AgeClassId.HasValue) OrElse (id = ah.AgeClassId.Value)) Then
