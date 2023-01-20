@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Home
-description: "Landing page for the Package"
+description: "SyncroSim package for forecasting wildlife population size and harvest"
 permalink: /
 ---
 
