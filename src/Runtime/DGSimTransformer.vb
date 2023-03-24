@@ -208,9 +208,9 @@ Class DGSimTransformer
 
             Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Sex.Male, NumMaleOffspring)
 
-            ' Only add mortality records for calves in the first year or if birth is after year start
+            ' Only add mortality records for calves if birth is after year start
             ' Otherwise mortality is added as part of cohort loop for calves that were born before year start
-            If ((timestep = Me.m_RunControl.MinimumTimestep) Or (Me.m_OffspringPerFemaleBirthJDay >= Me.m_RunControl.StartJulianDay)) Then
+            If ((Me.m_OffspringPerFemaleBirthJDay >= Me.m_RunControl.StartJulianDay)) Then
                 Me.AddMortalityOutputToCollection(c, stratum, MaleCalfMortality)
             End If
 
@@ -222,9 +222,9 @@ Class DGSimTransformer
 
             Dim c As New AgeSexCohort(NewCohortAge, RelAge - 1, Sex.Female, NumFemaleOffspring)
 
-            ' Only add mortality records for calves in the first year or if birth is after year start
+            ' Only add mortality records for calves if birth is after year start
             ' Otherwise mortality is added as part of cohort loop for calves that were born before year start
-            If ((timestep = Me.m_RunControl.MinimumTimestep) Or (Me.m_OffspringPerFemaleBirthJDay >= Me.m_RunControl.StartJulianDay)) Then
+            If ((Me.m_OffspringPerFemaleBirthJDay >= Me.m_RunControl.StartJulianDay)) Then
                 Me.AddMortalityOutputToCollection(c, stratum, FemaleCalfMortality)
             End If
 
