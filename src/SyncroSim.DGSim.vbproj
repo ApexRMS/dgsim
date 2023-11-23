@@ -165,7 +165,6 @@
     <Compile Include="DataFeedViews\RunControlDataFeedView.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DGSimUpdates.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -282,8 +281,6 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="package.xml.da" />
-    <None Include="package.xml.kl" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.xml" />
