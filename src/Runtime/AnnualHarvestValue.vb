@@ -6,7 +6,7 @@
 '**********************************************************************************************
 
 Imports SyncroSim.Core
-Imports SyncroSim.StochasticTime
+
 
 Class AnnualHarvestValue
     Inherits DistributionBase

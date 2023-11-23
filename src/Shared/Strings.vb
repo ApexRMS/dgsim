@@ -16,7 +16,7 @@ Module Strings
     Public Const DATASHEET_SEX_COLUMN_NAME As String = "Sex"
     Public Const DATASHEET_MIN_AGE_COLUMN_NAME As String = "MinimumAge"
     Public Const DATASHEET_MAX_AGE_COLUMN_NAME As String = "MaximumAge"
-    Public Const DATASHEET_MEAN_COLUMN_NAME As String = "Mean"
+    Public Const DATASHEET_DISTRIBUTION_MEAN_COLUMN_NAME As String = "DistributionMean"
     Public Const DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME = "DistributionType"
     Public Const DATASHEET_DISTRIBUTION_SD_COLUMN_NAME = "DistributionSD"
     Public Const DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME = "DistributionMin"
@@ -35,6 +35,7 @@ Module Strings
 
     'Initial population size data sheet
     Public Const INITIAL_POPULATION_SIZE_DATASHEET_NAME As String = "dgsim_InitialPopulationSize"
+    Public Const INITIAL_POPULATION_SIZE_MEAN_COLUMN_NAME As String = "Mean"
 
     'Initial population distribution data sheet
     Public Const INITIAL_POPULATION_DISTRIBUTION_DATASHEET_NAME As String = "dgsim_InitialPopulationDistribution"

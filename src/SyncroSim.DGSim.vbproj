@@ -98,25 +98,17 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SyncroSim.Common">
-      <HintPath>..\..\ssimbin\SyncroSim.Common.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="SyncroSim.Apex">
+      <HintPath>..\..\ssimbin3\SyncroSim.Apex.dll</HintPath>
     </Reference>
-    <Reference Include="SyncroSim.Common.Forms">
-      <HintPath>..\..\ssimbin\SyncroSim.Common.Forms.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="SyncroSim.Apex.Forms">
+      <HintPath>..\..\ssimbin3\SyncroSim.Apex.Forms.dll</HintPath>
     </Reference>
     <Reference Include="SyncroSim.Core">
-      <HintPath>..\..\ssimbin\SyncroSim.Core.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\ssimbin3\SyncroSim.Core.dll</HintPath>
     </Reference>
     <Reference Include="SyncroSim.Core.Forms">
-      <HintPath>..\..\ssimbin\SyncroSim.Core.Forms.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SyncroSim.StochasticTime">
-      <HintPath>..\..\ssimbin\SyncroSim.StochasticTime.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\ssimbin3\SyncroSim.Core.Forms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

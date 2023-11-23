@@ -22,13 +22,6 @@ Class InitialPopulationDataFeedView
         Dim DistView As DataFeedView = Me.Session.CreateMultiRowDataFeedView(Me.Scenario, Me.ControllingScenario)
         Me.PanelInitialPopulationDistribution.Controls.Add(DistView)
 
-        'The single row view has four rows and no space to have more or less.  To make this look
-        'good we only want to show the cell borders.  If we also show the border it will conflict 
-        'with the top and bottom rows.
-
-        SizeView.ShowBorder = False
-        SizeView.PaintGridCellBorders = True
-
     End Sub
 
     Public Overrides Sub LoadDataFeed(ByVal dataFeed As DataFeed)

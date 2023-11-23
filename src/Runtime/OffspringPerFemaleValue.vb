@@ -6,7 +6,6 @@
 '**********************************************************************************************
 
 Imports SyncroSim.Core
-Imports SyncroSim.StochasticTime
 
 Class OffspringPerFemaleValue
     Inherits DistributionBase

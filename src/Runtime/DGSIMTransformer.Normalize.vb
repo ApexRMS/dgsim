@@ -93,7 +93,7 @@ Partial Class DGSimTransformer
         If (dr Is Nothing) Then
 
             dr = ds.GetData().NewRow()
-            dr(DATASHEET_MEAN_COLUMN_NAME) = DEFAULT_MEAN
+            dr(INITIAL_POPULATION_SIZE_MEAN_COLUMN_NAME) = DEFAULT_MEAN
             ds.GetData.Rows.Add(dr)
 
             Me.RecordStatus(StatusType.Warning, My.Resources.DGSIM_WARNING_USING_DEFAULT_INITIAL_POP_SIZE)

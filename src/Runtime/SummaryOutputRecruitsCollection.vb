@@ -5,7 +5,7 @@
 '
 '**********************************************************************************************
 
-Imports SyncroSim.Common
+Imports SyncroSim.Apex
 Imports System.Collections.ObjectModel
 
 Friend Class SummaryOutputRecruitsCollection

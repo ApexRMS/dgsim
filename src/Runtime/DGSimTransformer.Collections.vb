@@ -101,7 +101,7 @@ Partial Class DGSimTransformer
         Try
 
             Me.m_InitialPopulationSize = New InitialPopulationSize(
-                GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                GetNullableDouble(dr, INITIAL_POPULATION_SIZE_MEAN_COLUMN_NAME),
                 GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
                 GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
                 GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
@@ -171,7 +171,7 @@ Partial Class DGSimTransformer
                     GetNullableInt(dr, DATASHEET_TIMESTEP_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
                     GetNullableInt(dr, OFFSPRING_PER_FEMALE_COUNT_JULIAN_DAY_COLUMN_NAME),
-                    GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MEAN_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
@@ -224,7 +224,7 @@ Partial Class DGSimTransformer
                     GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_JULIAN_DAY_COLUMN_NAME),
                     CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)),
-                    GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MEAN_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
@@ -277,7 +277,7 @@ Partial Class DGSimTransformer
                     GetNullableInt(dr, DATASHEET_TIMESTEP_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_AGE_CLASS_ID_COLUMN_NAME),
                     CType(GetNullableInt(dr, DATASHEET_SEX_COLUMN_NAME), Nullable(Of Sex)),
-                    GetNullableDouble(dr, DATASHEET_MEAN_COLUMN_NAME),
+                    GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MEAN_COLUMN_NAME),
                     GetNullableInt(dr, DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_DISTRIBUTION_SD_COLUMN_NAME),
                     GetNullableDouble(dr, DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME),
