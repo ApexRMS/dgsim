@@ -17,7 +17,7 @@
 		<column name="DistributionSD" displayName="Standard Deviation" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
 		<column name="DistributionMin" displayName="Minimum" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" isOptional="True"/>
 		<column name="DistributionMax" displayName="Maximum" dataType="Integer" validationType="WholeNumber" validationCondition="Greater" formula1="0" isOptional="True"/>
-	  <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>	
+		<validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
 	</dataSheet>
 
 	<dataSheet name="InitialPopulationDistribution" displayName="Initial Population Distribution" dataScope="Scenario">
@@ -75,7 +75,7 @@
 		<column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
 		<column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
 		<column name="DistributionMax" displayName="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>>
-	  <validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
+		<validation validationType="LessEqual" columns="DistributionMin|DistributionMax"/>
 	</dataSheet>
 
 	<dataSheet name="DemographicRateShift" displayName="Demographic Rate Shifts" dataScope="Scenario" hasIteration="True" hasTimestep="True">
@@ -147,11 +147,24 @@
 		<dataSheet name="OffspringPerFemaleValue"></dataSheet>
 	</dataFeed>
 
-	<transformer
-		name="Main"
-		displayName="Demographic Population"
-		className="SyncroSim.DGSim.DGSimTransformer"
-		classAssembly="SyncroSim.DGSim">
+	<transformer name="Main" displayName="Demographic Population" className="SyncroSim.DGSim.DGSimTransformer" classAssembly="SyncroSim.DGSim">
+		<dataSheet name="RunControl" type="Input"/>
+		<dataSheet name="InitialPopulationSize" type="Input"/>
+		<dataSheet name="InitialPopulationDistribution" type="Input"/>
+		<dataSheet name="AgeClassRange" type="Input"/>
+		<dataSheet name="OffspringPerFemaleOption" type="Input"/>
+		<dataSheet name="OffspringPerFemaleValue" type="Input"/>
+		<dataSheet name="AnnualizedMortalityRate" type="Input"/>
+		<dataSheet name="AnnualHarvestOption" type="Input"/>
+		<dataSheet name="AnnualHarvestValue" type="Input"/>
+		<dataSheet name="Migration" type="Input"/>
+		<dataSheet name="DemographicRateShift" type="Input"/>
+		<dataSheet name="Census" type="Input"/>
+		<dataSheet name="OutputPopulationSize" type="Output"/>
+		<dataSheet name="OutputHarvest" type="Output"/>
+		<dataSheet name="OutputRecruits" type="Output"/>
+		<dataSheet name="OutputMortality" type="Output"/>		
+		<dataSheet name="OutputPosteriorDistributionValue" type="Output"/>
 	</transformer>
 
 	<transformer
