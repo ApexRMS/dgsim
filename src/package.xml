@@ -172,7 +172,7 @@
 		displayName="Population Size Summary"
 		className="SyncroSim.DGSim.PopulationSizeReport"
 		classAssembly="SyncroSim.DGSim"
-		isPipeline="False">
+		isExport="True">
 	</transformer>
 
 	<transformer
@@ -180,7 +180,7 @@
 		displayName="Harvest Summary"
 		className="SyncroSim.DGSim.HarvestReport"
 		classAssembly="SyncroSim.DGSim"
-		isPipeline="False">
+		isExport="True">
 	</transformer>
 
 	<transformer
@@ -188,7 +188,7 @@
 		displayName="Recruits Summary"
 		className="SyncroSim.DGSim.RecruitsReport"
 		classAssembly="SyncroSim.DGSim"
-		isPipeline="False">
+		isExport="True">
 	</transformer>
 
 	<transformer
@@ -196,7 +196,7 @@
 		displayName="Mortality Summary"
 		className="SyncroSim.DGSim.MortalityReport"
 		classAssembly="SyncroSim.DGSim"
-		isPipeline="False">
+		isExport="True">
 	</transformer>
 
 	<transformer
@@ -204,7 +204,7 @@
 		displayName="Sampled Inputs by Iteration"
 		className="SyncroSim.DGSim.PosteriorDistributionReport"
 		classAssembly="SyncroSim.DGSim"
-		isPipeline="False">
+		isExport="True">
 	</transformer>
 
 	<layout name="ProjectDatasheets">
@@ -230,15 +230,13 @@
 	</layout>
 
 	<layout name="ExportTransformers">
-		<group name="Reports">
-			<group name="Summary">
+			<group name="SummaryReports" displayName="Summary Reports">
 				<item name="PopulationSizeReport"/>
 				<item name="HarvestReport"/>
 				<item name="RecruitsReport"/>
 				<item name="MortalityReport"/>
 				<item name="PosteriorDistributionReport"/>
 			</group>
-		</group>
 	</layout>
 
 	<layout name="ChartVariables">
