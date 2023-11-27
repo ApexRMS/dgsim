@@ -95,39 +95,39 @@
 	</dataSheet>
 
 	<dataSheet name="OutputPopulationSize" displayName="Population Size" dataScope="Scenario" hasIteration="True" hasTimestep="True">
-		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isIndex="True"/>
+		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isIndex="True"/>
+		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isIndex="True"/>
 		<column name="Population" dataType="Double"/>
 	</dataSheet>
 
 	<dataSheet name="OutputHarvest" displayName="Harvest" dataScope="Scenario" hasIteration="True" hasTimestep="True">
-		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isIndex="True"/>
+		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isIndex="True"/>
+		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isIndex="True"/>
 		<column name="Harvest" dataType="Double" validationCondition="GreaterEqual" formula1="0"/>
 	</dataSheet>
 
 	<dataSheet name="OutputRecruits" displayName="Recruits" dataScope="Scenario" hasIteration="True" hasTimestep="True">
-		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="MotherAgeClassId" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="OffspringSex" displayName="Offspring Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
+		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isIndex="True"/>
+		<column name="MotherAgeClassId" displayName="Mother Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isIndex="True"/>
+		<column name="OffspringSex" displayName="Offspring Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isIndex="True"/>
 		<column name="Recruits" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
 	</dataSheet>
 
 	<dataSheet name="OutputMortality " displayName="Mortality" dataScope="Scenario" hasIteration="True" hasTimestep="True">
-		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isCompositeIndex="True"/>
-		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isCompositeIndex="True"/>
+		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" allowDbNull="False" isIndex="True"/>
+		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" allowDbNull="False" isIndex="True"/>
+		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" allowDbNull="False" isIndex="True"/>
 		<column name="Mortality" dataType="Double" validationCondition="GreaterEqual" formula1="0" />
 	</dataSheet>
 
 	<dataSheet name="OutputPosteriorDistributionValue" displayName="Sampled Inputs by Iteration" dataScope="Scenario" hasIteration="True" hasTimestep="True">
 		<column name="HasCensusData" dataType="Boolean"/>
 		<column name="JulianDay" dataType="Integer"/>
-		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isCompositeIndex="True"/>
-		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isCompositeIndex="True"/>
-		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isCompositeIndex="True"/>
+		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isIndex="True"/>
+		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isIndex="True"/>
+		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isIndex="True"/>
 		<column name="Variable" dataType="Integer" validationType="List" formula1="0:Harvest|1:Mortality|2:Offspring"/>
 		<column name="IsFiltered" displayName="IsFiltered" dataType="Boolean"/>
 		<column name="Value" dataType="Double"/>
@@ -163,7 +163,7 @@
 		<dataSheet name="OutputPopulationSize" type="Output"/>
 		<dataSheet name="OutputHarvest" type="Output"/>
 		<dataSheet name="OutputRecruits" type="Output"/>
-		<dataSheet name="OutputMortality" type="Output"/>		
+		<dataSheet name="OutputMortality" type="Output"/>
 		<dataSheet name="OutputPosteriorDistributionValue" type="Output"/>
 	</transformer>
 
@@ -230,13 +230,13 @@
 	</layout>
 
 	<layout name="ExportTransformers">
-			<group name="SummaryReports" displayName="Summary Reports">
-				<item name="PopulationSizeReport"/>
-				<item name="HarvestReport"/>
-				<item name="RecruitsReport"/>
-				<item name="MortalityReport"/>
-				<item name="PosteriorDistributionReport"/>
-			</group>
+		<group name="SummaryReports" displayName="Summary Reports">
+			<item name="PopulationSizeReport"/>
+			<item name="HarvestReport"/>
+			<item name="RecruitsReport"/>
+			<item name="MortalityReport"/>
+			<item name="PosteriorDistributionReport"/>
+		</group>
 	</layout>
 
 	<layout name="ChartVariables">
