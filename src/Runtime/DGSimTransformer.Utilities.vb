@@ -116,7 +116,7 @@ Partial Class DGSimTransformer
 
     End Function
 
-    Private Function GetPopulationSize(
+    Private Function GetHarvestablePopulationSize(
         ByVal stratum As Stratum,
         ByVal ageClassId As Nullable(Of Integer),
         ByVal sex As Nullable(Of Sex)) As Double
@@ -129,16 +129,18 @@ Partial Class DGSimTransformer
 
             For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 
-                Dim id As Integer = GetAgeClassIdFromAge(cohort.Age)
+                If (cohort.Age > 0) Then
 
-                If ((Not ageClassId.HasValue) OrElse (id = ageClassId)) Then
+                    Dim id As Integer = GetAgeClassIdFromAge(cohort.Age)
 
-                    If ((Not sex.HasValue) OrElse (cohort.Sex = sex.Value)) Then
-                        PopSize += cohort.NumIndividuals
+                    If ((Not ageClassId.HasValue) OrElse (id = ageClassId)) Then
+
+                        If ((Not sex.HasValue) OrElse (cohort.Sex = sex.Value)) Then
+                            PopSize += cohort.NumIndividuals
+                        End If
+
                     End If
-
                 End If
-
             Next
 
             Return PopSize
@@ -208,7 +210,7 @@ Partial Class DGSimTransformer
 
                     If ((Not ah.Sex.HasValue) OrElse (cohort.Sex = ah.Sex.Value)) Then
 
-                        Dim pSize As Double = GetPopulationSize(stratum, ah.AgeClassId, ah.Sex)
+                        Dim pSize As Double = GetHarvestablePopulationSize(stratum, ah.AgeClassId, ah.Sex)
                         Dim InputHarvestAmount As Double = 0.0
 
                         If (pSize > 0.0) Then
