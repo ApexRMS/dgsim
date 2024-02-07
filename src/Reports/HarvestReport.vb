@@ -19,9 +19,9 @@ Class HarvestReport
         Dim columns As ExportColumnCollection = CreateColumnCollection()
 
         If (exportType = ExportType.ExcelFile) Then
-            Me.ExcelExport(location, columns, query, "Harvest")
+            Me.ExportToExcel(location, columns, query, "Harvest")
         Else
-            Me.CSVExport(location, columns, query)
+            Me.ExportToCSVFile(location, columns, query)
             InformationMessageBox("Data saved to '{0}'.", location)
         End If
 
@@ -71,7 +71,7 @@ Class HarvestReport
             "StratumName, " &
             "Sex, " &
             "AgeClassName",
-            Me.CreateActiveResultScenarioFilter())
+            Me.ExportCreateActiveResultScenarioFilter())
 
         Return Query
 
