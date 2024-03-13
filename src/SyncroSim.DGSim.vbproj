@@ -157,6 +157,8 @@
     <Compile Include="DataFeedViews\RunControlDataFeedView.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="DGSimUpdates.Utils.vb" />
+    <Compile Include="DGSimUpdates.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

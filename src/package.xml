@@ -38,17 +38,27 @@
 		<column name="BirthJulianDay" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365"/>
 	</dataSheet>
 
-	<dataSheet name="OffspringPerFemaleValue" displayName="Offspring per Female Values" hasIteration="True" hasTimestep="True" hasDistributions="True">
+	<dataSheet name="OffspringPerFemaleValue" displayName="Offspring per Female Values" hasIteration="True" hasTimestep="True">
 		<column name="CountJulianDay" displayName="Count Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
 		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
 		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+		<column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+		<column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="core_DistributionType" isOptional="True"/>
+		<column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+		<column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+		<column name="DistributionMax" displayName="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
 	</dataSheet>
 
-	<dataSheet name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate" hasIteration="True" hasTimestep="True"  hasDistributions="True">
+	<dataSheet name="AnnualizedMortalityRate" displayName="Annualized Mortality Rate" hasIteration="True" hasTimestep="True">
 		<column name="JulianDay" displayName="Julian Day" dataType="Integer" validationType="WholeNumber" validationCondition="Between" formula1="1" formula2="365" isOptional="True"/>
 		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
 		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
 		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+		<column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+		<column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="core_DistributionType" isOptional="True"/>
+		<column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+		<column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+		<column name="DistributionMax" displayName="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>	
 	</dataSheet>
 
 	<dataSheet name="AnnualHarvestOption" displayName="Annual Harvest Option" isSingleRow="True" viewClassName="SyncroSim.DGSim.AnnualHarvestOptionDataFeedView" viewClassAssembly="SyncroSim.DGSim">
@@ -59,10 +69,15 @@
 		<validation validationType="LessEqual" columns="PopFilterMinAge|PopFilterMaxAge"/>
 	</dataSheet>
 
-	<dataSheet name="AnnualHarvestValue" displayName="Annual Harvest Value" hasIteration="True" hasTimestep="True" hasDistributions="True">
+	<dataSheet name="AnnualHarvestValue" displayName="Annual Harvest Value" hasIteration="True" hasTimestep="True">
 		<column name="StratumId" displayName="Stratum" dataType="Integer" validationType="Datasheet" formula1="Stratum" isOptional="True"/>
 		<column name="Sex" dataType="Integer" validationType="List" formula1="0:Male|1:Female" isOptional="True"/>
 		<column name="AgeClassId" displayName="Age Class" dataType="Integer" validationType="Datasheet" formula1="AgeClass" isOptional="True"/>
+		<column name="Mean" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0"/>
+		<column name="DistributionType" displayName="Distribution" dataType="Integer" validationType="Datasheet" formula1="core_DistributionType" isOptional="True"/>
+		<column name="DistributionSD" displayName="SD" dataType="Double" validationType="Decimal" validationCondition="Greater" formula1="0" isOptional="True"/>
+		<column name="DistributionMin" displayName="Minimum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>
+		<column name="DistributionMax" displayName="Maximum" dataType="Double" validationType="Decimal" validationCondition="GreaterEqual" formula1="0" isOptional="True"/>	
 	</dataSheet>
 
 	<dataSheet name="Migration" hasIteration="True" hasTimestep="True">
@@ -245,5 +260,10 @@
 		<item name="Recruits" displayName="Recruits" dataSheet="OutputRecruits" column="Recruits" filter="MotherAgeClassId|OffspringSex|StratumId"/>
 		<item name="Mortality" displayName="Mortality" dataSheet="OutputMortality" column="Mortality" filter="AgeClassId|Sex|StratumId"/>
 	</layout>
+
+	<updateProvider
+		className="SyncroSim.DGSim.DGSimUpdates"
+		classAssembly="SyncroSim.DGSim">
+	</updateProvider>
 
 </package>
