@@ -3,8 +3,6 @@ layout: default
 title: Getting started
 ---
 
-# Getting started with **DG-Sim**
-
 ---
 ## ⚠️ **Notice to Users**
 
@@ -12,6 +10,9 @@ The **Getting Started** documentation and associated **Tutorials** for this Sync
 In the meantime, please note that some instructions, references, and/or images may not fully align with the latest version of SyncroSim. We appreciate your patience as we work to provide updated resources.
 
 ---
+<br>
+
+# Getting started with **DG-Sim**
 
 ## Quickstart Tutorial
 
