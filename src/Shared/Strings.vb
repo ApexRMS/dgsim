@@ -11,12 +11,12 @@ Module Strings
     Public Const DATASHEET_ITERATION_COLUMN_NAME As String = "Iteration"
     Public Const DATASHEET_TIMESTEP_COLUMN_NAME As String = "Timestep"
     Public Const DATASHEET_JULIAN_DAY_COLUMN_NAME As String = "JulianDay"
-    Public Const DATASHEET_STRATUM_ID_COLUMN_NAME As String = "StratumID"
-    Public Const DATASHEET_AGE_CLASS_ID_COLUMN_NAME As String = "AgeClassID"
+    Public Const DATASHEET_STRATUM_ID_COLUMN_NAME As String = "StratumId"
+    Public Const DATASHEET_AGE_CLASS_ID_COLUMN_NAME As String = "AgeClassId"
     Public Const DATASHEET_SEX_COLUMN_NAME As String = "Sex"
     Public Const DATASHEET_MIN_AGE_COLUMN_NAME As String = "MinimumAge"
     Public Const DATASHEET_MAX_AGE_COLUMN_NAME As String = "MaximumAge"
-    Public Const DATASHEET_MEAN_COLUMN_NAME As String = "Mean"
+    Public Const DATASHEET_DISTRIBUTION_MEAN_COLUMN_NAME As String = "Mean"
     Public Const DATASHEET_DISTRIBUTION_TYPE_COLUMN_NAME = "DistributionType"
     Public Const DATASHEET_DISTRIBUTION_SD_COLUMN_NAME = "DistributionSD"
     Public Const DATASHEET_DISTRIBUTION_MIN_COLUMN_NAME = "DistributionMin"
@@ -35,6 +35,7 @@ Module Strings
 
     'Initial population size data sheet
     Public Const INITIAL_POPULATION_SIZE_DATASHEET_NAME As String = "dgsim_InitialPopulationSize"
+    Public Const INITIAL_POPULATION_SIZE_MEAN_COLUMN_NAME As String = "Mean"
 
     'Initial population distribution data sheet
     Public Const INITIAL_POPULATION_DISTRIBUTION_DATASHEET_NAME As String = "dgsim_InitialPopulationDistribution"
@@ -69,8 +70,8 @@ Module Strings
 
     'Migration data sheet
     Public Const MIGRATION_DATASHEET_NAME As String = "dgsim_Migration"
-    Public Const MIGRATION_FROM_STRATUM_COLUMN_NAME As String = "FromStratumID"
-    Public Const MIGRATION_TO_STRATUM_COLUMN_NAME As String = "ToStratumID"
+    Public Const MIGRATION_FROM_STRATUM_COLUMN_NAME As String = "FromStratumId"
+    Public Const MIGRATION_TO_STRATUM_COLUMN_NAME As String = "ToStratumId"
     Public Const MIGRATION_RATE_COLUMN_NAME As String = "MigrationRate"
 
     'Demographic Rate Shift Data Sheet
@@ -88,7 +89,7 @@ Module Strings
 
     'Output recruits data sheet
     Public Const OUTPUT_RECRUITS_DATASHEET_NAME As String = "dgsim_OutputRecruits"
-    Public Const DATASHEET_MOTHER_AGECLASS_ID_COLUMN_NAME As String = "MotherAgeClassID"
+    Public Const DATASHEET_MOTHER_AGECLASS_ID_COLUMN_NAME As String = "MotherAgeClassId"
     Public Const DATASHEET_OFFSPRING_SEX_COLUMN_NAME As String = "OffspringSex"
     Public Const OUTPUT_RECRUITS_COLUMN_NAME As String = "Recruits"
 

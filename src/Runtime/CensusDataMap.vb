@@ -5,7 +5,7 @@
 '
 '**********************************************************************************************
 
-Imports SyncroSim.Common
+Imports SyncroSim.Apex
 
 Class CensusDataMap
 

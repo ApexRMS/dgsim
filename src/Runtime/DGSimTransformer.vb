@@ -6,8 +6,7 @@
 '**********************************************************************************************
 
 Imports SyncroSim.Core
-Imports SyncroSim.Common
-Imports SyncroSim.StochasticTime
+Imports SyncroSim.Apex
 Imports System.Reflection
 
 <ObfuscationAttribute(Exclude:=True, ApplyToMembers:=False)>

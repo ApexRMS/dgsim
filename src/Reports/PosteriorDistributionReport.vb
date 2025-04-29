@@ -19,9 +19,9 @@ Class PosteriorDistributionReport
         Dim columns As ExportColumnCollection = CreateColumnCollection()
 
         If (exportType = ExportType.ExcelFile) Then
-            Me.ExcelExport(location, columns, query, "Sampled Inputs by Iteration")
+            Me.ExportToExcel(location, columns, query, "Sampled Inputs by Iteration")
         Else
-            Me.CSVExport(location, columns, query)
+            Me.ExportToCSVFile(location, columns, query)
             InformationMessageBox("Data saved to '{0}'.", location)
         End If
 
@@ -71,7 +71,7 @@ Class PosteriorDistributionReport
             "LEFT JOIN dgsim_AgeClass ON dgsim_OutputPosteriorDistributionValue.AgeClassID = dgsim_AgeClass.AgeClassID " &
             "WHERE dgsim_OutputPosteriorDistributionValue.ScenarioID IN ({0}) " &
             "ORDER BY dgsim_OutputPosteriorDistributionValue.ScenarioID, dgsim_Stratum.Name, Iteration, Timestep, JulianDay, Sex, dgsim_AgeClass.Name, IsFiltered, Variable",
-            Me.CreateActiveResultScenarioFilter())
+            Me.ExportCreateActiveResultScenarioFilter())
 
         Return Query
 

@@ -5,7 +5,7 @@
 '
 '**********************************************************************************************
 
-Imports SyncroSim.StochasticTime
+Imports SyncroSim.Core
 
 Class InitialPopulationSize
     Inherits DistributionBase

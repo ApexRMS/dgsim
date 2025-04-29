@@ -19,9 +19,9 @@ Class PopulationSizeReport
         Dim columns As ExportColumnCollection = CreateColumnCollection()
 
         If (exportType = ExportType.ExcelFile) Then
-            Me.ExcelExport(location, columns, query, "Population Size")
+            Me.ExportToExcel(location, columns, query, "Population Size")
         Else
-            Me.CSVExport(location, columns, query)
+            Me.ExportToCSVFile(location, columns, query)
             InformationMessageBox("Data saved to '{0}'.", location)
         End If
 
@@ -71,7 +71,7 @@ Class PopulationSizeReport
             "StratumName, " &
             "Sex, " &
             "AgeClassName",
-            Me.CreateActiveResultScenarioFilter())
+            Me.ExportCreateActiveResultScenarioFilter())
 
         Return Query
 

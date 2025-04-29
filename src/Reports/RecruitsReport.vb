@@ -19,9 +19,9 @@ Class RecruitsReport
         Dim columns As ExportColumnCollection = CreateColumnCollection()
 
         If (exportType = ExportType.ExcelFile) Then
-            Me.ExcelExport(location, columns, query, "Recruits")
+            Me.ExportToExcel(location, columns, query, "Recruits")
         Else
-            Me.CSVExport(location, columns, query)
+            Me.ExportToCSVFile(location, columns, query)
             InformationMessageBox("Data saved to '{0}'.", location)
         End If
 
@@ -71,7 +71,7 @@ Class RecruitsReport
             "StratumName, " &
             "MotherAgeClassName, " &
             "OffspringSex",
-            Me.CreateActiveResultScenarioFilter())
+            Me.ExportCreateActiveResultScenarioFilter())
 
         Return Query
 

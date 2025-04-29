@@ -19,9 +19,9 @@ Class MortalityReport
         Dim columns As ExportColumnCollection = CreateColumnCollection()
 
         If (exportType = ExportType.ExcelFile) Then
-            Me.ExcelExport(location, columns, query, "Mortality")
+            Me.ExportToExcel(location, columns, query, "Mortality")
         Else
-            Me.CSVExport(location, columns, query)
+            Me.ExportToCSVFile(location, columns, query)
             InformationMessageBox("Data saved to '{0}'.", location)
         End If
 
@@ -71,7 +71,7 @@ Class MortalityReport
             "StratumName, " &
             "Sex, " &
             "AgeClassName",
-            Me.CreateActiveResultScenarioFilter())
+            Me.ExportCreateActiveResultScenarioFilter())
 
         Return Query
 
