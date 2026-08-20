@@ -195,7 +195,7 @@ Partial Class DGSimTransformer
             Return
         End If
 
-        For Each ah As AnnualHarvestValue In recs.Values
+        For Each ah As AnnualHarvestValue In recs.Values.OrderBy(Function(v) v.Specificity)
 
             For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 

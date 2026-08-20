@@ -79,4 +79,24 @@ Class AnnualHarvestValue
         End Get
     End Property
 
+    ''' <summary>
+    ''' The number of non-null matching filters (AgeClassId, Sex) defined for this rule.
+    ''' </summary>
+    ''' <remarks>
+    ''' Used to order rule application so more specific rules are applied after (and therefore take
+    ''' precedence over) less specific / catch-all rules for the same cohort. StratumId is
+    ''' deliberately excluded: AnnualHarvestValueMap.GetItems(stratumId, ...) resolves to either the
+    ''' bucket of rows with an explicit matching StratumId or (only when none exist) the bucket of
+    ''' rows with a null StratumId - never both - so every item returned by a single GetItems call
+    ''' already shares the same StratumId-null-or-not status and it cannot affect relative ordering.
+    ''' </remarks>
+    Public ReadOnly Property Specificity As Integer
+        Get
+            Dim n As Integer = 0
+            If (Me.m_AgeClassId.HasValue) Then n += 1
+            If (Me.m_Sex.HasValue) Then n += 1
+            Return n
+        End Get
+    End Property
+
 End Class
