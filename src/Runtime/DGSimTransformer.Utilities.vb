@@ -116,36 +116,70 @@ Partial Class DGSimTransformer
 
     End Function
 
+    ''' <summary>
+    ''' Gets the number of individuals the specified harvest record will be distributed across
+    ''' </summary>
+    ''' <remarks>
+    ''' Excludes calves and any cohort that a more specific record will overwrite, so that
+    ''' the full harvest amount is allocated to the cohorts this record actually applies to.
+    ''' </remarks>
     Private Function GetHarvestablePopulationSize(
         ByVal stratum As Stratum,
-        ByVal ageClassId As Nullable(Of Integer),
-        ByVal sex As Nullable(Of Sex)) As Double
+        ByVal ah As AnnualHarvestValue,
+        ByVal recs As SortedList(Of Integer, AnnualHarvestValue)) As Double
 
-        If (Not ageClassId.HasValue And Not sex.HasValue) Then
-            Return CalculateStratumPopulationSize(stratum)
-        Else
+        Dim PopSize As Double = 0
 
-            Dim PopSize As Double = 0
+        For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 
-            For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
+            If (Me.RecordMatchesCohort(ah, cohort) AndAlso
+                Not Me.IsOverriddenByMoreSpecificRecord(ah, cohort, recs)) Then
 
-                If (cohort.Age > 0) Then
+                PopSize += cohort.NumIndividuals
 
-                    Dim id As Integer = GetAgeClassIdFromAge(cohort.Age)
+            End If
 
-                    If ((Not ageClassId.HasValue) OrElse (id = ageClassId)) Then
+        Next
 
-                        If ((Not sex.HasValue) OrElse (cohort.Sex = sex.Value)) Then
-                            PopSize += cohort.NumIndividuals
-                        End If
+        Return PopSize
 
-                    End If
-                End If
-            Next
+    End Function
 
-            Return PopSize
+    Private Function RecordMatchesCohort(
+        ByVal ah As AnnualHarvestValue,
+        ByVal cohort As AgeSexCohort) As Boolean
 
+        ' Do not harvest calves
+        If (cohort.Age = 0) Then
+            Return False
         End If
+
+        If (ah.AgeClassId.HasValue AndAlso GetAgeClassIdFromAge(cohort.Age) <> ah.AgeClassId.Value) Then
+            Return False
+        End If
+
+        If (ah.Sex.HasValue AndAlso cohort.Sex <> ah.Sex.Value) Then
+            Return False
+        End If
+
+        Return True
+
+    End Function
+
+    Private Function IsOverriddenByMoreSpecificRecord(
+        ByVal ah As AnnualHarvestValue,
+        ByVal cohort As AgeSexCohort,
+        ByVal recs As SortedList(Of Integer, AnnualHarvestValue)) As Boolean
+
+        For Each other As AnnualHarvestValue In recs.Values
+
+            If (other.Specificity > ah.Specificity AndAlso Me.RecordMatchesCohort(other, cohort)) Then
+                Return True
+            End If
+
+        Next
+
+        Return False
 
     End Function
 
@@ -197,56 +231,47 @@ Partial Class DGSimTransformer
 
         For Each ah As AnnualHarvestValue In recs.Values.OrderBy(Function(v) v.Specificity)
 
+            Dim pSize As Double = GetHarvestablePopulationSize(stratum, ah, recs)
+            Dim InputHarvestAmount As Double = 0.0
+
+            If (pSize > 0.0) Then
+
+                If (Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.PercentageOfCohort) Then
+
+                    pSize = 1.0
+                    InputHarvestAmount = ah.CurrentValue / 100.0
+
+                ElseIf (Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.AbsoluteNumber) Then
+                    InputHarvestAmount = ah.CurrentValue
+                Else
+
+                    Dim popsize As Double = GetPopulationSizeByAgeRangeAndSex(
+                        stratum,
+                        Me.m_AnnualHarvestPopFilterMinAge,
+                        Me.m_AnnualHarvestPopFilterMaxAge,
+                        Me.m_AnnualHarvestPopFilterSex)
+
+                    InputHarvestAmount = (ah.CurrentValue / 100.0) * popsize
+
+                End If
+
+            End If
+
             For Each cohort As AgeSexCohort In stratum.AgeSexCohorts
 
-                ' Do not harvest calves
-                If (cohort.Age = 0) Then
+                ' Cohorts covered by a more specific record are set when that record is applied
+                If (Not Me.RecordMatchesCohort(ah, cohort) OrElse
+                    Me.IsOverriddenByMoreSpecificRecord(ah, cohort, recs)) Then
                     Continue For
                 End If
 
-                Dim id As Integer = GetAgeClassIdFromAge(cohort.Age)
+                Dim d As Double = 0.0
 
-                If ((Not ah.AgeClassId.HasValue) OrElse (id = ah.AgeClassId.Value)) Then
-
-                    If ((Not ah.Sex.HasValue) OrElse (cohort.Sex = ah.Sex.Value)) Then
-
-                        Dim pSize As Double = GetHarvestablePopulationSize(stratum, ah.AgeClassId, ah.Sex)
-                        Dim InputHarvestAmount As Double = 0.0
-
-                        If (pSize > 0.0) Then
-
-                            If (Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.PercentageOfCohort) Then
-
-                                pSize = 1.0
-                                InputHarvestAmount = ah.CurrentValue / 100.0
-
-                            ElseIf (Me.m_AnnualHarvestSpecification = AnnualHarvestSpecification.AbsoluteNumber) Then
-                                InputHarvestAmount = ah.CurrentValue
-                            Else
-
-                                Dim popsize As Double = GetPopulationSizeByAgeRangeAndSex(
-                                    stratum,
-                                    Me.m_AnnualHarvestPopFilterMinAge,
-                                    Me.m_AnnualHarvestPopFilterMaxAge,
-                                    Me.m_AnnualHarvestPopFilterSex)
-
-                                InputHarvestAmount = (ah.CurrentValue / 100.0) * popsize
-
-                            End If
-
-                        End If
-
-                        Dim d As Double = 0.0
-
-                        If pSize > 0.0 Then
-                            d = (InputHarvestAmount * cohort.NumIndividuals / pSize)
-                        End If
-
-                        cohort.AnnualHarvest = d
-
-                    End If
-
+                If pSize > 0.0 Then
+                    d = (InputHarvestAmount * cohort.NumIndividuals / pSize)
                 End If
+
+                cohort.AnnualHarvest = d
 
             Next
 
